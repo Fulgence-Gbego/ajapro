@@ -824,19 +824,10 @@ var demoSponsors=[
 ];
 
 async function notifyNewAd(ad){
-  try{
-    await fetch('https://api.web3forms.com/submit',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        access_key:'b2d3e4f5-a1b2-c3d4-e5f6-a7b8c9d0e1f2',
-        subject:'Nouvelle annonce AJAPRO : '+ad.title,
-        from_name:'AJAPRO',
-        to:'ajaproci@gmail.com',
-        message:'Nouvelle annonce publiée :\n\nTitre : '+ad.title+'\nCatégorie : '+ad.cat+'\nLocalisation : '+ad.loc+'\nVendeur : '+ad.seller+'\nWhatsApp : '+ad.wa+'\n\nVoir sur : ajapro.vercel.app'
-      })
-    });
-  }catch(e){}
+  // Les annonces sont déjà dans Supabase
+  // L'admin voit tout depuis ajapro.vercel.app#admin
+  // Notification visuelle uniquement pour l'instant
+  console.log('Nouvelle annonce publiée:', ad.title);
 }
 
 // INIT
