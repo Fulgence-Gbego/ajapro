@@ -792,6 +792,22 @@ var demoSponsors=[
   {id:6,name:'Wave CI',logo:'💙',type:'Fintech'},
 ];
 
+async function notifyNewAd(ad){
+  try{
+    await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        access_key:'b2d3e4f5-a1b2-c3d4-e5f6-a7b8c9d0e1f2',
+        subject:'Nouvelle annonce AJAPRO : '+ad.title,
+        from_name:'AJAPRO',
+        to:'ajaproci@gmail.com',
+        message:'Nouvelle annonce publiée :\n\nTitre : '+ad.title+'\nCatégorie : '+ad.cat+'\nLocalisation : '+ad.loc+'\nVendeur : '+ad.seller+'\nWhatsApp : '+ad.wa+'\n\nVoir sur : ajapro.vercel.app'
+      })
+    });
+  }catch(e){}
+}
+
 // INIT
 window.onload=function(){
   loadLocalData();
@@ -1067,8 +1083,8 @@ async function uploadPhoto(input){
   var file=input.files[0];if(!file)return;
   
   // Vérifier taille (max 2MB pour Supabase)
-  if(file.size > 2*1024*1024){
-    toast('Photo trop lourde. Max 2MB.','error');
+  if(file.size > 10*1024*1024){
+    toast('Photo trop lourde. Max 10MB.','error');
     return;
   }
   
@@ -1083,7 +1099,7 @@ async function uploadPhoto(input){
   
   img.onload=function(){
     // Redimensionner max 800px
-    var maxW=800,maxH=600;
+    var maxW=1200,maxH=900;
     var w=img.width,h=img.height;
     if(w>maxW){h=h*(maxW/w);w=maxW;}
     if(h>maxH){w=w*(maxH/h);h=maxH;}
@@ -1091,11 +1107,11 @@ async function uploadPhoto(input){
     ctx.drawImage(img,0,0,w,h);
     
     // Aperçu
-    document.getElementById('photoPreviewIcon').innerHTML='<img src="'+canvas.toDataURL('image/jpeg',0.8)+'" style="width:100%;height:120px;object-fit:cover;border-radius:8px">';
+    document.getElementById('photoPreviewIcon').innerHTML='<img src="'+canvas.toDataURL('image/jpeg',0.85)+'" style="width:100%;height:120px;object-fit:cover;border-radius:8px">';
     document.getElementById('photoUploadText').textContent='';
     
     // Stocker URL compressée
-    document.getElementById('photoUrl').value=canvas.toDataURL('image/jpeg',0.8);
+    document.getElementById('photoUrl').value=canvas.toDataURL('image/jpeg',0.85);
     document.getElementById('uploadProgress').style.display='none';
     URL.revokeObjectURL(objectUrl);
     toast('📸 Photo prête !','success');
@@ -1165,6 +1181,9 @@ function finishPublish(id){
   updateStats();renderAds();
   hideScreen('publishScreen');
   toast('✅ Annonce publiée et visible par tous !','success');
+  // Notifier admin de la nouvelle annonce
+  var ad=ads.find(function(a){return a.id===id;});
+  if(ad) notifyNewAd(ad);
   document.getElementById('pub-title').value='';
   document.getElementById('pub-cat').value='';
   document.getElementById('pub-desc').value='';
