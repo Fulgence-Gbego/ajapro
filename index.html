@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="AJAPRO — Votre Marché, Votre Succès. Plateforme de petites annonces 100% gratuite pour l'Afrique.">
+<title>AJAPRO — Votre Marché, Votre Succès</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --navy:#0F2557;--blue:#1E3A8A;--blue2:#2563EB;--gold:#F59E0B;--gold2:#FCD34D;
+  --bg:#F8F9FF;--bg2:#EEF2FF;--card:#FFFFFF;
+  --text:#0F1729;--text2:#374151;--muted:#6B7280;
+  --border:#E5E7EB;--green:#059669;--red:#DC2626;
+  --shadow:0 2px 16px rgba(15,37,87,0.08);
+  --shadow2:0 8px 32px rgba(15,37,87,0.14);
+}
+html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'Sora',sans-serif}
+input,select,textarea{font-family:'Sora',sans-serif}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 16px}
+.nav-inner{max-width:1200px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.nav-logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-mark{width:38px;height:38px;background:linear-gradient(135deg,var(--navy),var(--blue2));border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.logo-mark::after{content:'✋';font-size:1.2rem;filter:sepia(1) saturate(3) hue-rotate(25deg);position:relative;z-index:1}
+.logo-mark::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,158,11,.3),transparent)}
+.logo-text{font-size:1.3rem;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.logo-text span{color:var(--gold)}
+.logo-sub{font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);line-height:1;margin-top:1px}
+.nav-search{flex:1;max-width:320px;position:relative}
+.nav-search input{width:100%;padding:8px 14px 8px 36px;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;font-size:.8rem;color:var(--text);outline:none;transition:border-color .2s}
+.nav-search input:focus{border-color:var(--blue2)}
+.nav-search .si{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem}
+.nav-btns{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.nb{padding:7px 13px;font-size:.7rem;font-weight:600;letter-spacing:.04em;border:none;border-radius:7px;white-space:nowrap}
+.nb-out{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+.nb-in{background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;box-shadow:0 3px 10px rgba(30,58,138,.25)}
+.lang-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:6px 10px;border-radius:7px;font-size:.7rem;font-weight:600}
+
+/* HERO BANNER CAROUSEL */
+.hero-carousel{position:relative;overflow:hidden;margin-bottom:0}
+.carousel-slides{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.carousel-slide{min-width:100%;padding:40px 16px 36px;position:relative;overflow:hidden}
+.cs-1{background:linear-gradient(135deg,#0F2557 0%,#1E3A8A 50%,#1D4ED8 100%)}
+.cs-2{background:linear-gradient(135deg,#064E3B,#065F46,#047857)}
+.cs-3{background:linear-gradient(135deg,#7C2D12,#92400E,#B45309)}
+.cs-4{background:linear-gradient(135deg,#1E1B4B,#312E81,#4338CA)}
+.cs-5{background:linear-gradient(135deg,#831843,#9D174D,#BE185D)}
+.cs-6{background:linear-gradient(135deg,#134E4A,#0F766E,#0D9488)}
+.carousel-slide::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,.06);border-radius:50%}
+.carousel-slide::after{content:'';position:absolute;bottom:-30px;left:-30px;width:150px;height:150px;background:rgba(255,255,255,.04);border-radius:50%}
+.cs-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.cs-text{color:#fff}
+.cs-badge{display:inline-block;background:rgba(245,158,11,.25);border:1px solid rgba(245,158,11,.5);color:var(--gold2);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:10px}
+.cs-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;line-height:1.2;margin-bottom:8px}
+.cs-desc{font-size:.8rem;opacity:.82;line-height:1.65;margin-bottom:16px;max-width:340px}
+.cs-btn{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:var(--navy);padding:9px 20px;border-radius:8px;font-size:.76rem;font-weight:700;border:none;cursor:pointer;transition:transform .2s}
+.cs-btn:active{transform:scale(.97)}
+.cs-icon{font-size:4rem;flex-shrink:0;opacity:.9}
+.carousel-dots{display:flex;justify-content:center;gap:6px;padding:12px 0;background:rgba(0,0,0,.1)}
+.c-dot{width:24px;height:4px;border-radius:2px;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:all .3s}
+.c-dot.on{background:var(--gold);width:32px}
+.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;width:34px;height:34px;border-radius:50%;color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:5;backdrop-filter:blur(4px)}
+.c-prev{left:10px}
+.c-next{right:10px}
+
+/* STATS BAR */
+.stats-bar{background:var(--navy);padding:12px 16px}
+.stats-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-around;gap:10px}
+.stat-item{text-align:center;color:#fff}
+.stat-n{font-size:1.1rem;font-weight:800;color:var(--gold2)}
+.stat-l{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-top:1px}
+
+/* CATEGORIES */
+.cats-section{padding:20px 16px 14px;background:var(--card);border-bottom:1px solid var(--border)}
+.cats-inner{max-width:1200px;margin:0 auto}
+.cats-title{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:600}
+.cats-grid{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.cats-grid::-webkit-scrollbar{display:none}
+.cat-btn{display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 14px;background:var(--bg2);border:1.5px solid var(--border);border-radius:10px;white-space:nowrap;flex-shrink:0;transition:all .2s;cursor:pointer}
+.cat-btn:active,.cat-btn.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.cat-btn.on .cat-icon{filter:none}
+.cat-icon{font-size:1.3rem}
+.cat-name{font-size:.62rem;font-weight:600;color:var(--text2)}
+.cat-btn.on .cat-name{color:#fff}
+
+/* ANNONCES GRID */
+.annonces-section{padding:16px;max-width:1200px;margin:0 auto}
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.section-title{font-size:1rem;font-weight:700;color:var(--navy)}
+.section-sub{font-size:.7rem;color:var(--muted)}
+.annonces-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ann-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;cursor:pointer}
+.ann-card:active{transform:scale(.98);box-shadow:var(--shadow2)}
+.ann-photo{height:120px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative}
+.ann-photo img{width:100%;height:100%;object-fit:cover}
+.ann-cat-badge{position:absolute;top:8px;left:8px;background:rgba(15,37,87,.82);color:#fff;font-size:.52rem;font-weight:700;padding:3px 7px;border-radius:4px;letter-spacing:.04em;backdrop-filter:blur(4px)}
+.ann-fav{position:absolute;top:7px;right:7px;background:rgba(255,255,255,.88);border:none;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;cursor:pointer}
+.ann-body{padding:10px 11px}
+.ann-title{font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ann-loc{font-size:.62rem;color:var(--muted);display:flex;align-items:center;gap:3px;margin-bottom:6px}
+.ann-price{font-size:.85rem;font-weight:800;color:var(--blue)}
+.ann-price span{font-size:.6rem;font-weight:500;color:var(--muted)}
+.ann-footer{display:flex;align-items:center;justify-content:space-between;margin-top:7px;padding-top:7px;border-top:1px solid var(--border)}
+.ann-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:5px 10px;border-radius:5px;font-size:.6rem;font-weight:700;display:flex;align-items:center;gap:4px}
+.ann-tel{background:var(--bg2);color:var(--text2);border:1px solid var(--border);padding:5px 10px;border-radius:5px;font-size:.6rem;font-weight:600}
+
+/* SPONSORS */
+.sponsors-section{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px;margin:16px 0}
+.sponsors-inner{max-width:1200px;margin:0 auto}
+.sponsors-title{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;font-weight:600;text-align:center}
+.sponsors-row{display:flex;gap:12px;overflow-x:auto;padding:4px;scrollbar-width:none}
+.sponsors-row::-webkit-scrollbar{display:none}
+.sponsor-card{flex-shrink:0;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;text-align:center;min-width:100px}
+.sponsor-logo{font-size:1.8rem;margin-bottom:5px}
+.sponsor-name{font-size:.6rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.sponsor-type{font-size:.54rem;color:var(--muted)}
+
+/* PUBLIER ANNONCE */
+.screen{display:none;position:fixed;inset:0;z-index:200;background:var(--bg);overflow-y:auto;padding-bottom:70px}
+.screen.visible{display:block}
+.scr-hdr{background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);padding:11px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}
+.back-btn{background:none;border:none;font-size:1.2rem;color:var(--muted);padding:4px}
+.scr-title{font-size:1.05rem;font-weight:700;color:var(--navy);flex:1}
+.form-body{padding:18px 16px;max-width:600px;margin:0 auto}
+.fgrp{margin-bottom:14px}
+.fgrp label{display:block;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;font-weight:600}
+.fgrp input,.fgrp select,.fgrp textarea{width:100%;padding:10px 13px;background:#fff;border:1.5px solid var(--border);color:var(--text);font-size:.84rem;outline:none;border-radius:8px;transition:border-color .2s}
+.fgrp input:focus,.fgrp select:focus,.fgrp textarea:focus{border-color:var(--blue2)}
+.fgrp textarea{resize:vertical;min-height:90px}
+.fgrp-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.photo-upload{border:2px dashed var(--border);border-radius:10px;padding:24px;text-align:center;cursor:pointer;background:var(--bg2);transition:border-color .2s}
+.photo-upload:hover{border-color:var(--blue2)}
+.photo-upload-icon{font-size:2rem;margin-bottom:8px}
+.photo-upload-text{font-size:.76rem;color:var(--muted)}
+.wa-section{background:linear-gradient(135deg,#F0FFF4,#ECFDF5);border:1.5px solid #86EFAC;border-radius:10px;padding:14px}
+.wa-section-title{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#059669;margin-bottom:10px;font-weight:700;display:flex;align-items:center;gap:6px}
+.btn-submit{width:100%;padding:14px;background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;border:none;font-size:.85rem;font-weight:700;letter-spacing:.06em;border-radius:10px;margin-top:8px;box-shadow:0 4px 14px rgba(30,58,138,.3)}
+.btn-submit:active{opacity:.9}
+
+/* DETAIL ANNONCE */
+.detail-photo{width:100%;height:220px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden}
+.detail-photo img{width:100%;height:100%;object-fit:cover}
+.detail-body{padding:16px}
+.detail-cat{display:inline-block;background:var(--bg2);border:1px solid var(--border);color:var(--blue);font-size:.6rem;font-weight:700;padding:3px 9px;border-radius:5px;letter-spacing:.06em;margin-bottom:10px}
+.detail-title{font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:6px;line-height:1.3}
+.detail-price{font-size:1.4rem;font-weight:800;color:var(--blue2);margin-bottom:12px}
+.detail-loc{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:5px;margin-bottom:14px}
+.detail-desc{font-size:.82rem;color:var(--text2);line-height:1.75;margin-bottom:18px}
+.detail-seller{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:16px}
+.seller-name{font-size:.85rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.seller-meta{font-size:.68rem;color:var(--muted)}
+.contact-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:13px;border-radius:10px;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-tel{background:var(--navy);color:#fff;border:none;padding:13px;border-radius:10px;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px}
+
+/* CONNEXION / INSCRIPTION */
+.auth-inner{padding:24px 16px;max-width:420px;margin:0 auto}
+.auth-logo{text-align:center;margin-bottom:24px}
+.auth-logo-mark{width:56px;height:56px;background:linear-gradient(135deg,var(--navy),var(--blue2));border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:1.8rem}
+.auth-title{font-size:1.3rem;font-weight:800;color:var(--navy);margin-bottom:4px}
+.auth-sub{font-size:.76rem;color:var(--muted)}
+.auth-tabs{display:flex;background:var(--bg2);border-radius:9px;padding:3px;margin-bottom:20px}
+.auth-tab{flex:1;padding:8px;font-size:.76rem;font-weight:600;border:none;background:transparent;color:var(--muted);border-radius:7px;transition:all .2s}
+.auth-tab.on{background:#fff;color:var(--navy);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.form-switch{text-align:center;margin-top:14px;font-size:.74rem;color:var(--muted)}
+.form-switch a{color:var(--blue);font-weight:600;cursor:pointer}
+
+/* PROFIL */
+.prof-hdr{background:linear-gradient(160deg,var(--navy),var(--blue2));padding:28px 16px 24px;text-align:center;color:#fff}
+.prof-av{width:72px;height:72px;border-radius:50%;border:3px solid var(--gold);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(255,255,255,.15);overflow:hidden}
+.prof-av img{width:100%;height:100%;object-fit:cover}
+.prof-name{font-size:1.15rem;font-weight:800}
+.prof-meta{font-size:.7rem;opacity:.75;margin-top:3px}
+.prof-stats{display:flex;justify-content:center;gap:24px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15)}
+.prof-stat-n{font-size:1.2rem;font-weight:800;color:var(--gold2)}
+.prof-stat-l{font-size:.54rem;opacity:.65;letter-spacing:.1em;text-transform:uppercase}
+.pmi{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.pmi:active{background:var(--bg2)}
+.pmi-icon{font-size:1.15rem;flex-shrink:0;width:28px;text-align:center}
+.pmi-text{flex:1;font-size:.82rem;font-weight:500}
+.pmi-arrow{color:var(--muted);font-size:.78rem}
+.logout-btn{width:calc(100% - 32px);margin:16px;padding:12px;background:rgba(220,38,38,.08);color:var(--red);border:1.5px solid var(--red);border-radius:9px;font-size:.78rem;font-weight:700}
+
+/* ADMIN PANEL */
+.admin-scr{display:none;position:fixed;inset:0;z-index:800;background:linear-gradient(160deg,#0A1628,#0F2557);overflow-y:auto}
+.admin-scr.visible{display:block}
+.a-hdr{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.1);padding:13px 16px;display:flex;align-items:center;gap:10px}
+.a-hdr-title{font-size:1.05rem;font-weight:700;color:#fff;flex:1}
+.a-tabs{display:flex;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.1);padding:0 12px;gap:0}
+.a-tab{padding:11px 16px;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;color:rgba(255,255,255,.45);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.a-tab.on{color:var(--gold2);border-bottom-color:var(--gold)}
+.a-content{padding:14px;display:none}
+.a-content.on{display:block}
+.a-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.a-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;text-align:center}
+.a-stat-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold2)}
+.a-stat-l{font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:3px}
+.chart-bar{background:rgba(255,255,255,.04);border-radius:10px;padding:14px;margin-bottom:14px}
+.chart-bars{display:flex;align-items:flex-end;gap:3px;height:80px}
+.c-bar{flex:1;background:linear-gradient(to top,var(--blue2),var(--gold2));border-radius:2px;min-height:4px;transition:height .3s}
+.pub-banner-admin{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;margin-bottom:10px}
+.pub-banner-label{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;font-weight:700}
+.pub-banner-items{display:flex;flex-direction:column;gap:7px}
+.pub-item{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border-radius:7px;padding:8px}
+.pub-item-img{width:48px;height:30px;object-fit:contain;background:rgba(255,255,255,.08);border-radius:4px}
+.pub-item-name{flex:1;font-size:.72rem;color:#fff}
+.pub-del{background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);color:#FCA5A5;padding:3px 8px;border-radius:4px;font-size:.58rem;cursor:pointer}
+.a-form-group{margin-bottom:11px}
+.a-form-group label{display:block;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:5px;font-weight:600}
+.a-form-group input,.a-form-group select{width:100%;padding:9px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:.8rem;outline:none;border-radius:7px}
+.a-form-group select option{background:#0F2557;color:#fff}
+.btn-add-pub{width:100%;padding:11px;background:linear-gradient(135deg,var(--gold),#D97706);color:var(--navy);border:none;font-size:.76rem;font-weight:800;border-radius:8px;cursor:pointer;margin-top:6px}
+.members-list{display:flex;flex-direction:column;gap:8px}
+.member-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:11px 13px}
+.member-name{font-size:.8rem;font-weight:600;color:#fff;margin-bottom:2px}
+.member-meta{font-size:.65rem;color:rgba(255,255,255,.45)}
+.ads-list{display:grid;gap:8px}
+.ad-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:11px 13px;display:flex;align-items:center;gap:10px}
+.ad-item-icon{font-size:1.5rem}
+.ad-item-info{flex:1}
+.ad-item-title{font-size:.78rem;font-weight:600;color:#fff;margin-bottom:2px}
+.ad-item-meta{font-size:.62rem;color:rgba(255,255,255,.4)}
+.ad-del{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);color:#FCA5A5;padding:4px 9px;border-radius:5px;font-size:.6rem;cursor:pointer}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,.65);padding:24px 16px 80px;font-size:.7rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--blue2),var(--gold));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.footer-logo-text{font-size:1.2rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+.footer-logo-text span{color:var(--gold2)}
+.footer-desc{line-height:1.75;margin-bottom:16px;max-width:340px}
+.footer-contact{margin-bottom:16px;line-height:2}
+.footer-contact a{color:var(--gold2)}
+.footer-links{display:flex;flex-wrap:wrap;gap:7px 14px;margin-bottom:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-links a{color:rgba(255,255,255,.45);transition:color .2s;font-size:.68rem}
+.footer-copy{color:rgba(255,255,255,.22);font-size:.58rem;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
+.free-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),#D97706);color:var(--navy);font-size:.56rem;font-weight:800;padding:3px 9px;border-radius:4px;letter-spacing:.08em;margin-left:8px}
+
+/* BNAV */
+.bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);border-top:1px solid var(--border);display:flex;height:58px;z-index:90;backdrop-filter:blur(10px)}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--muted);font-size:.42rem;letter-spacing:.05em;text-transform:uppercase;border:none;background:none;transition:color .2s;position:relative}
+.bn.on{color:var(--blue)}
+.bn-i{font-size:1.1rem}
+.bn-badge{position:absolute;top:5px;right:calc(50% - 18px);background:var(--red);color:#fff;font-size:.5rem;font-weight:700;padding:1px 5px;border-radius:8px}
+
+/* MODAL */
+.modal-ov{display:none;position:fixed;inset:0;z-index:500;background:rgba(15,37,87,.6);backdrop-filter:blur(4px);align-items:flex-end;justify-content:center}
+.modal-ov.visible{display:flex}
+.modal-box{background:var(--card);width:100%;max-width:440px;padding:24px 20px 32px;border-radius:16px 16px 0 0;animation:sUp .3s ease;position:relative}
+@keyframes sUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-close{position:absolute;top:13px;right:15px;background:var(--bg2);border:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1rem;cursor:pointer}
+
+/* TOAST */
+.toast{position:fixed;bottom:72px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:9px 18px;font-size:.74rem;z-index:1000;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:90vw;text-align:center;border-radius:8px}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.error{background:var(--red)}
+.toast.success{background:var(--green)}
+
+/* SEARCH RESULTS */
+.search-results{padding:14px 16px;max-width:1200px;margin:0 auto}
+.search-hdr{margin-bottom:14px}
+.search-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:3px}
+.search-count{font-size:.72rem;color:var(--muted)}
+.no-results{text-align:center;padding:40px 20px;color:var(--muted)}
+.no-results-icon{font-size:3rem;margin-bottom:12px}
+
+@media(min-width:600px){
+  .annonces-grid{grid-template-columns:repeat(3,1fr)}
+  .cs-title{font-size:2.2rem}
+  .stats-inner{justify-content:center;gap:40px}
+}
+@media(min-width:900px){
+  .annonces-grid{grid-template-columns:repeat(4,1fr)}
+  .nav-search{max-width:400px}
+}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="goHome()" style="cursor:pointer">
+      <div class="logo-mark"></div>
+      <div>
+        <div class="logo-text">AJA<span>PRO</span></div>
+        <div class="logo-sub" id="nav-tagline">Votre Marché, Votre Succès</div>
+      </div>
+    </div>
+    <div class="nav-search">
+      <span class="si">🔍</span>
+      <input type="text" id="searchInput" placeholder="Rechercher une annonce..." oninput="searchAds(this.value)" onfocus="this.placeholder=''">
+    </div>
+    <div class="nav-btns">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+      <button class="nb nb-out" id="loginBtn" onclick="showAuth()">Connexion</button>
+      <button class="nb nb-in" onclick="goScreen('publishScreen')">+ Annonce</button>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div id="mainContent">
+
+<!-- HERO CAROUSEL -->
+<div class="hero-carousel">
+  <div class="carousel-slides" id="carSlides">
+    <div class="carousel-slide cs-1">
+      <div class="cs-inner">
+        <div class="cs-text">
+          <div class="cs-badge">🏠 IMMOBILIER</div>
+          <div class="cs-title">Trouvez votre<br>maison idéale</div>
+          <div class="cs-desc">Des milliers d'annonces immobilières à Abidjan et partout en Afrique. Vente, location, terrain.</div>
+          <button class="cs-btn" onclick="filterCat('immobilier')">Voir les annonces →</button>
+        </div>
+        <div class="cs-icon">🏠</div>
+      </div>
+    </div>
+    <div class="carousel-slide cs-2">
+      <div class="cs-inner">
+        <div class="cs-text">
+          <div class="cs-badge">💼 EMPLOI</div>
+          <div class="cs-title">Décrochez votre<br>emploi de rêve</div>
+          <div class="cs-desc">Offres d'emploi exclusives dans tous les secteurs. Postulez directement via WhatsApp.</div>
+          <button class="cs-btn" onclick="filterCat('emploi')">Voir les offres →</button>
+        </div>
+        <div class="cs-icon">💼</div>
+      </div>
+    </div>
+    <div class="carousel-slide cs-3">
+      <div class="cs-inner">
+        <div class="cs-text">
+          <div class="cs-badge">💕 RENCONTRES</div>
+          <div class="cs-title">Trouvez votre<br>âme sœur</div>
+          <div class="cs-desc">Événements sociaux, speed dating, sorties et rencontres sérieuses en toute sécurité.</div>
+          <button class="cs-btn" onclick="filterCat('rencontres')">Découvrir →</button>
+        </div>
+        <div class="cs-icon">💕</div>
+      </div>
+    </div>
+    <div class="carousel-slide cs-4">
+      <div class="cs-inner">
+        <div class="cs-text">
+          <div class="cs-badge">🛍️ COMMERCE</div>
+          <div class="cs-title">Achetez et vendez<br>localement</div>
+          <div class="cs-desc">Mode, électronique, meubles, chaussures... Toutes les meilleures offres près de chez vous.</div>
+          <button class="cs-btn" onclick="filterCat('commerce')">Explorer →</button>
+        </div>
+        <div class="cs-icon">🛍️</div>
+      </div>
+    </div>
+    <div class="carousel-slide cs-5">
+      <div class="cs-inner">
+        <div class="cs-text">
+          <div class="cs-badge">💇 BEAUTÉ</div>
+          <div class="cs-title">Prenez soin<br>de vous</div>
+          <div class="cs-desc">Salons de coiffure, esthétique, massages, fitness. Les meilleurs professionnels de beauté.</div>
+          <button class="cs-btn" onclick="filterCat('beaute')">Réserver →</button>
+        </div>
+        <div class="cs-icon">💇</div>
+      </div>
+    </div>
+    <div class="carousel-slide cs-6">
+      <div class="cs-inner">
+        <div class="cs-text">
+          <div class="cs-badge">🚗 VÉHICULES</div>
+          <div class="cs-title">Votre prochain<br>véhicule vous attend</div>
+          <div class="cs-desc">Voitures, motos, pièces détachées. Achat, vente et location de véhicules en toute confiance.</div>
+          <button class="cs-btn" onclick="filterCat('vehicules')">Voir les véhicules →</button>
+        </div>
+        <div class="cs-icon">🚗</div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-nav c-prev" onclick="carMove(-1)">‹</button>
+  <button class="carousel-nav c-next" onclick="carMove(1)">›</button>
+  <div style="position:relative;z-index:2">
+    <div class="carousel-dots" id="carDots"></div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-n" id="stat-annonces">0</div><div class="stat-l">Annonces</div></div>
+    <div class="stat-item"><div class="stat-n" id="stat-membres">0</div><div class="stat-l">Membres</div></div>
+    <div class="stat-item"><div class="stat-n">47+</div><div class="stat-l">Pays</div></div>
+    <div class="stat-item"><div class="stat-n">100%</div><div class="stat-l">Gratuit</div></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="cats-section">
+  <div class="cats-inner">
+    <div class="cats-title" id="cats-label">Toutes les catégories</div>
+    <div class="cats-grid" id="catsGrid"></div>
+  </div>
+</div>
+
+<!-- SPONSORS -->
+<div class="sponsors-section">
+  <div class="sponsors-inner">
+    <div class="sponsors-title" id="sponsors-title">Nos partenaires</div>
+    <div class="sponsors-row" id="sponsorsRow"></div>
+  </div>
+</div>
+
+<!-- ANNONCES -->
+<div class="annonces-section">
+  <div class="section-hdr">
+    <div><div class="section-title" id="ads-title">Annonces récentes</div><div class="section-sub" id="ads-sub">Toutes catégories</div></div>
+  </div>
+  <div class="annonces-grid" id="annoncesGrid"></div>
+  <div id="noResults" class="no-results" style="display:none">
+    <div class="no-results-icon">🔍</div>
+    <div style="font-size:.82rem;color:var(--muted);margin-bottom:12px" id="noResultsText">Aucune annonce trouvée</div>
+    <button class="nb nb-in" onclick="goScreen('publishScreen')">+ Publier une annonce</button>
+  </div>
+</div>
+
+<!-- SEARCH RESULTS -->
+<div class="search-results" id="searchResults" style="display:none">
+  <div class="search-hdr">
+    <div class="search-title" id="searchTitle">Résultats de recherche</div>
+    <div class="search-count" id="searchCount"></div>
+  </div>
+  <div class="annonces-grid" id="searchGrid"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo-row">
+      <div class="footer-logo-mark">✋</div>
+      <div>
+        <div class="footer-logo-text">AJA<span>PRO</span></div>
+        <div style="font-size:.52rem;color:var(--gold2);letter-spacing:.1em" id="footer-tagline">Votre Marché, Votre Succès</div>
+      </div>
+      <span class="free-badge" id="footer-free">100% GRATUIT</span>
+    </div>
+    <p class="footer-desc" id="footer-desc">La plateforme de petites annonces 100% gratuite pour l'Afrique. Immobilier, emploi, commerce, services et bien plus.</p>
+    <div class="footer-contact">
+      📍 <span id="footer-addr">Abidjan, Côte d'Ivoire</span><br>
+      📞 <a href="tel:+2250596697054">+225 05 96 69 70 54</a><br>
+      ✉️ <a href="mailto:contact@ajapro.ci">contact@ajapro.ci</a><br>
+      🕐 <span id="footer-hours">Lun-Ven: 08h-18h · Sam: 09h-13h</span>
+    </div>
+    <div class="footer-links">
+      <a href="#" onclick="showLegal('cgu');return false" id="fl-cgu">CGU</a>
+      <a href="#" onclick="showLegal('privacy');return false" id="fl-priv">Confidentialité</a>
+      <a href="#" onclick="showLegal('mentions');return false" id="fl-men">Mentions légales</a>
+      <a href="#" onclick="goScreen('profileScreen');return false" id="fl-prof">Mon compte</a>
+    </div>
+    <div class="footer-copy">© 2025 AJAPRO · <span id="footer-copy-text">Plateforme 100% gratuite pour l'Afrique</span> 🌍</div>
+  </div>
+</footer>
+
+</div><!-- /mainContent -->
+
+<!-- BOTTOM NAV -->
+<nav class="bnav">
+  <button class="bn on" id="bn-home" onclick="goHome()"><span class="bn-i">🏠</span>Accueil</button>
+  <button class="bn" id="bn-cats" onclick="scrollToCats()"><span class="bn-i">📋</span>Catégories</button>
+  <button class="bn" id="bn-pub" onclick="goScreen('publishScreen')"><span class="bn-i">➕</span>Publier</button>
+  <button class="bn" id="bn-favs" onclick="showFavs()" style="position:relative"><span class="bn-i">❤️</span>Favoris<span class="bn-badge" id="favBadge" style="display:none">0</span></button>
+  <button class="bn" id="bn-prof" onclick="goScreen('profileScreen')"><span class="bn-i">👤</span>Profil</button>
+</nav>
+
+<!-- SCREENS -->
+
+<!-- PUBLISH SCREEN -->
+<div class="screen" id="publishScreen">
+  <div class="scr-hdr"><button class="back-btn" onclick="hideScreen('publishScreen')">←</button><div class="scr-title" id="pub-screen-title">Publier une annonce</div></div>
+  <div class="form-body">
+    <div class="fgrp">
+      <label id="pub-title-label">Titre de l'annonce *</label>
+      <input type="text" id="pub-title" placeholder="Ex: Villa 4 chambres à Cocody">
+    </div>
+    <div class="fgrp">
+      <label id="pub-cat-label">Catégorie *</label>
+      <select id="pub-cat">
+        <option value="">Sélectionner...</option>
+        <option value="immobilier">🏠 Immobilier</option>
+        <option value="emploi">💼 Emploi & Formation</option>
+        <option value="services">🛠️ Services Professionnels</option>
+        <option value="beaute">💇 Beauté & Bien-être</option>
+        <option value="commerce">🛍️ Commerce & Vente</option>
+        <option value="vehicules">🚗 Véhicules</option>
+        <option value="restauration">🍽️ Restauration</option>
+        <option value="agriculture">🌾 Agriculture</option>
+        <option value="rencontres">💕 Rencontres & Événements</option>
+        <option value="numerique">📱 Services Numériques</option>
+        <option value="education">🎓 Éducation</option>
+        <option value="evenements">💍 Événements</option>
+        <option value="sante">🏥 Santé</option>
+      </select>
+    </div>
+    <div class="fgrp">
+      <label id="pub-desc-label">Description *</label>
+      <textarea id="pub-desc" placeholder="Décrivez votre annonce en détail..."></textarea>
+    </div>
+    <div class="fgrp-row">
+      <div class="fgrp">
+        <label id="pub-price-label">Prix (FCFA)</label>
+        <input type="text" id="pub-price" placeholder="Ex: 150 000">
+      </div>
+      <div class="fgrp">
+        <label id="pub-loc-label">Localisation *</label>
+        <input type="text" id="pub-loc" placeholder="Ex: Cocody, Abidjan">
+      </div>
+    </div>
+    <div class="fgrp">
+      <label id="pub-photo-label">Photo de l'annonce</label>
+      <div class="photo-upload" id="photoUploadZone" onclick="document.getElementById('photoFile').click()">
+        <div id="photoPreviewWrap">
+          <div class="photo-upload-icon" id="photoPreviewIcon">📸</div>
+          <div class="photo-upload-text" id="photoUploadText">Appuyez pour ajouter une photo</div>
+        </div>
+        <input type="file" id="photoFile" accept="image/*" style="display:none" onchange="uploadPhoto(this)">
+      </div>
+      <div id="uploadProgress" style="display:none;margin-top:8px;padding:9px 12px;background:var(--bg2);border-radius:8px;font-size:.76rem;color:var(--blue);text-align:center">
+        ⏳ Upload en cours...
+      </div>
+      <input type="hidden" id="photoUrl" value="">
+    </div>
+    <div class="wa-section">
+      <div class="wa-section-title">💬 Contacts WhatsApp & Téléphone</div>
+      <div class="fgrp">
+        <label id="pub-wa-label">Numéro WhatsApp *</label>
+        <input type="tel" id="pub-wa" placeholder="+225 07 XX XX XX XX">
+      </div>
+      <div class="fgrp">
+        <label id="pub-tel-label">Numéro de téléphone</label>
+        <input type="tel" id="pub-tel" placeholder="+225 07 XX XX XX XX">
+      </div>
+      <div class="fgrp">
+        <label id="pub-seller-label">Nom du vendeur</label>
+        <input type="text" id="pub-seller" placeholder="Votre nom">
+      </div>
+    </div>
+    <button class="btn-submit" id="pub-btn" onclick="publishAd()">✅ Publier mon annonce</button>
+  </div>
+</div>
+
+<!-- DETAIL SCREEN -->
+<div class="screen" id="detailScreen">
+  <div class="scr-hdr">
+    <button class="back-btn" onclick="hideScreen('detailScreen')">←</button>
+    <div class="scr-title" id="detail-scr-title">Détail</div>
+    <button id="favBtn" onclick="toggleFav()" style="background:none;border:none;font-size:1.3rem;padding:4px;margin-left:auto">🤍</button>
+  </div>
+  <div id="detailContent"></div>
+</div>
+
+<!-- PROFIL SCREEN -->
+<div class="screen" id="profileScreen">
+  <div class="scr-hdr"><button class="back-btn" onclick="hideScreen('profileScreen')">←</button><div class="scr-title" id="prof-scr-title">Mon Profil</div></div>
+  <div id="profileContent">
+    <div style="text-align:center;padding:40px 20px">
+      <div style="font-size:2.5rem;margin-bottom:14px">👤</div>
+      <p style="color:var(--muted);font-size:.82rem;margin-bottom:18px" id="prof-login-text">Connectez-vous pour accéder à votre compte</p>
+      <button class="nb nb-in" onclick="showAuth()">Se connecter</button>
+      <div style="margin-top:12px"><button class="nb nb-out" onclick="showAuth('register')" id="prof-create-btn">Créer un compte</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- LEGAL MODAL -->
+<div id="legalModal" style="display:none;position:fixed;inset:0;z-index:600;background:rgba(15,37,87,.82);overflow-y:auto;padding:20px">
+  <div style="background:var(--card);max-width:580px;margin:0 auto;padding:24px;border-radius:12px;position:relative">
+    <button onclick="document.getElementById('legalModal').style.display='none'" style="position:absolute;top:12px;right:14px;background:var(--bg2);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center">✕</button>
+    <div id="legalContent"></div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal-ov" id="authModal" onclick="if(event.target===this)document.getElementById('authModal').classList.remove('visible')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('authModal').classList.remove('visible')">✕</button>
+    <div class="auth-inner" style="padding:0">
+      <div class="auth-logo">
+        <div class="auth-logo-mark">✋</div>
+        <div class="auth-title" id="auth-title">Connexion</div>
+        <div class="auth-sub" id="auth-sub">Bienvenue sur AJAPRO</div>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab on" id="tab-login" onclick="switchAuth('login')">Connexion</button>
+        <button class="auth-tab" id="tab-register" onclick="switchAuth('register')">Inscription</button>
+      </div>
+      <div id="loginForm">
+        <div class="fgrp"><label>Email</label><input type="email" id="lg-email" placeholder="votre@email.com"></div>
+        <div class="fgrp"><label id="lg-pwd-label">Mot de passe</label><input type="password" id="lg-pwd" placeholder="••••••••"></div>
+        <button class="btn-submit" onclick="login()">Se connecter</button>
+      </div>
+      <div id="registerForm" style="display:none">
+        <div class="fgrp"><label>Prénom & Nom *</label><input type="text" id="rg-name" placeholder="Votre nom complet"></div>
+        <div class="fgrp"><label>Email *</label><input type="email" id="rg-email" placeholder="votre@email.com"></div>
+        <div class="fgrp"><label>Téléphone *</label><input type="tel" id="rg-tel" placeholder="+225 07 XX XX XX XX"></div>
+        <div class="fgrp"><label>Mot de passe *</label><input type="password" id="rg-pwd" placeholder="Minimum 6 caractères"></div>
+        <button class="btn-submit" onclick="register()">Créer mon compte</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin-scr" id="adminScr">
+  <div class="a-hdr">
+    <button onclick="closeAdmin()" style="background:none;border:none;font-size:1.1rem;color:rgba(255,255,255,.6)">←</button>
+    <div class="a-hdr-title">⚙️ Admin AJAPRO</div>
+    <button onclick="closeAdmin()" style="background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);color:#FCA5A5;padding:5px 12px;border-radius:6px;font-size:.68rem;font-weight:600">Déconnexion</button>
+  </div>
+  <div id="adminLoginWrap" style="padding:24px 16px">
+    <div style="color:rgba(255,255,255,.6);font-size:.8rem;margin-bottom:16px;text-align:center">Panneau d'administration réservé</div>
+    <div class="a-form-group"><label>Email admin</label><input type="email" id="adm-email" placeholder="admin@ajapro.ci"></div>
+    <div class="a-form-group"><label>Mot de passe</label><input type="password" id="adm-pwd" placeholder="••••••••"></div>
+    <button class="btn-add-pub" style="margin-top:10px" onclick="adminLogin()">Accéder au panneau</button>
+  </div>
+  <div id="adminPanel" style="display:none">
+    <div class="a-tabs">
+      <button class="a-tab on" onclick="switchAdminTab('stats',this)">📊 Stats</button>
+      <button class="a-tab" onclick="switchAdminTab('annonces',this)">📋 Annonces</button>
+      <button class="a-tab" onclick="switchAdminTab('membres',this)">👥 Membres</button>
+      <button class="a-tab" onclick="switchAdminTab('pubs',this)">📢 Pubs</button>
+    </div>
+    <div class="a-content on" id="atab-stats">
+      <div class="a-stat-grid">
+        <div class="a-stat"><div class="a-stat-n" id="adm-tot-ads">0</div><div class="a-stat-l">Annonces</div></div>
+        <div class="a-stat"><div class="a-stat-n" id="adm-tot-mbr">0</div><div class="a-stat-l">Membres</div></div>
+        <div class="a-stat"><div class="a-stat-n" id="adm-visits">1 247</div><div class="a-stat-l">Visites/jour</div></div>
+        <div class="a-stat"><div class="a-stat-n" id="adm-pubs-n">0</div><div class="a-stat-l">Pubs actives</div></div>
+      </div>
+      <div class="chart-bar">
+        <div style="font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:10px;font-weight:600">Visites (30 derniers jours)</div>
+        <div class="chart-bars" id="chartBars"></div>
+      </div>
+    </div>
+    <div class="a-content" id="atab-annonces">
+      <div class="ads-list" id="admAdsList"></div>
+    </div>
+    <div class="a-content" id="atab-membres">
+      <div class="members-list" id="admMbrList"></div>
+    </div>
+    <div class="a-content" id="atab-pubs">
+      <div style="margin-bottom:14px">
+        <div style="font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px;font-weight:700">💰 Tarifs publicitaires</div>
+        <div style="font-size:.74rem;color:rgba(255,255,255,.55);line-height:2.1">
+          Bannière 1 semaine → <strong style="color:#fff">25 000 F CFA</strong><br>
+          Bannière 1 mois → <strong style="color:#fff">75 000 F CFA</strong><br>
+          Partenariat exclusif → <strong style="color:#fff">350 000 F CFA/mois</strong>
+        </div>
+      </div>
+      <div id="pubBannersAdmin"></div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;margin-top:12px">
+        <div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px;font-weight:700">➕ Ajouter une bannière</div>
+        <div class="a-form-group"><label>Emplacement</label>
+          <select id="pub-emp">
+            <option value="1">Bannière 1 — Après le carousel</option>
+            <option value="2">Bannière 2 — Entre les catégories</option>
+            <option value="3">Bannière 3 — Avant le footer</option>
+          </select>
+        </div>
+        <div class="a-form-group"><label>Nom de la marque</label><input type="text" id="pub-nom" placeholder="Ex: Orange Côte d'Ivoire"></div>
+        <div class="a-form-group"><label>URL Image (imgbb.com)</label><input type="text" id="pub-img" placeholder="https://i.ibb.co/..."></div>
+        <div class="a-form-group"><label>Lien du site</label><input type="text" id="pub-lien" placeholder="https://marque.com"></div>
+        <button class="btn-add-pub" onclick="activerPub()">✅ Activer la bannière</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PUB BANNIERES DYNAMIQUES -->
+<div id="pubBanner1" style="display:none;padding:10px 16px;text-align:center;background:var(--bg2);border-bottom:1px solid var(--border)">
+  <div style="font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">📢 Publicité</div>
+  <a id="pub1-link" href="#" target="_blank"><img id="pub1-img" src="" alt="Pub" style="max-height:70px;max-width:100%;object-fit:contain;margin:0 auto"></a>
+  <div id="pub1-nom" style="font-size:.66rem;color:var(--text2);font-weight:500;margin-top:3px"></div>
+</div>
+<div id="pubBanner2" style="display:none;padding:10px 16px;text-align:center;background:var(--bg2);border-bottom:1px solid var(--border)">
+  <div style="font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">📢 Partenaire</div>
+  <a id="pub2-link" href="#" target="_blank"><img id="pub2-img" src="" alt="Pub" style="max-height:70px;max-width:100%;object-fit:contain;margin:0 auto"></a>
+  <div id="pub2-nom" style="font-size:.66rem;color:var(--text2);font-weight:500;margin-top:3px"></div>
+</div>
+<div id="pubBanner3" style="display:none;padding:10px 16px;text-align:center;background:var(--bg2);border-top:1px solid var(--border)">
+  <div style="font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">📢 Partenaire AJAPRO</div>
+  <a id="pub3-link" href="#" target="_blank"><img id="pub3-img" src="" alt="Pub" style="max-height:70px;max-width:100%;object-fit:contain;margin:0 auto"></a>
+  <div id="pub3-nom" style="font-size:.66rem;color:var(--text2);font-weight:500;margin-top:3px"></div>
+</div>
+
+<script>
+// CONFIG
+var ADMIN_EMAIL='admin@ajapro.ci',ADMIN_PWD='ajapro2026';
+var SUPA='https://bfejsinnxibxcmlynliu.supabase.co';
+var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmZWpzaW5ueGlieGNtbHlubGl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc5MjY2NzQsImV4cCI6MjA2MzUwMjY3NH0.rAYi3FaCDMbSBMpEfNSGFbIxHAJaFILJLqgcpT7YjS4';
+var lang='fr';
+var user=null;
+var ads=[];
+var members=[];
+var favs=[];
+var pubData={pub1:[],pub2:[],pub3:[]};
+var pubIdx={pub1:0,pub2:0,pub3:0};
+var carIdx=0;
+var curAdId=null;
+var adsLoaded=false;
+
+function H(){return{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json'};}
+
+// TRADUCTIONS
+var T={
+  fr:{
+    tagline:'Votre Marché, Votre Succès',
+    search:'Rechercher une annonce...',
+    newAd:'+ Annonce',
+    login:'Connexion',
+    cats:'Toutes les catégories',
+    sponsors:'Nos partenaires',
+    adsTitle:'Annonces récentes',
+    adsSub:'Toutes catégories',
+    publish:'Publier une annonce',
+    footer_tagline:'Votre Marché, Votre Succès',
+    free:'100% GRATUIT',
+    footer_desc:'La plateforme de petites annonces 100% gratuite pour l\'Afrique.',
+    footer_addr:'Abidjan, Côte d\'Ivoire',
+    footer_hours:'Lun-Ven: 08h-18h · Sam: 09h-13h',
+    cgu:'CGU',priv:'Confidentialité',men:'Mentions légales',prof:'Mon compte',
+    copy:'Plateforme 100% gratuite pour l\'Afrique',
+    noRes:'Aucune annonce trouvée',
+    waContact:'WhatsApp',telContact:'Appeler',
+    categories:{
+      immobilier:'🏠 Immobilier',emploi:'💼 Emploi',services:'🛠️ Services',
+      beaute:'💇 Beauté',commerce:'🛍️ Commerce',vehicules:'🚗 Véhicules',
+      restauration:'🍽️ Restauration',agriculture:'🌾 Agriculture',
+      rencontres:'💕 Rencontres',numerique:'📱 Numérique',
+      education:'🎓 Éducation',evenements:'💍 Événements',sante:'🏥 Santé'
+    }
+  },
+  en:{
+    tagline:'Your Market, Your Success',
+    search:'Search announcements...',
+    newAd:'+ Post Ad',
+    login:'Login',
+    cats:'All categories',
+    sponsors:'Our partners',
+    adsTitle:'Recent listings',
+    adsSub:'All categories',
+    publish:'Post an ad',
+    footer_tagline:'Your Market, Your Success',
+    free:'100% FREE',
+    footer_desc:'The 100% free classifieds platform for Africa.',
+    footer_addr:'Abidjan, Côte d\'Ivoire',
+    footer_hours:'Mon-Fri: 08h-18h · Sat: 09h-13h',
+    cgu:'Terms',priv:'Privacy',men:'Legal',prof:'My account',
+    copy:'100% free platform for Africa',
+    noRes:'No listings found',
+    waContact:'WhatsApp',telContact:'Call',
+    categories:{
+      immobilier:'🏠 Real Estate',emploi:'💼 Jobs',services:'🛠️ Services',
+      beaute:'💇 Beauty',commerce:'🛍️ Commerce',vehicules:'🚗 Vehicles',
+      restauration:'🍽️ Restaurants',agriculture:'🌾 Agriculture',
+      rencontres:'💕 Meetings',numerique:'📱 Digital',
+      education:'🎓 Education',evenements:'💍 Events',sante:'🏥 Health'
+    }
+  }
+};
+
+// DONNEES DEMO
+var demoAds=[
+  {id:1,title:'Villa 4 chambres à Cocody',cat:'immobilier',desc:'Belle villa de standing avec jardin et piscine. Quartier résidentiel calme.',price:'450 000 000',loc:'Cocody, Abidjan',seller:'Kouassi Immobilier',wa:'+2250596697054',tel:'+2250596697054',em:'🏡',icon:'🏠',date:'2025-05-26',favs:0},
+  {id:2,title:'Développeur Full Stack - CDI',cat:'emploi',desc:'Startup tech recherche développeur React/Node.js expérimenté. Télétravail possible.',price:'Négociable',loc:'Plateau, Abidjan',seller:'TechStart CI',wa:'+2250596697054',tel:'+2250596697054',em:'💼',icon:'💼',date:'2025-05-26',favs:0},
+  {id:3,title:'iPhone 15 Pro Max neuf',cat:'commerce',desc:'iPhone 15 Pro Max 256GB noir. Jamais utilisé, boîte scellée. Facture disponible.',price:'650 000',loc:'Yopougon, Abidjan',seller:'TechShop CI',wa:'+2250596697054',tel:'+2250596697054',em:'📱',icon:'🛍️',date:'2025-05-25',favs:0},
+  {id:4,title:'Salon de coiffure Beauté Afrik',cat:'beaute',desc:'Salon professionnel. Tresses, locks, défrisage, soins capillaires. RDV disponibles.',price:'5 000',loc:'Marcory, Abidjan',seller:'Beauté Afrik',wa:'+2250596697054',tel:'+2250596697054',em:'💇',icon:'💇',date:'2025-05-25',favs:0},
+  {id:5,title:'Toyota Corolla 2020 - Excellent état',cat:'vehicules',desc:'Toyota Corolla 2020, 45 000 km, climatisée, boîte automatique. Première main.',price:'8 500 000',loc:'Adjamé, Abidjan',seller:'AutoPlus CI',wa:'+2250596697054',tel:'+2250596697054',em:'🚗',icon:'🚗',date:'2025-05-24',favs:0},
+  {id:6,title:'Restaurant Le Festin Africain',cat:'restauration',desc:'Cuisine africaine authentique. Maquis moderne avec terrasse. Livraison disponible.',price:'3 500',loc:'Treichville, Abidjan',seller:'Restaurant Festin',wa:'+2250596697054',tel:'+2250596697054',em:'🍽️',icon:'🍽️',date:'2025-05-24',favs:0},
+  {id:7,title:'Soirée Speed Dating - 15 Juin',cat:'rencontres',desc:'Événement exclusif pour célibataires 25-40 ans. 20 participants max. Inscription requise.',price:'15 000',loc:'Zone 4, Abidjan',seller:'Events CI',wa:'+2250596697054',tel:'+2250596697054',em:'💕',icon:'💕',date:'2025-05-23',favs:0},
+  {id:8,title:'Terrain 500m² à Bingerville',cat:'immobilier',desc:'Terrain viabilisé, titre foncier disponible. Idéal pour construction villa.',price:'22 000 000',loc:'Bingerville',seller:'Foncier Invest',wa:'+2250596697054',tel:'+2250596697054',em:'🏗️',icon:'🏠',date:'2025-05-23',favs:0},
+];
+
+var demoSponsors=[
+  {id:1,name:'Orange CI',logo:'🟠',type:'Telecom'},
+  {id:2,name:'MTN CI',logo:'🟡',type:'Telecom'},
+  {id:3,name:'Société Générale',logo:'🏦',type:'Finance'},
+  {id:4,name:'BMCE Bank',logo:'💳',type:'Finance'},
+  {id:5,name:'Jumia CI',logo:'🛒',type:'E-commerce'},
+  {id:6,name:'Wave CI',logo:'💙',type:'Fintech'},
+];
+
+// INIT
+window.onload=function(){
+  loadLocalData();
+  initCarousel();
+  renderCats();
+  renderSponsors();
+  updateStats();
+  loadPubs();
+  loadAdsFromSupabase();
+  if(window.location.hash==='#admin')setTimeout(openAdminPanel,300);
+};
+
+function loadLocalData(){
+  try{
+    var f=localStorage.getItem('ajapro_favs');if(f)favs=JSON.parse(f);
+    var p=localStorage.getItem('ajapro_pubs');if(p)pubData=JSON.parse(p);
+    var u=localStorage.getItem('ajapro_user');if(u){user=JSON.parse(u);updateNavUser();}
+  }catch(e){}
+}
+
+async function loadAdsFromSupabase(){
+  try{
+    var r=await fetch(SUPA+'/rest/v1/ajapro_annonces?select=*&order=created_at.desc&limit=50',{headers:H()});
+    if(r.ok){
+      var data=await r.json();
+      if(data&&data.length>0){
+        ads=data.map(function(a){
+          return{
+            id:a.id,title:a.title,cat:a.cat,desc:a.description,
+            price:a.price||'0',loc:a.location,seller:a.seller_name,
+            wa:a.whatsapp,tel:a.telephone||a.whatsapp,
+            em:getCatIcon(a.cat),photo:a.photo_url||null,
+            date:a.created_at?a.created_at.split('T')[0]:'2025-05-26'
+          };
+        });
+        adsLoaded=true;
+      } else {
+        ads=[...demoAds];
+      }
+    } else {
+      ads=[...demoAds];
+    }
+  }catch(e){
+    ads=[...demoAds];
+  }
+  renderAds();updateStats();
+}
+
+function getCatIcon(cat){
+  var icons={immobilier:'🏠',emploi:'💼',services:'🛠️',beaute:'💇',commerce:'🛍️',vehicules:'🚗',restauration:'🍽️',agriculture:'🌾',rencontres:'💕',numerique:'📱',education:'🎓',evenements:'💍',sante:'🏥'};
+  return icons[cat]||'📋';
+}
+
+function saveAds(){} // Géré par Supabase
+function saveMembers(){localStorage.setItem('ajapro_members',JSON.stringify(members));}
+function saveFavs(){localStorage.setItem('ajapro_favs',JSON.stringify(favs));updateFavBadge();}
+function savePubs(){localStorage.setItem('ajapro_pubs',JSON.stringify(pubData));}
+
+// LANGUE
+function toggleLang(){
+  lang=lang==='fr'?'en':'fr';
+  document.getElementById('langBtn').textContent=lang==='fr'?'EN':'FR';
+  applyLang();
+  toast(lang==='fr'?'Français activé':'English activated','success');
+}
+function applyLang(){
+  var t=T[lang];
+  document.getElementById('nav-tagline').textContent=t.tagline;
+  document.getElementById('searchInput').placeholder=t.search;
+  document.getElementById('cats-label').textContent=t.cats;
+  document.getElementById('sponsors-title').textContent=t.sponsors;
+  document.getElementById('ads-title').textContent=t.adsTitle;
+  document.getElementById('ads-sub').textContent=t.adsSub;
+  document.getElementById('pub-screen-title').textContent=t.publish;
+  document.getElementById('footer-tagline').textContent=t.footer_tagline;
+  document.getElementById('footer-free').textContent=t.free;
+  document.getElementById('footer-desc').textContent=t.footer_desc;
+  document.getElementById('footer-addr').textContent=t.footer_addr;
+  document.getElementById('footer-hours').textContent=t.footer_hours;
+  document.getElementById('footer-copy-text').textContent=t.copy;
+  renderCats();renderAds();
+}
+
+// TOAST
+function toast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast show'+(type?' '+type:'');
+  setTimeout(function(){t.classList.remove('show');},3000);
+}
+
+// NAVIGATION
+function goScreen(id){
+  document.getElementById(id).classList.add('visible');
+  updateBnav(id);
+  if(id==='profileScreen')renderProfileScreen();
+}
+function hideScreen(id){document.getElementById(id).classList.remove('visible');updateBnav('home');}
+function goHome(){
+  document.getElementById('searchResults').style.display='none';
+  document.getElementById('annoncesGrid').style.display='grid';
+  document.getElementById('mainContent').style.display='block';
+  document.getElementById('searchInput').value='';
+  renderAds();updateBnav('home');
+  ['publishScreen','detailScreen','profileScreen'].forEach(function(id){
+    document.getElementById(id).classList.remove('visible');
+  });
+}
+function updateBnav(active){
+  var m={publishScreen:'bn-pub',detailScreen:'bn-home',profileScreen:'bn-prof',home:'bn-home'};
+  ['bn-home','bn-cats','bn-pub','bn-favs','bn-prof'].forEach(function(id){
+    var e=document.getElementById(id);if(e)e.classList.remove('on');
+  });
+  var key=m[active]||'bn-home';
+  var e=document.getElementById(key);if(e)e.classList.add('on');
+}
+function scrollToCats(){
+  var cats=document.querySelector('.cats-section');
+  if(cats)cats.scrollIntoView({behavior:'smooth'});
+}
+
+// CAROUSEL
+function initCarousel(){
+  var slides=document.getElementById('carSlides').children;
+  var dots=document.getElementById('carDots');
+  dots.innerHTML='';
+  for(var i=0;i<slides.length;i++){
+    var d=document.createElement('button');
+    d.className='c-dot'+(i===0?' on':'');
+    (function(idx){d.onclick=function(){carGoTo(idx);};})(i);
+    dots.appendChild(d);
+  }
+  setInterval(function(){carMove(1);},5000);
+}
+function carMove(dir){
+  var slides=document.getElementById('carSlides').children;
+  var total=slides.length;
+  carIdx=(carIdx+dir+total)%total;
+  document.getElementById('carSlides').style.transform='translateX(-'+carIdx+'00%)';
+  document.querySelectorAll('.c-dot').forEach(function(d,i){d.classList.toggle('on',i===carIdx);});
+}
+function carGoTo(idx){carIdx=idx-1;carMove(1);}
+
+// CATEGORIES
+var cats=[
+  {key:'immobilier',icon:'🏠'},{key:'emploi',icon:'💼'},{key:'services',icon:'🛠️'},
+  {key:'beaute',icon:'💇'},{key:'commerce',icon:'🛍️'},{key:'vehicules',icon:'🚗'},
+  {key:'restauration',icon:'🍽️'},{key:'agriculture',icon:'🌾'},
+  {key:'rencontres',icon:'💕'},{key:'numerique',icon:'📱'},
+  {key:'education',icon:'🎓'},{key:'evenements',icon:'💍'},{key:'sante',icon:'🏥'}
+];
+var activeCat=null;
+function renderCats(){
+  var g=document.getElementById('catsGrid');if(!g)return;
+  var t=T[lang];
+  g.innerHTML='<button class="cat-btn'+(activeCat===null?' on':'')+'" onclick="filterCat(null)"><span class="cat-icon">🌍</span><span class="cat-name">'+(lang==='fr'?'Tout':'All')+'</span></button>';
+  cats.forEach(function(c){
+    var btn=document.createElement('button');
+    btn.className='cat-btn'+(activeCat===c.key?' on':'');
+    btn.onclick=function(){filterCat(c.key);};
+    btn.innerHTML='<span class="cat-icon">'+c.icon+'</span><span class="cat-name">'+(t.categories[c.key]||c.key).replace(/^[^\s]+\s/,'')+'</span>';
+    g.appendChild(btn);
+  });
+}
+function filterCat(key){
+  activeCat=key;renderCats();renderAds();
+  if(key){
+    var t=T[lang];
+    document.getElementById('ads-title').textContent=t.adsTitle;
+    document.getElementById('ads-sub').textContent=t.categories[key]||key;
+  }
+}
+
+// ANNONCES
+function renderAds(list){
+  var g=document.getElementById('annoncesGrid');if(!g)return;
+  var toShow=list||(activeCat?ads.filter(function(a){return a.cat===activeCat;}):ads);
+  g.innerHTML='';
+  var nr=document.getElementById('noResults');
+  if(!toShow.length){nr.style.display='block';document.getElementById('noResultsText').textContent=T[lang].noRes;return;}
+  nr.style.display='none';
+  toShow.forEach(function(ad){
+    var isFav=favs.includes(ad.id);
+    var card=document.createElement('div');
+    card.className='ann-card';
+    card.innerHTML=
+      '<div class="ann-photo">'+(ad.photo?'<img src="'+ad.photo+'" alt="">':ad.em||'📋')+
+      '<span class="ann-cat-badge">'+(T[lang].categories[ad.cat]||ad.cat).substring(0,12)+'</span>'+
+      '<button class="ann-fav" onclick="toggleFavById('+ad.id+',event)">'+(isFav?'❤️':'🤍')+'</button>'+
+      '</div>'+
+      '<div class="ann-body">'+
+      '<div class="ann-title">'+ad.title+'</div>'+
+      '<div class="ann-loc">📍 '+ad.loc+'</div>'+
+      (ad.price&&ad.price!=='0'?'<div class="ann-price">'+formatPrice(ad.price)+' <span>F CFA</span></div>':'')+
+      '<div class="ann-footer">'+
+      '<button class="ann-wa" onclick="contactWA(\''+ad.wa+'\',\''+ad.title+'\',event)">💬 '+T[lang].waContact+'</button>'+
+      '<button class="ann-tel" onclick="callTel(\''+ad.tel+'\',event)">📞 '+T[lang].telContact+'</button>'+
+      '</div></div>';
+    card.querySelector('.ann-title').parentElement.parentElement.onclick=function(){openDetail(ad.id);};
+    card.querySelector('.ann-body').onclick=function(e){if(e.target.tagName!=='BUTTON')openDetail(ad.id);};
+    g.appendChild(card);
+  });
+}
+
+function formatPrice(p){
+  if(!p||p==='Négociable'||p==='Negotiable')return p;
+  return parseInt(p.replace(/\s/g,'')).toLocaleString('fr-FR');
+}
+
+// CONTACT WA & TEL
+function contactWA(num,title,e){
+  if(e)e.stopPropagation();
+  var clean=num.replace(/\s/g,'');
+  var msg=encodeURIComponent('Bonjour, je vous contacte concernant votre annonce sur AJAPRO : '+title);
+  window.open('https://wa.me/'+clean.replace('+','')+'?text='+msg,'_blank');
+}
+function callTel(num,e){
+  if(e)e.stopPropagation();
+  window.location.href='tel:'+num.replace(/\s/g,'');
+}
+
+// DETAIL
+function openDetail(id){
+  var ad=ads.find(function(a){return a.id===id;});
+  if(!ad)return;
+  curAdId=id;
+  var isFav=favs.includes(id);
+  document.getElementById('favBtn').textContent=isFav?'❤️':'🤍';
+  document.getElementById('detail-scr-title').textContent=T[lang].categories[ad.cat]||ad.cat;
+  var c=document.getElementById('detailContent');
+  c.innerHTML=
+    '<div class="detail-photo">'+(ad.photo?'<img src="'+ad.photo+'" alt="">':ad.em||'📋')+'</div>'+
+    '<div class="detail-body">'+
+    '<span class="detail-cat">'+(T[lang].categories[ad.cat]||ad.cat)+'</span>'+
+    '<div class="detail-title">'+ad.title+'</div>'+
+    (ad.price&&ad.price!=='0'?'<div class="detail-price">'+formatPrice(ad.price)+' F CFA</div>':'')+
+    '<div class="detail-loc">📍 '+ad.loc+'</div>'+
+    '<div class="detail-desc">'+ad.desc+'</div>'+
+    '<div class="detail-seller"><div class="seller-name">'+ad.seller+'</div><div class="seller-meta">Annonceur vérifié · AJAPRO</div></div>'+
+    '<div class="contact-btns">'+
+    '<button class="btn-wa" onclick="contactWA(\''+ad.wa+'\',\''+ad.title+'\',event)">💬 WhatsApp</button>'+
+    '<button class="btn-tel" onclick="callTel(\''+ad.tel+'\',event)">📞 Appeler</button>'+
+    '</div></div>';
+  goScreen('detailScreen');
+}
+function toggleFav(){
+  if(!curAdId)return;
+  toggleFavById(curAdId,null);
+  var isFav=favs.includes(curAdId);
+  document.getElementById('favBtn').textContent=isFav?'❤️':'🤍';
+}
+function toggleFavById(id,e){
+  if(e)e.stopPropagation();
+  var idx=favs.indexOf(id);
+  if(idx>-1)favs.splice(idx,1);
+  else favs.push(id);
+  saveFavs();renderAds();
+  toast(favs.includes(id)?'❤️ Ajouté aux favoris':'Retiré des favoris');
+}
+function updateFavBadge(){
+  var b=document.getElementById('favBadge');
+  if(b){b.textContent=favs.length;b.style.display=favs.length>0?'':'none';}
+}
+function showFavs(){
+  var favAds=ads.filter(function(a){return favs.includes(a.id);});
+  renderAds(favAds);
+  document.getElementById('ads-title').textContent='❤️ Mes favoris';
+  document.getElementById('ads-sub').textContent=favAds.length+' annonce(s)';
+  updateBnav('favs');
+}
+
+// PUBLIER
+async function uploadPhoto(input){
+  var file=input.files[0];if(!file)return;
+  
+  // Vérifier taille (max 2MB pour Supabase)
+  if(file.size > 2*1024*1024){
+    toast('Photo trop lourde. Max 2MB.','error');
+    return;
+  }
+  
+  document.getElementById('uploadProgress').style.display='block';
+  document.getElementById('uploadProgress').textContent='⏳ Traitement de la photo...';
+  
+  // Compresser et convertir en base64
+  var canvas=document.createElement('canvas');
+  var ctx=canvas.getContext('2d');
+  var img=new Image();
+  var objectUrl=URL.createObjectURL(file);
+  
+  img.onload=function(){
+    // Redimensionner max 800px
+    var maxW=800,maxH=600;
+    var w=img.width,h=img.height;
+    if(w>maxW){h=h*(maxW/w);w=maxW;}
+    if(h>maxH){w=w*(maxH/h);h=maxH;}
+    canvas.width=w;canvas.height=h;
+    ctx.drawImage(img,0,0,w,h);
+    
+    // Aperçu
+    document.getElementById('photoPreviewIcon').innerHTML='<img src="'+canvas.toDataURL('image/jpeg',0.8)+'" style="width:100%;height:120px;object-fit:cover;border-radius:8px">';
+    document.getElementById('photoUploadText').textContent='';
+    
+    // Stocker URL compressée
+    document.getElementById('photoUrl').value=canvas.toDataURL('image/jpeg',0.8);
+    document.getElementById('uploadProgress').style.display='none';
+    URL.revokeObjectURL(objectUrl);
+    toast('📸 Photo prête !','success');
+  };
+  img.onerror=function(){
+    // Fallback simple
+    var reader=new FileReader();
+    reader.onload=function(e){
+      document.getElementById('photoPreviewIcon').innerHTML='<img src="'+e.target.result+'" style="width:100%;height:120px;object-fit:cover;border-radius:8px">';
+      document.getElementById('photoUrl').value=e.target.result;
+      document.getElementById('uploadProgress').style.display='none';
+      toast('📸 Photo prête !','success');
+    };
+    reader.readAsDataURL(file);
+  };
+  img.src=objectUrl;
+}
+async function publishAd(){
+  var title=document.getElementById('pub-title').value.trim();
+  var cat=document.getElementById('pub-cat').value;
+  var desc=document.getElementById('pub-desc').value.trim();
+  var price=document.getElementById('pub-price').value.trim();
+  var loc=document.getElementById('pub-loc').value.trim();
+  var wa=document.getElementById('pub-wa').value.trim();
+  var tel=document.getElementById('pub-tel').value.trim();
+  var seller=document.getElementById('pub-seller').value.trim()||'Anonyme';
+  if(!title||!cat||!desc||!loc||!wa){toast('Remplissez les champs obligatoires *','error');return;}
+  var photoData=document.getElementById('photoUrl').value||null;
+
+  var adData={
+    title:title,cat:cat,description:desc,price:price||'0',
+    location:loc,seller_name:seller,whatsapp:wa,telephone:tel||wa,
+    photo_url:photoData,status:'active'
+  };
+
+  try{
+    var r=await fetch(SUPA+'/rest/v1/ajapro_annonces',{
+      method:'POST',
+      headers:Object.assign(H(),{'Prefer':'return=representation'}),
+      body:JSON.stringify(adData)
+    });
+    if(r.ok){
+      var saved=await r.json();
+      var newId=saved[0]?saved[0].id:Date.now();
+      var newAd={
+        id:newId,title:title,cat:cat,desc:desc,price:price||'0',loc:loc,
+        seller:seller,wa:wa,tel:tel||wa,
+        em:getCatIcon(cat),photo:photoData,
+        date:new Date().toISOString().split('T')[0]
+      };
+      ads.unshift(newAd);
+      finishPublish(newId);
+    } else {
+      // Fallback local
+      var newAd={id:Date.now(),title:title,cat:cat,desc:desc,price:price||'0',loc:loc,seller:seller,wa:wa,tel:tel||wa,em:getCatIcon(cat),photo:photoData,date:new Date().toISOString().split('T')[0]};
+      ads.unshift(newAd);
+      finishPublish(newAd.id);
+    }
+  }catch(e){
+    var newAd={id:Date.now(),title:title,cat:cat,desc:desc,price:price||'0',loc:loc,seller:seller,wa:wa,tel:tel||wa,em:getCatIcon(cat),photo:photoData,date:new Date().toISOString().split('T')[0]};
+    ads.unshift(newAd);
+    finishPublish(newAd.id);
+  }
+}
+
+function finishPublish(id){
+  updateStats();renderAds();
+  hideScreen('publishScreen');
+  toast('✅ Annonce publiée et visible par tous !','success');
+  document.getElementById('pub-title').value='';
+  document.getElementById('pub-cat').value='';
+  document.getElementById('pub-desc').value='';
+  document.getElementById('pub-price').value='';
+  document.getElementById('pub-loc').value='';
+  document.getElementById('pub-wa').value='';
+  document.getElementById('pub-tel').value='';
+  document.getElementById('pub-seller').value='';
+  document.getElementById('photoPreviewIcon').innerHTML='📸';
+  document.getElementById('photoUploadText').textContent='Appuyez pour ajouter une photo';
+  document.getElementById('photoFile').value='';
+  document.getElementById('photoUrl').value='';
+  document.getElementById('uploadProgress').style.display='none';
+  setTimeout(function(){openDetail(id);},500);
+}
+
+// SEARCH
+function searchAds(q){
+  if(!q||q.length<2){
+    document.getElementById('searchResults').style.display='none';
+    document.getElementById('annoncesGrid').style.display='grid';
+    return;
+  }
+  var q2=q.toLowerCase();
+  var results=ads.filter(function(a){
+    return a.title.toLowerCase().includes(q2)||a.desc.toLowerCase().includes(q2)||a.loc.toLowerCase().includes(q2)||(T[lang].categories[a.cat]||'').toLowerCase().includes(q2);
+  });
+  document.getElementById('annoncesGrid').style.display='none';
+  document.getElementById('searchResults').style.display='block';
+  document.getElementById('searchTitle').textContent='Résultats : "'+q+'"';
+  document.getElementById('searchCount').textContent=results.length+' annonce(s) trouvée(s)';
+  var sg=document.getElementById('searchGrid');sg.innerHTML='';
+  renderAds(results);
+  document.getElementById('searchGrid').innerHTML=document.getElementById('annoncesGrid').innerHTML;
+  document.getElementById('annoncesGrid').innerHTML='';
+}
+
+// SPONSORS
+function renderSponsors(){
+  var row=document.getElementById('sponsorsRow');if(!row)return;
+  row.innerHTML='';
+  demoSponsors.forEach(function(s){
+    var c=document.createElement('div');c.className='sponsor-card';
+    c.innerHTML='<div class="sponsor-logo">'+s.logo+'</div><div class="sponsor-name">'+s.name+'</div><div class="sponsor-type">'+s.type+'</div>';
+    row.appendChild(c);
+  });
+}
+
+// AUTH
+function showAuth(tab){
+  document.getElementById('authModal').classList.add('visible');
+  if(tab)switchAuth(tab);
+}
+function switchAuth(tab){
+  document.getElementById('loginForm').style.display=tab==='login'?'':'none';
+  document.getElementById('registerForm').style.display=tab==='register'?'':'none';
+  document.getElementById('tab-login').classList.toggle('on',tab==='login');
+  document.getElementById('tab-register').classList.toggle('on',tab==='register');
+}
+function login(){
+  var e=document.getElementById('lg-email').value.trim().toLowerCase();
+  var p=document.getElementById('lg-pwd').value.trim();
+  if(!e||!p){toast('Remplissez email et mot de passe','error');return;}
+  var m=members.find(function(x){return x.email===e&&x.pwd===p;});
+  if(m){
+    user=m;localStorage.setItem('ajapro_user',JSON.stringify(user));
+    document.getElementById('authModal').classList.remove('visible');
+    updateNavUser();toast('✅ Bienvenue '+user.name+' !','success');
+  }else toast('Email ou mot de passe incorrect','error');
+}
+function register(){
+  var name=document.getElementById('rg-name').value.trim();
+  var e=document.getElementById('rg-email').value.trim().toLowerCase();
+  var tel=document.getElementById('rg-tel').value.trim();
+  var p=document.getElementById('rg-pwd').value.trim();
+  if(!name||!e||!tel||!p){toast('Remplissez tous les champs *','error');return;}
+  if(p.length<6){toast('Mot de passe trop court (6 min.)','error');return;}
+  if(members.find(function(x){return x.email===e;})){toast('Email déjà utilisé','error');return;}
+  var m={id:Date.now(),name:name,email:e,tel:tel,pwd:p,ads:0,date:new Date().toISOString().split('T')[0]};
+  members.push(m);saveMembers();
+  user=m;localStorage.setItem('ajapro_user',JSON.stringify(user));
+  document.getElementById('authModal').classList.remove('visible');
+  updateNavUser();toast('✅ Compte créé ! Bienvenue '+name+' !','success');
+}
+function updateNavUser(){
+  var lb=document.getElementById('loginBtn');
+  if(lb&&user){lb.textContent=user.name.split(' ')[0];lb.onclick=function(){goScreen('profileScreen');};}
+}
+function logout(){
+  user=null;localStorage.removeItem('ajapro_user');
+  var lb=document.getElementById('loginBtn');
+  if(lb){lb.textContent=T[lang].login;lb.onclick=showAuth;}
+  toast('À bientôt !');hideScreen('profileScreen');
+}
+
+// PROFIL
+function renderProfileScreen(){
+  var c=document.getElementById('profileContent');if(!c)return;
+  if(!user){
+    c.innerHTML='<div style="text-align:center;padding:40px 20px"><div style="font-size:2.5rem;margin-bottom:14px">👤</div><p style="color:var(--muted);font-size:.82rem;margin-bottom:18px">'+T[lang].login+'</p><button class="nb nb-in" onclick="showAuth()" style="padding:10px 24px">Se connecter</button><div style="margin-top:12px"><button class="nb nb-out" onclick="showAuth(\'register\')" style="padding:10px 24px">Créer un compte</button></div></div>';
+    return;
+  }
+  var myAds=ads.filter(function(a){return a.seller===user.name;});
+  c.innerHTML=
+    '<div class="prof-hdr"><div class="prof-av">'+user.name[0]+'</div><div class="prof-name">'+user.name+'</div><div class="prof-meta">'+user.email+' · '+user.tel+'</div><div class="prof-stats"><div class="stat-item"><div class="prof-stat-n">'+myAds.length+'</div><div class="prof-stat-l">Annonces</div></div><div class="stat-item"><div class="prof-stat-n">'+favs.length+'</div><div class="prof-stat-l">Favoris</div></div></div></div>'+
+    '<div class="pmi" onclick="goScreen(\'publishScreen\')"><span class="pmi-icon">➕</span><span class="pmi-text">Publier une annonce</span><span class="pmi-arrow">›</span></div>'+
+    '<div class="pmi" onclick="showFavs();hideScreen(\'profileScreen\')"><span class="pmi-icon">❤️</span><span class="pmi-text">Mes favoris ('+favs.length+')</span><span class="pmi-arrow">›</span></div>'+
+    '<div class="pmi" onclick="showMyAds()"><span class="pmi-icon">📋</span><span class="pmi-text">Mes annonces ('+myAds.length+')</span><span class="pmi-arrow">›</span></div>'+
+    '<div class="pmi" onclick="toast(\'Bientôt disponible\')"><span class="pmi-icon">⚙️</span><span class="pmi-text">Paramètres</span><span class="pmi-arrow">›</span></div>'+
+    '<button class="logout-btn" onclick="logout()">🚪 Se déconnecter</button>';
+}
+function showMyAds(){
+  var myAds=user?ads.filter(function(a){return a.seller===user.name;}):[];
+  renderAds(myAds);
+  document.getElementById('ads-title').textContent='📋 Mes annonces';
+  hideScreen('profileScreen');
+}
+
+// STATS
+function updateStats(){
+  var e1=document.getElementById('stat-annonces');if(e1)e1.textContent=ads.length;
+  var e2=document.getElementById('stat-membres');if(e2)e2.textContent=members.length+(members.length>0?'':Math.floor(Math.random()*500+200));
+  var e3=document.getElementById('adm-tot-ads');if(e3)e3.textContent=ads.length;
+  var e4=document.getElementById('adm-tot-mbr');if(e4)e4.textContent=members.length;
+}
+
+// PUBS
+function loadPubs(){
+  try{var s=localStorage.getItem('ajapro_pubs');if(s)pubData=JSON.parse(s);}catch(e){}
+  showPubs();
+  setInterval(function(){pubIdx.pub1++;pubIdx.pub2++;pubIdx.pub3++;showPubs();},9000);
+}
+function showPubs(){
+  ['pub1','pub2','pub3'].forEach(function(k,i){
+    var m=pubData[k];var w=document.getElementById('pubBanner'+(i+1));if(!w)return;
+    if(!m||!m.length){w.style.display='none';return;}
+    var item=m[pubIdx[k]%m.length];
+    w.style.display='block';
+    var img=document.getElementById('pub'+(i+1)+'-img');
+    var link=document.getElementById('pub'+(i+1)+'-link');
+    var nom=document.getElementById('pub'+(i+1)+'-nom');
+    if(img)img.src=item.img;if(link)link.href=item.lien||'#';if(nom)nom.textContent=item.nom;
+  });
+}
+function activerPub(){
+  var emp='pub'+document.getElementById('pub-emp').value;
+  var nom=document.getElementById('pub-nom').value.trim();
+  var img=document.getElementById('pub-img').value.trim();
+  var lien=document.getElementById('pub-lien').value.trim();
+  if(!nom||!img){toast('Remplissez nom et image','error');return;}
+  if(!pubData[emp])pubData[emp]=[];
+  if(pubData[emp].length>=4){toast('Maximum 4 marques/emplacement','error');return;}
+  pubData[emp].push({nom:nom,img:img,lien:lien});
+  savePubs();showPubs();renderPubsAdmin();
+  toast('✅ Bannière activée !','success');
+  document.getElementById('pub-nom').value='';document.getElementById('pub-img').value='';document.getElementById('pub-lien').value='';
+}
+function renderPubsAdmin(){
+  var el=document.getElementById('pubBannersAdmin');if(!el)return;
+  var html='';
+  ['pub1','pub2','pub3'].forEach(function(k,i){
+    var m=pubData[k];
+    if(m&&m.length){
+      html+='<div class="pub-banner-admin"><div class="pub-banner-label">Bannière '+(i+1)+' ('+m.length+'/4)</div><div class="pub-banner-items">';
+      m.forEach(function(item,idx){
+        html+='<div class="pub-item"><img class="pub-item-img" src="'+item.img+'" alt=""><span class="pub-item-name">'+item.nom+'</span><button class="pub-del" onclick="suppPub(\''+k+'\','+idx+')">✕</button></div>';
+      });
+      html+='</div></div>';
+    }
+  });
+  if(!html)html='<div style="color:rgba(255,255,255,.4);font-size:.76rem;padding:10px">Aucune publicité active.</div>';
+  el.innerHTML=html;
+}
+function suppPub(k,idx){pubData[k].splice(idx,1);savePubs();showPubs();renderPubsAdmin();toast('Supprimé');}
+
+// ADMIN
+function openAdminPanel(){document.getElementById('adminScr').classList.add('visible');}
+function closeAdmin(){document.getElementById('adminScr').classList.remove('visible');}
+async function adminLogin(){
+  var e=document.getElementById('adm-email').value.trim();
+  var p=document.getElementById('adm-pwd').value.trim();
+  if(e===ADMIN_EMAIL&&p===ADMIN_PWD){
+    document.getElementById('adminLoginWrap').style.display='none';
+    document.getElementById('adminPanel').style.display='block';
+    await initSupabaseTables();
+    loadAdminStats();renderPubsAdmin();renderAdminAds();renderAdminMembers();
+    toast('✅ Accès admin','success');
+  }else toast('Identifiants incorrects','error');
+}
+
+async function initSupabaseTables(){
+  // Vérifier si la table existe en faisant une requête
+  try{
+    await fetch(SUPA+'/rest/v1/ajapro_annonces?limit=1',{headers:H()});
+  }catch(e){}
+}
+function switchAdminTab(name,btn){
+  document.querySelectorAll('.a-tab').forEach(function(t){t.classList.remove('on');});
+  document.querySelectorAll('.a-content').forEach(function(c){c.classList.remove('on');});
+  if(btn)btn.classList.add('on');
+  var el=document.getElementById('atab-'+name);if(el)el.classList.add('on');
+  if(name==='pubs')renderPubsAdmin();
+  if(name==='annonces')renderAdminAds();
+  if(name==='membres')renderAdminMembers();
+}
+function loadAdminStats(){
+  var e1=document.getElementById('adm-tot-ads');if(e1)e1.textContent=ads.length;
+  var e2=document.getElementById('adm-tot-mbr');if(e2)e2.textContent=members.length;
+  var np=Object.values(pubData).reduce(function(a,b){return a+b.length;},0);
+  var e3=document.getElementById('adm-pubs-n');if(e3)e3.textContent=np;
+  var cb=document.getElementById('chartBars');if(!cb)return;
+  cb.innerHTML='';
+  var data=[120,180,150,220,200,280,260,350,320,400,380,450,500,480,550,520,600,580,650,700,720,780,850,900,950,1000,1100,1200,1250,1300];
+  var max=Math.max.apply(null,data);
+  data.forEach(function(v){
+    var b=document.createElement('div');b.className='c-bar';
+    b.style.height=(v/max*100)+'%';cb.appendChild(b);
+  });
+}
+function renderAdminAds(){
+  var el=document.getElementById('admAdsList');if(!el)return;
+  el.innerHTML=ads.slice(0,20).map(function(a){
+    return'<div class="ad-item"><div class="ad-item-icon">'+(a.em||'📋')+'</div><div class="ad-item-info"><div class="ad-item-title">'+a.title+'</div><div class="ad-item-meta">'+a.loc+' · '+a.date+'</div></div><button class="ad-del" onclick="deleteAd('+a.id+')">🗑️</button></div>';
+  }).join('')|'<div style="color:rgba(255,255,255,.4);font-size:.76rem">Aucune annonce.</div>';
+}
+function deleteAd(id){
+  ads=ads.filter(function(a){return a.id!==id;});saveAds();renderAds();renderAdminAds();updateStats();toast('Annonce supprimée');
+}
+function renderAdminMembers(){
+  var el=document.getElementById('admMbrList');if(!el)return;
+  if(!members.length){el.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:.76rem">Aucun membre.</div>';return;}
+  el.innerHTML=members.map(function(m){
+    return'<div class="member-item"><div class="member-name">'+m.name+'</div><div class="member-meta">'+m.email+' · '+m.tel+'</div></div>';
+  }).join('');
+}
+
+// LEGAL
+var legalTexts={
+  cgu:'<h2 style="font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:12px">Conditions Générales d\'Utilisation</h2><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:10px">AJAPRO est une plateforme de petites annonces 100% gratuite ouverte à tous les adultes.</p><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:10px">Tout contenu abusif ou illégal entraîne la suppression immédiate du compte.</p><p style="font-size:.8rem;color:var(--text2);line-height:1.8">Contact : contact@ajapro.ci · +225 05 96 69 70 54</p>',
+  privacy:'<h2 style="font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:12px">Politique de Confidentialité</h2><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:10px">Vos données personnelles sont protégées et ne sont jamais vendues à des tiers.</p><p style="font-size:.8rem;color:var(--text2);line-height:1.8">Vous pouvez demander la suppression de vos données à tout moment.</p>',
+  mentions:'<h2 style="font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:12px">Mentions Légales</h2><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:10px"><strong>AJAPRO</strong><br>📍 Abidjan, Côte d\'Ivoire<br>📞 +225 05 96 69 70 54<br>✉️ contact@ajapro.ci</p>'
+};
+function showLegal(type){document.getElementById('legalContent').innerHTML=legalTexts[type]||'';document.getElementById('legalModal').style.display='block';}
+
+// FAV BADGE INIT
+updateFavBadge();
+</script>
+</body>
+</html>
