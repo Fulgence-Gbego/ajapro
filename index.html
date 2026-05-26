@@ -41,6 +41,7 @@ img{max-width:100%;display:block}
 .nb-out{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
 .nb-in{background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;box-shadow:0 3px 10px rgba(30,58,138,.25)}
 .lang-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:6px 10px;border-radius:7px;font-size:.7rem;font-weight:600}
+.search-icon-btn{background:var(--bg2);border:1px solid var(--border);width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;flex-shrink:0}
 
 /* HERO BANNER CAROUSEL */
 .hero-carousel{position:relative;overflow:hidden;margin-bottom:0}
@@ -321,10 +322,7 @@ img{max-width:100%;display:block}
         <div class="logo-sub" id="nav-tagline">Votre Marché, Votre Succès</div>
       </div>
     </div>
-    <div class="nav-search">
-      <span class="si">🔍</span>
-      <input type="text" id="searchInput" placeholder="Rechercher une annonce..." oninput="searchAds(this.value)" onfocus="this.placeholder=''">
-    </div>
+    <button class="search-icon-btn" id="searchIconBtn" onclick="toggleSearchBar()">🔍</button>
     <div class="nav-btns">
       <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
       <button class="nb nb-out" id="loginBtn" onclick="showAuth()">Connexion</button>
@@ -332,6 +330,18 @@ img{max-width:100%;display:block}
     </div>
   </div>
 </nav>
+
+<!-- SEARCH BAR -->
+<div id="searchBar" style="display:none;background:#fff;border-bottom:1px solid var(--border);padding:10px 16px">
+  <div style="position:relative;max-width:600px;margin:0 auto">
+    <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)">🔍</span>
+    <input type="text" id="searchInput" placeholder="Rechercher une annonce, une catégorie..." 
+      style="width:100%;padding:10px 40px 10px 38px;background:var(--bg2);border:1.5px solid var(--border);border-radius:10px;font-size:.84rem;color:var(--text);outline:none"
+      oninput="searchAds(this.value)"
+      autofocus>
+    <button onclick="toggleSearchBar()" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer">✕</button>
+  </div>
+</div>
 
 <!-- MAIN -->
 <div id="mainContent">
@@ -1473,6 +1483,22 @@ function showCatsScreen(){
   });
   goScreen('catsScreen');
   updateBnav('cats');
+}
+
+// SEARCH BAR TOGGLE
+function toggleSearchBar(){
+  var bar = document.getElementById('searchBar');
+  var inp = document.getElementById('searchInput');
+  if(bar.style.display === 'none'){
+    bar.style.display = 'block';
+    setTimeout(function(){if(inp)inp.focus();}, 100);
+  } else {
+    bar.style.display = 'none';
+    if(inp) inp.value = '';
+    // Remettre les annonces normales
+    document.getElementById('searchResults').style.display='none';
+    document.getElementById('annoncesGrid').style.display='grid';
+  }
 }
 
 // FAV BADGE INIT
