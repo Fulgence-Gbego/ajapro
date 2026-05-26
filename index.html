@@ -275,10 +275,35 @@ img{max-width:100%;display:block}
   .annonces-grid{grid-template-columns:repeat(3,1fr)}
   .cs-title{font-size:2.2rem}
   .stats-inner{justify-content:center;gap:40px}
+  .screen{max-width:100%;left:0;right:0}
+  .modal-box{border-radius:12px;margin:20px auto;max-width:500px}
+  .modal-ov{align-items:center}
+}
+@media(min-width:768px){
+  .annonces-grid{grid-template-columns:repeat(3,1fr)}
+  .nav-inner{padding:0 24px}
+  .annonces-section{padding:20px 24px}
+  .cats-section{padding:18px 24px 14px}
+  .scr-hdr{padding:14px 24px}
+  .form-body{max-width:680px}
+  .cs-slide{padding:50px 40px}
+  .screen{position:fixed;inset:0;overflow-y:auto}
 }
 @media(min-width:900px){
   .annonces-grid{grid-template-columns:repeat(4,1fr)}
   .nav-search{max-width:400px}
+  body{padding-bottom:0}
+  .bnav{display:none}
+  .footer{padding-bottom:28px}
+  /* Menu horizontal pour PC */
+  .nav-inner{padding:0 40px}
+  .annonces-section{max-width:1200px;margin:0 auto;padding:24px 40px}
+  .cats-section .cats-inner{padding:0 40px}
+  .sponsors-section .sponsors-inner{padding:0 40px}
+}
+@media(min-width:1200px){
+  .annonces-grid{grid-template-columns:repeat(5,1fr)}
+  .cs-title{font-size:2.6rem}
 }
 </style>
 </head>
@@ -469,13 +494,19 @@ img{max-width:100%;display:block}
 <!-- BOTTOM NAV -->
 <nav class="bnav">
   <button class="bn on" id="bn-home" onclick="goHome()"><span class="bn-i">🏠</span>Accueil</button>
-  <button class="bn" id="bn-cats" onclick="scrollToCats()"><span class="bn-i">📋</span>Catégories</button>
+  <button class="bn" id="bn-cats" onclick="showCatsScreen()"><span class="bn-i">📋</span>Catégories</button>
   <button class="bn" id="bn-pub" onclick="goScreen('publishScreen')"><span class="bn-i">➕</span>Publier</button>
   <button class="bn" id="bn-favs" onclick="showFavs()" style="position:relative"><span class="bn-i">❤️</span>Favoris<span class="bn-badge" id="favBadge" style="display:none">0</span></button>
   <button class="bn" id="bn-prof" onclick="goScreen('profileScreen')"><span class="bn-i">👤</span>Profil</button>
 </nav>
 
 <!-- SCREENS -->
+
+<!-- CATEGORIES SCREEN -->
+<div class="screen" id="catsScreen">
+  <div class="scr-hdr"><button class="back-btn" onclick="hideScreen('catsScreen')">←</button><div class="scr-title" id="cats-scr-title">Toutes les catégories</div></div>
+  <div style="padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px" id="catsScreenGrid"></div>
+</div>
 
 <!-- PUBLISH SCREEN -->
 <div class="screen" id="publishScreen">
@@ -910,13 +941,14 @@ function goHome(){
   document.getElementById('annoncesGrid').style.display='grid';
   document.getElementById('mainContent').style.display='block';
   document.getElementById('searchInput').value='';
+  activeCat=null;
   renderAds();updateBnav('home');
-  ['publishScreen','detailScreen','profileScreen'].forEach(function(id){
-    document.getElementById(id).classList.remove('visible');
+  ['publishScreen','detailScreen','profileScreen','catsScreen'].forEach(function(id){
+    var e=document.getElementById(id);if(e)e.classList.remove('visible');
   });
 }
 function updateBnav(active){
-  var m={publishScreen:'bn-pub',detailScreen:'bn-home',profileScreen:'bn-prof',home:'bn-home'};
+  var m={publishScreen:'bn-pub',detailScreen:'bn-home',profileScreen:'bn-prof',home:'bn-home',cats:'bn-cats',catsScreen:'bn-cats',favs:'bn-favs'};
   ['bn-home','bn-cats','bn-pub','bn-favs','bn-prof'].forEach(function(id){
     var e=document.getElementById(id);if(e)e.classList.remove('on');
   });
@@ -1427,6 +1459,30 @@ var legalTexts={
   mentions:'<h2 style="font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:12px">Mentions Légales</h2><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:10px"><strong>AJAPRO</strong><br>📍 Abidjan, Côte d\'Ivoire<br>📞 +225 05 96 69 70 54<br>✉️ contact@ajapro.ci</p>'
 };
 function showLegal(type){document.getElementById('legalContent').innerHTML=legalTexts[type]||'';document.getElementById('legalModal').style.display='block';}
+
+// CATEGORIES SCREEN
+function showCatsScreen(){
+  var g=document.getElementById('catsScreenGrid');
+  if(!g)return;
+  var t=T[lang];
+  g.innerHTML='';
+  cats.forEach(function(c){
+    var count=ads.filter(function(a){return a.cat===c.key;}).length;
+    var card=document.createElement('div');
+    card.style.cssText='background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;cursor:pointer;box-shadow:var(--shadow)';
+    card.innerHTML='<div style="font-size:2rem;margin-bottom:8px">'+c.icon+'</div>'+
+      '<div style="font-size:.8rem;font-weight:700;color:var(--navy);margin-bottom:4px">'+(t.categories[c.key]||c.key).replace(/^[^\s]+\s/,'')+'</div>'+
+      '<div style="font-size:.65rem;color:var(--muted)">'+count+' annonce'+(count>1?'s':'')+'</div>';
+    card.onclick=function(){
+      hideScreen('catsScreen');
+      filterCat(c.key);
+      updateBnav('home');
+    };
+    g.appendChild(card);
+  });
+  goScreen('catsScreen');
+  updateBnav('cats');
+}
 
 // FAV BADGE INIT
 updateFavBadge();
