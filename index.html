@@ -367,7 +367,7 @@ input,select,textarea{font-family:'Sora',sans-serif}
       <button class="search-icon-btn" onclick="toggleSearchBar()">🔍</button>
       <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
       <button class="nb nb-out" id="loginBtn" onclick="showAuth()">Connexion</button>
-      <button class="nb nb-in" onclick="requireAuth('publish')">+ Annonce</button>
+      <button class="nb nb-in" onclick="goScreen('publishScreen')">+ Annonce</button>
     </div>
   </div>
 </nav>
@@ -547,7 +547,7 @@ input,select,textarea{font-family:'Sora',sans-serif}
   <div id="noResults" style="text-align:center;padding:36px 20px;display:none">
     <div style="font-size:3rem;margin-bottom:12px">🔍</div>
     <div style="font-size:.82rem;color:var(--muted);margin-bottom:14px" id="noResultsText">Aucune annonce trouvée</div>
-    <button class="nb nb-in" onclick="requireAuth('publish')" style="padding:10px 20px">+ Publier la première annonce</button>
+    <button class="nb nb-in" onclick="goScreen('publishScreen')" style="padding:10px 20px">+ Publier la première annonce</button>
   </div>
 </div>
 
@@ -579,7 +579,7 @@ input,select,textarea{font-family:'Sora',sans-serif}
       <a href="#" onclick="showLegal('privacy');return false">Confidentialité</a>
       <a href="#" onclick="showLegal('mentions');return false">Mentions légales</a>
       <a href="#" onclick="showLegal('securite');return false">Conseils sécurité</a>
-      <a href="#" onclick="requireAuth('profile');return false">Mon compte</a>
+      <a href="#" onclick="goScreen('profileScreen');return false">Mon compte</a>
     </div>
     <div class="footer-copy">© 2025 AJAPRO · 100% gratuit pour l'Afrique 🌍</div>
   </div>
@@ -592,9 +592,9 @@ input,select,textarea{font-family:'Sora',sans-serif}
 <nav class="bnav">
   <button class="bn on" id="bn-home" onclick="goHome()"><span class="bn-i">🏠</span>Accueil</button>
   <button class="bn" id="bn-cats" onclick="showCatsScreen()"><span class="bn-i">📋</span>Catégories</button>
-  <button class="bn" id="bn-pub" onclick="requireAuth('publish')"><span class="bn-i">➕</span>Publier</button>
+  <button class="bn" id="bn-pub" onclick="goScreen('publishScreen')"><span class="bn-i">➕</span>Publier</button>
   <button class="bn" id="bn-favs" onclick="showFavs()" style="position:relative"><span class="bn-i">❤️</span>Favoris<span class="bn-badge" id="favBadge" style="display:none">0</span></button>
-  <button class="bn" id="bn-prof" onclick="requireAuth('profile')"><span class="bn-i">👤</span>Profil</button>
+  <button class="bn" id="bn-prof" onclick="goScreen('profileScreen')"><span class="bn-i">👤</span>Profil</button>
 </nav>
 
 <!-- CATS SCREEN -->
@@ -941,12 +941,10 @@ function toast(msg,type){
 
 // AUTH REQUIRE
 function requireAuth(action){
-  if(user){
-    if(action==='publish')goScreen('publishScreen');
-    else if(action==='profile')goScreen('profileScreen');
-    else if(action==='detail')openDetailById(curAdId);
-  } else {
-    pendingAction=action;showAuth();
+  if(action==='publish') goScreen('publishScreen');
+  else if(action==='profile') goScreen('profileScreen');
+  else if(action==='detail'){
+    if(curAdId) openDetailById(curAdId);
   }
 }
 
@@ -1184,7 +1182,7 @@ function renderAds(list){
       '<button class="btn-tel" onclick="callTel(''+(ad.telephone||ad.tel||ad.whatsapp||ad.wa||'')+'',event)">📞</button>'+
       '<button class="btn-share" onclick="shareAd('+ad.id+',event)">📤</button>'+
       '</div></div>';
-    card.querySelector('.ann-body').onclick=function(e){if(e.target.tagName!=='BUTTON'){curAdId=ad.id;requireAuth('detail');}};
+    card.querySelector('.ann-body').onclick=function(e){if(e.target.tagName!=='BUTTON'){curAdId=ad.id;openDetailById(ad.id);}};
     g.appendChild(card);
   });
 }
@@ -1247,7 +1245,7 @@ function openDetailById(id){
     '<div class="detail-loc">📍 '+(ad.location||ad.loc||'')+'</div><div style="font-size:.68rem;color:var(--green);margin-bottom:10px">👁️ '+showViewCount(ad.id)+'</div>'+
     '<div class="detail-desc">'+(ad.description||ad.desc||'')+'</div>'+
     rencontreBlock+
-    '<div class="detail-seller"><div style="display:flex;align-items:center;justify-content:space-between"><div><div class="seller-name">'+(ad.seller_name||ad.seller||'Annonceur')+(ad.verified?'<span style="background:#2563EB;color:#fff;font-size:.52rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px">✓ Vérifié</span>':'')+'</div><div class="seller-meta">Membre AJAPRO</div></div><div style="text-align:right"><div style="color:#F59E0B;font-size:.9rem">★★★★★</div><div style="font-size:.58rem;color:var(--muted)">Vendeur de confiance</div></div></div></div>'+
+    '<div class="detail-seller"><div style="display:flex;align-items:center;justify-content:space-between"><div><div class="seller-name">'+(ad.seller_name||ad.seller||'Annonceur')+(ad.verified?'<span style="background:#2563EB;color:#fff;font-size:.52rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px">&#10003; Verifie</span>':'')+'</div><div class="seller-meta">Membre AJAPRO</div></div><div style="text-align:right"><div style="color:#F59E0B;font-size:.9rem">★★★★★</div><div style="font-size:.58rem;color:var(--muted)">Vendeur de confiance</div></div></div></div>'+
     '<button class="btn-share-lg" onclick="shareAd('+id+',event)">📤 Partager cette annonce sur WhatsApp</button>'+
     '<div class="contact-btns">'+
     '<button class="btn-wa-lg" onclick="contactWA(''+(ad.whatsapp||ad.wa||'')+'',''+ad.title.replace(/'/g,'').replace(/"/g,'')+'',event)">💬 WhatsApp</button>'+
@@ -1404,7 +1402,7 @@ function login(){
   if(m){
     user=m;localStorage.setItem('ajapro_user',JSON.stringify(user));
     closeAuth();updateNavUser();toast('Bienvenue '+user.name+' !','success');
-    if(pendingAction){var a=pendingAction;pendingAction=null;requireAuth(a);}
+    if(pendingAction){var a=pendingAction;if(pendingAction==='publish')goScreen('publishScreen');else if(pendingAction==='profile')goScreen('profileScreen');pendingAction=null;}
   } else toast('Email ou mot de passe incorrect','error');
 }
 async function register(){
@@ -1420,7 +1418,7 @@ async function register(){
   user=m;localStorage.setItem('ajapro_user',JSON.stringify(user));
   closeAuth();updateNavUser();toast('Bienvenue '+name+' !','success');
   sendEmail(name,e,tel);
-  if(pendingAction){var a=pendingAction;pendingAction=null;requireAuth(a);}
+  if(pendingAction){var a=pendingAction;if(pendingAction==='publish')goScreen('publishScreen');else if(pendingAction==='profile')goScreen('profileScreen');pendingAction=null;}
 }
 function updateNavUser(){
   var lb=document.getElementById('loginBtn');
@@ -1554,4 +1552,4 @@ function deleteAd(id){ads=ads.filter(function(a){return a.id!=id;});renderAds();
 function renderAdminMembers(){
   var el=document.getElementById('admMbrList');if(!el)return;
   if(!members.length){el.innerHTML='<div style="color:rgba(255,255,255,.4)">Aucun membre.</div>';return;}
-  el.innerHTML=members.map(function(m){return'<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;margin-bottom:6px"><div style="font-size:.78rem;font-weight:600;color:#fff;margin-bottom:2px">'+m.name+'</div><div style="font-size:.63rem;color:rgba(255,255,255,.45)">'+m.email+' · '+m.tel+'</div></div>';}
+  el.innerHTML=members.map(function(m){return'<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;margin-bottom:6px"><div style=
