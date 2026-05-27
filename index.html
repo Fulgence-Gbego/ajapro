@@ -2,9 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="description" content="AJAPRO — Votre Marché, Votre Succès. Plateforme 100% gratuite pour l'Afrique.">
 <title>AJAPRO — Votre Marché, Votre Succès</title>
+<meta name="theme-color" content="#0F2557">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AJAPRO">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -21,22 +24,23 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--text);fon
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:'Sora',sans-serif}
 input,select,textarea{font-family:'Sora',sans-serif}
+img{max-width:100%;display:block}
 
 /* NAV */
 .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .nav-inner{max-width:1200px;margin:0 auto;height:62px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 16px}
 .nav-logo{display:flex;align-items:center;gap:9px;cursor:pointer;flex-shrink:0}
-.logo-sq{width:38px;height:38px;background:linear-gradient(135deg,#0F2557,#2563EB);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.logo-mark{width:38px;height:38px;background:linear-gradient(135deg,var(--navy),var(--blue2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
 .logo-text{font-size:1.3rem;font-weight:800;color:var(--navy);letter-spacing:-.02em}
 .logo-text span{color:var(--gold)}
 .logo-sub{font-size:.46rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);line-height:1;margin-top:1px}
-.nav-weather{display:none;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--border);padding:5px 10px;border-radius:20px;font-size:.65rem;color:var(--text2);flex-shrink:0}
+.nav-weather{display:none;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--border);padding:4px 9px;border-radius:16px;font-size:.62rem;color:var(--text2);flex-shrink:0}
 .nav-btns{display:flex;gap:5px;align-items:center;flex-shrink:0}
-.nb{padding:6px 12px;font-size:.68rem;font-weight:600;border:none;border-radius:8px;white-space:nowrap}
+.nb{padding:6px 12px;font-size:.68rem;font-weight:600;border:none;border-radius:8px;white-space:nowrap;cursor:pointer}
 .nb-out{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
 .nb-in{background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;box-shadow:0 3px 10px rgba(30,58,138,.25)}
-.lang-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:5px 9px;border-radius:7px;font-size:.68rem;font-weight:600}
-.search-icon-btn{background:var(--bg2);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.lang-btn{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:5px 9px;border-radius:7px;font-size:.68rem;font-weight:600;cursor:pointer}
+.search-icon-btn{background:var(--bg2);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;cursor:pointer}
 
 /* SEARCH BAR */
 #searchBar{display:none;background:#fff;border-bottom:1px solid var(--border);padding:10px 16px}
@@ -46,27 +50,31 @@ input,select,textarea{font-family:'Sora',sans-serif}
 .s-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
 .s-close{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer}
 
+/* METEO MOBILE */
+.weather-mobile{background:var(--navy);padding:6px 16px;display:flex;align-items:center;justify-content:space-between;font-size:.66rem}
+.weather-mobile-text{color:rgba(255,255,255,.85)}
+.weather-mobile-slogan{color:var(--gold2);font-size:.58rem}
+
 /* CITATION */
-.citation-bar{background:linear-gradient(135deg,var(--navy),var(--blue));padding:10px 20px;text-align:center;cursor:pointer;transition:opacity .3s}
-.citation-bar:hover{opacity:.92}
-.citation-text{font-size:.76rem;color:rgba(255,255,255,.92);font-style:italic;max-width:700px;margin:0 auto;line-height:1.6}
-.citation-author{font-size:.62rem;color:var(--gold2);margin-top:3px;font-weight:600}
-.citation-tag{font-size:.52rem;color:rgba(255,255,255,.4);margin-top:2px;letter-spacing:.1em;text-transform:uppercase}
+.citation-bar{background:linear-gradient(135deg,var(--navy),var(--blue2));padding:11px 20px;text-align:center;cursor:pointer}
+.citation-text{font-size:.75rem;color:rgba(255,255,255,.92);font-style:italic;max-width:680px;margin:0 auto;line-height:1.65}
+.citation-author{font-size:.61rem;color:var(--gold2);margin-top:3px;font-weight:600}
+.citation-hint{font-size:.5rem;color:rgba(255,255,255,.35);margin-top:2px;letter-spacing:.1em;text-transform:uppercase}
 
 /* SECURITY BANNER */
-.security-banner{background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:1.5px solid #F59E0B;padding:12px 16px;display:none}
-.sec-banner-inner{max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;gap:10px}
-.sec-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
-.sec-text{font-size:.72rem;color:#92400E;line-height:1.7}
-.sec-text strong{color:#78350F;font-weight:700}
-.sec-close{background:none;border:none;color:#92400E;font-size:1rem;margin-left:auto;flex-shrink:0;cursor:pointer;padding:2px}
+.security-banner{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-bottom:2px solid #F59E0B;padding:11px 16px;display:none}
+.sec-inner{max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;gap:10px}
+.sec-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+.sec-text{font-size:.71rem;color:#78350F;line-height:1.7;flex:1}
+.sec-text strong{color:#92400E;font-weight:700}
+.sec-close{background:none;border:none;color:#92400E;font-size:1rem;margin-left:auto;flex-shrink:0;cursor:pointer}
 
-/* HERO CAROUSEL */
+/* CAROUSEL */
 .hero-carousel{position:relative;overflow:hidden}
 .car-slides{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.car-slide{min-width:100%;position:relative;overflow:hidden;min-height:250px;display:flex;align-items:center}
+.car-slide{min-width:100%;position:relative;overflow:hidden;min-height:260px;display:flex;align-items:center}
 .car-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.car-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,37,87,.88),rgba(15,37,87,.45))}
+.car-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,37,87,.88),rgba(15,37,87,.4))}
 .car-content{position:relative;z-index:2;padding:28px 20px;color:#fff;max-width:480px}
 .car-badge{display:inline-block;background:rgba(245,158,11,.3);border:1px solid rgba(245,158,11,.6);color:var(--gold2);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 11px;border-radius:20px;margin-bottom:9px}
 .car-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;line-height:1.2;margin-bottom:8px}
@@ -82,236 +90,246 @@ input,select,textarea{font-family:'Sora',sans-serif}
 .stats-bar{background:var(--navy);padding:12px 16px}
 .stats-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-around;gap:10px;flex-wrap:wrap}
 .stat-item{text-align:center}
-.stat-n{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--gold2)}
-.stat-l{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:2px}
+.stat-n{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold2)}
+.stat-l{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-top:2px;color:#fff}
 
 /* FILTERS */
-.filters-bar{background:var(--card);border-bottom:1px solid var(--border);padding:12px 16px}
+.filters-bar{background:var(--card);border-bottom:1px solid var(--border);padding:11px 16px}
 .filters-inner{max-width:1200px;margin:0 auto}
-.filters-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.filter-select{padding:7px 10px;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;font-size:.72rem;color:var(--text);outline:none;cursor:pointer;transition:border-color .2s}
+.filters-label{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:600}
+.filters-row{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.filter-select{padding:7px 9px;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;font-size:.7rem;color:var(--text);outline:none;cursor:pointer}
 .filter-select:focus{border-color:var(--blue2)}
-.filter-label{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;flex-shrink:0}
 .price-inputs{display:flex;gap:5px;align-items:center}
-.price-inp{width:90px;padding:7px 8px;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;font-size:.72rem;color:var(--text);outline:none}
-.filter-btn{padding:7px 14px;background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;border:none;border-radius:8px;font-size:.7rem;font-weight:600;cursor:pointer}
-.filter-reset{padding:7px 12px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:8px;font-size:.7rem;cursor:pointer}
+.price-inp{width:85px;padding:7px 8px;background:var(--bg2);border:1.5px solid var(--border);border-radius:8px;font-size:.7rem;color:var(--text);outline:none}
+.filter-reset{padding:7px 11px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:8px;font-size:.68rem;cursor:pointer}
 
 /* CATS */
-.cats-section{padding:16px 16px 12px;background:var(--card);border-bottom:1px solid var(--border)}
+.cats-section{padding:15px 16px 11px;background:var(--card);border-bottom:1px solid var(--border)}
 .cats-inner{max-width:1200px;margin:0 auto}
-.cats-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:600}
+.cats-label{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:600}
 .cats-grid{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .cats-grid::-webkit-scrollbar{display:none}
 .cat-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 13px;background:var(--bg2);border:1.5px solid var(--border);border-radius:10px;white-space:nowrap;flex-shrink:0;transition:all .2s;cursor:pointer}
 .cat-btn.on{background:var(--blue);border-color:var(--blue)}
 .cat-btn.on .cat-name{color:#fff}
-.cat-icon{font-size:1.25rem}
-.cat-name{font-size:.6rem;font-weight:600;color:var(--text2)}
+.cat-icon{font-size:1.2rem}
+.cat-name{font-size:.58rem;font-weight:600;color:var(--text2)}
 
 /* SPONSORS */
-.sponsors-section{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 16px}
+.sponsors-section{background:var(--bg2);border-bottom:1px solid var(--border);padding:11px 16px}
 .sponsors-inner{max-width:1200px;margin:0 auto}
-.sponsors-title{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:600;text-align:center}
-.sponsors-row{display:flex;gap:10px;overflow-x:auto;padding:3px;scrollbar-width:none;justify-content:center;flex-wrap:wrap}
-.sponsor-card{flex-shrink:0;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:9px 14px;text-align:center;min-width:85px;box-shadow:var(--shadow)}
-.sponsor-logo{height:28px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
-.sponsor-logo img{max-height:26px;max-width:72px;object-fit:contain}
-.sponsor-name{font-size:.58rem;font-weight:700;color:var(--text)}
-.sponsor-type{font-size:.52rem;color:var(--muted)}
+.sponsors-title{font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;font-weight:600;text-align:center}
+.sponsors-row{display:flex;gap:9px;overflow-x:auto;padding:3px;scrollbar-width:none;justify-content:center;flex-wrap:wrap}
+.sponsor-card{flex-shrink:0;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:9px 13px;text-align:center;min-width:82px;box-shadow:var(--shadow)}
+.sponsor-emoji{font-size:1.5rem;margin-bottom:4px}
+.sponsor-name{font-size:.56rem;font-weight:700;color:var(--text)}
+.sponsor-type{font-size:.5rem;color:var(--muted)}
 
 /* PUB */
 .pub-wrap{display:none;padding:9px 16px;text-align:center;background:var(--bg2);border-bottom:1px solid var(--border)}
-.pub-label{font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.pub-wrap img{max-height:70px;max-width:100%;object-fit:contain;margin:0 auto}
-.pub-nom{font-size:.64rem;color:var(--text2);font-weight:500;margin-top:3px}
+.pub-label{font-size:.43rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.pub-wrap img{max-height:68px;max-width:100%;object-fit:contain;margin:0 auto}
+.pub-nom{font-size:.62rem;color:var(--text2);font-weight:500;margin-top:3px}
 
 /* ANNONCES */
-.annonces-section{padding:14px;max-width:1200px;margin:0 auto}
-.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.section-title{font-size:.95rem;font-weight:700;color:var(--navy)}
-.section-sub{font-size:.68rem;color:var(--muted)}
-.annonces-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.annonces-section{padding:13px;max-width:1200px;margin:0 auto}
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.section-title{font-size:.92rem;font-weight:700;color:var(--navy)}
+.section-sub{font-size:.66rem;color:var(--muted)}
+.annonces-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ann-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s}
-.ann-card:hover{transform:translateY(-3px);box-shadow:var(--shadow2)}
-.ann-photo{height:130px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden}
+.ann-card:active{transform:translateY(-2px);box-shadow:var(--shadow2)}
+.ann-photo{height:128px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden}
 .ann-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .ann-cat-badge{position:absolute;top:7px;left:7px;background:rgba(15,37,87,.85);color:#fff;font-size:.5rem;font-weight:700;padding:3px 7px;border-radius:4px;backdrop-filter:blur(4px);z-index:2}
 .ann-urgent{position:absolute;top:7px;right:35px;background:#DC2626;color:#fff;font-size:.5rem;font-weight:700;padding:3px 7px;border-radius:4px;z-index:2}
-.ann-fav{position:absolute;top:6px;right:6px;background:rgba(255,255,255,.9);border:none;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;cursor:pointer;z-index:3}
+.ann-fav{position:absolute;top:6px;right:6px;background:rgba(255,255,255,.9);border:none;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;cursor:pointer;z-index:3}
 .ann-closed{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:4}
-.ann-closed-tag{background:#fff;color:var(--red);font-size:.65rem;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:.06em}
+.ann-closed-tag{background:#fff;color:var(--red);font-size:.62rem;font-weight:800;padding:4px 10px;border-radius:4px}
 .ann-body{padding:9px 10px}
-.ann-title{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.ann-loc{font-size:.6rem;color:var(--muted);margin-bottom:4px}
-.ann-price{font-size:.86rem;font-weight:800;color:var(--blue2);margin-bottom:6px}
-.ann-price span{font-size:.58rem;font-weight:500;color:var(--muted)}
+.ann-title{font-size:.76rem;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ann-loc{font-size:.59rem;color:var(--muted);margin-bottom:4px}
+.ann-price{font-size:.84rem;font-weight:800;color:var(--blue2);margin-bottom:6px}
+.ann-price span{font-size:.57rem;font-weight:500;color:var(--muted)}
 .ann-footer{display:flex;gap:4px}
-.btn-wa{flex:1;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:6px 5px;border-radius:6px;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px}
-.btn-tel{flex:1;background:var(--navy);color:#fff;border:none;padding:6px 5px;border-radius:6px;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px}
-.btn-share{background:var(--bg2);color:var(--text2);border:1px solid var(--border);padding:6px 8px;border-radius:6px;font-size:.7rem;cursor:pointer}
+.btn-wa{flex:1;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:6px 4px;border-radius:6px;font-size:.58rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px;cursor:pointer}
+.btn-tel{flex:1;background:var(--navy);color:#fff;border:none;padding:6px 4px;border-radius:6px;font-size:.58rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px;cursor:pointer}
+.btn-share{background:var(--bg2);color:var(--text2);border:1px solid var(--border);padding:6px 7px;border-radius:6px;font-size:.68rem;cursor:pointer}
 
 /* FOOTER */
-.footer{background:linear-gradient(160deg,#0A1628,#0F2557);color:rgba(255,255,255,.65);padding:28px 16px 80px;font-size:.7rem}
+.footer{background:linear-gradient(160deg,#0A1628,#0F2557);color:rgba(255,255,255,.65);padding:26px 16px 80px;font-size:.7rem}
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.footer-logo-text{font-size:1.25rem;font-weight:800;color:#fff}
+.footer-logo-text{font-size:1.2rem;font-weight:800;color:#fff}
 .footer-logo-text span{color:var(--gold2)}
-.footer-desc{line-height:1.75;margin-bottom:14px;max-width:380px}
-.footer-disclaimer{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:12px;margin-bottom:14px}
-.footer-disclaimer-title{font-size:.62rem;font-weight:700;color:var(--gold2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.1em}
-.footer-disclaimer-text{font-size:.68rem;color:rgba(255,255,255,.6);line-height:1.75}
-.footer-contact{margin-bottom:14px;line-height:2}
+.footer-desc{line-height:1.75;margin-bottom:13px;max-width:380px}
+.footer-disclaimer{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:11px;margin-bottom:13px}
+.footer-disclaimer-title{font-size:.6rem;font-weight:700;color:var(--gold2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.09em}
+.footer-disclaimer-text{font-size:.67rem;color:rgba(255,255,255,.55);line-height:1.75}
+.footer-contact{margin-bottom:13px;line-height:2}
 .footer-contact a{color:var(--gold2)}
-.footer-links{display:flex;flex-wrap:wrap;gap:7px 14px;margin-bottom:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
-.footer-links a{color:rgba(255,255,255,.45)}
-.footer-copy{color:rgba(255,255,255,.22);font-size:.56rem}
-.free-badge{background:linear-gradient(135deg,var(--gold),#D97706);color:var(--navy);font-size:.54rem;font-weight:800;padding:3px 8px;border-radius:4px;margin-left:8px}
+.footer-links{display:flex;flex-wrap:wrap;gap:6px 13px;margin-bottom:13px;padding-top:11px;border-top:1px solid rgba(255,255,255,.08)}
+.footer-links a{color:rgba(255,255,255,.45);cursor:pointer}
+.footer-copy{color:rgba(255,255,255,.22);font-size:.54rem}
+.free-badge{background:linear-gradient(135deg,var(--gold),#D97706);color:var(--navy);font-size:.52rem;font-weight:800;padding:3px 8px;border-radius:4px;margin-left:8px}
 
 /* BNAV */
 .bnav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);border-top:1px solid var(--border);display:flex;height:57px;z-index:90;backdrop-filter:blur(10px)}
-.bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--muted);font-size:.4rem;letter-spacing:.05em;text-transform:uppercase;border:none;background:none;transition:color .2s;position:relative}
+.bn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--muted);font-size:.39rem;letter-spacing:.05em;text-transform:uppercase;border:none;background:none;transition:color .2s;position:relative;cursor:pointer}
 .bn.on{color:var(--blue)}
 .bn-i{font-size:1.05rem}
-.bn-badge{position:absolute;top:4px;right:calc(50% - 18px);background:var(--red);color:#fff;font-size:.48rem;font-weight:700;padding:1px 5px;border-radius:8px}
+.bn-badge{position:absolute;top:4px;right:calc(50% - 18px);background:var(--red);color:#fff;font-size:.47rem;font-weight:700;padding:1px 5px;border-radius:8px}
 
 /* SCREENS */
 .screen{display:none;position:fixed;inset:0;z-index:200;background:var(--bg);overflow-y:auto;padding-bottom:60px}
 .screen.visible{display:block}
 .scr-hdr{background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);padding:11px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}
 .back-btn{background:none;border:none;font-size:1.2rem;color:var(--muted);padding:4px;flex-shrink:0;cursor:pointer}
-.scr-title{font-size:1.02rem;font-weight:700;color:var(--navy);flex:1}
+.scr-title{font-size:1rem;font-weight:700;color:var(--navy);flex:1}
 
 /* FORMS */
-.form-body{padding:18px 16px;max-width:640px;margin:0 auto}
-.form-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:3px;color:var(--navy)}
-.form-sub{font-size:.72rem;color:var(--muted);margin-bottom:18px}
-.fgrp{margin-bottom:13px}
-.fgrp label{display:block;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:600}
-.fgrp input,.fgrp select,.fgrp textarea{width:100%;padding:10px 12px;background:#fff;border:1.5px solid var(--border);color:var(--text);font-size:.83rem;outline:none;border-radius:8px;transition:border-color .2s}
+.form-body{padding:17px 16px;max-width:620px;margin:0 auto}
+.form-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:3px;color:var(--navy)}
+.form-sub{font-size:.71rem;color:var(--muted);margin-bottom:16px}
+.fgrp{margin-bottom:12px}
+.fgrp label{display:block;font-size:.57rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:600}
+.fgrp input,.fgrp select,.fgrp textarea{width:100%;padding:10px 12px;background:#fff;border:1.5px solid var(--border);color:var(--text);font-size:.82rem;outline:none;border-radius:8px;transition:border-color .2s}
 .fgrp input:focus,.fgrp select:focus,.fgrp textarea:focus{border-color:var(--blue2)}
-.fgrp textarea{resize:vertical;min-height:88px}
-.fgrp-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.wa-section{background:linear-gradient(135deg,#F0FFF4,#ECFDF5);border:1.5px solid #86EFAC;border-radius:10px;padding:13px;margin-bottom:13px}
-.wa-title{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#059669;margin-bottom:9px;font-weight:700}
-.btn-submit{width:100%;padding:13px;background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;border:none;font-size:.83rem;font-weight:700;border-radius:10px;margin-top:7px;box-shadow:0 4px 14px rgba(30,58,138,.28);cursor:pointer}
+.fgrp textarea{resize:vertical;min-height:86px}
+.fgrp-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.wa-section{background:linear-gradient(135deg,#F0FFF4,#ECFDF5);border:1.5px solid #86EFAC;border-radius:10px;padding:12px;margin-bottom:12px}
+.wa-title{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#059669;margin-bottom:8px;font-weight:700}
+.btn-submit{width:100%;padding:12px;background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;border:none;font-size:.82rem;font-weight:700;border-radius:10px;margin-top:6px;box-shadow:0 4px 14px rgba(30,58,138,.28);cursor:pointer}
 
-/* PHOTO GALLERY 6 SLOTS */
-.photo-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}
+/* 6 PHOTOS */
+.photo-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:11px}
 .photo-slot{aspect-ratio:1;background:var(--bg2);border:2px dashed var(--border);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative;transition:border-color .2s}
-.photo-slot:hover{border-color:var(--blue2)}
+.photo-slot:hover,.photo-slot:active{border-color:var(--blue2)}
 .photo-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.slot-icon{font-size:1.3rem;margin-bottom:3px}
-.slot-text{font-size:.56rem;color:var(--muted);text-align:center;padding:0 4px}
-.slot-del{position:absolute;top:3px;right:3px;background:rgba(220,38,38,.88);color:#fff;border:none;width:20px;height:20px;border-radius:50%;font-size:.65rem;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
-.upload-progress{display:none;margin-top:7px;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:.74rem;color:var(--blue);text-align:center}
+.slot-icon{font-size:1.25rem;margin-bottom:3px}
+.slot-text{font-size:.54rem;color:var(--muted);text-align:center;padding:0 3px}
+.slot-del{position:absolute;top:3px;right:3px;background:rgba(220,38,38,.88);color:#fff;border:none;width:20px;height:20px;border-radius:50%;font-size:.62rem;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.upload-progress{display:none;margin-top:7px;padding:8px 11px;background:var(--bg2);border-radius:8px;font-size:.72rem;color:var(--blue);text-align:center}
 
-/* RENCONTRES SPECIAL */
-.rencontre-banner{background:linear-gradient(135deg,#FFF1F2,#FFF8F8);border:1.5px solid #FECACA;border-radius:10px;padding:14px;margin-bottom:14px}
-.rb-title{font-size:.62rem;font-weight:700;color:#991B1B;margin-bottom:8px;text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:6px}
+/* RENCONTRES */
+.rencontre-banner{background:linear-gradient(135deg,#FFF1F2,#FFF8F8);border:1.5px solid #FECACA;border-radius:10px;padding:13px;margin-bottom:13px}
+.rb-title{font-size:.6rem;font-weight:700;color:#991B1B;margin-bottom:7px;text-transform:uppercase;letter-spacing:.09em;display:flex;align-items:center;gap:5px}
 .rb-list{list-style:none;padding:0}
-.rb-list li{font-size:.73rem;color:#7F1D1D;line-height:1.9;padding-left:0;display:flex;align-items:flex-start;gap:7px}
-.rb-list li::before{content:"⚠️";font-size:.7rem;flex-shrink:0}
+.rb-list li{font-size:.71rem;color:#7F1D1D;line-height:1.9;display:flex;align-items:flex-start;gap:6px}
+.rb-list li::before{content:"⚠️";font-size:.68rem;flex-shrink:0}
 
 /* DETAIL */
-.detail-gallery{position:relative;height:240px;background:var(--bg2);overflow:hidden}
+.detail-gallery{position:relative;height:235px;background:var(--bg2);overflow:hidden}
 .detail-gallery img{width:100%;height:100%;object-fit:cover}
 .detail-gallery-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem}
-.detail-body{padding:14px;max-width:700px;margin:0 auto}
-.detail-cat{display:inline-block;background:var(--bg2);border:1px solid var(--border);color:var(--blue);font-size:.58rem;font-weight:700;padding:3px 8px;border-radius:4px;margin-bottom:9px}
-.detail-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.3}
-.detail-price{font-size:1.35rem;font-weight:800;color:var(--blue2);margin-bottom:8px}
-.detail-loc{font-size:.74rem;color:var(--muted);margin-bottom:12px}
-.detail-desc{font-size:.8rem;color:var(--text2);line-height:1.78;margin-bottom:16px}
-.detail-seller{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:13px;margin-bottom:14px}
-.seller-name{font-size:.86rem;font-weight:700;color:var(--navy);margin-bottom:2px}
-.seller-meta{font-size:.66rem;color:var(--muted)}
-.contact-btns{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
-.btn-wa-lg{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:13px;border-radius:10px;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer}
-.btn-tel-lg{background:var(--navy);color:#fff;border:none;padding:13px;border-radius:10px;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer}
-.btn-share-lg{width:100%;background:var(--bg2);color:var(--text2);border:1px solid var(--border);padding:10px;border-radius:8px;font-size:.74rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;margin-bottom:12px}
-.detail-rencontre{background:linear-gradient(135deg,#FFF1F2,#FFF);border:1.5px solid #FECACA;border-radius:10px;padding:13px;margin-bottom:14px}
-.dr-title{font-size:.6rem;font-weight:700;color:#991B1B;margin-bottom:9px;text-transform:uppercase;letter-spacing:.1em}
-.dr-field{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(254,202,202,.4);font-size:.74rem}
-.dr-label{color:#7F1D1D;font-weight:600;min-width:120px;font-size:.68rem}
+.detail-body{padding:13px;max-width:700px;margin:0 auto}
+.detail-cat{display:inline-block;background:var(--bg2);border:1px solid var(--border);color:var(--blue);font-size:.57rem;font-weight:700;padding:3px 8px;border-radius:4px;margin-bottom:9px}
+.detail-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.3}
+.detail-price{font-size:1.3rem;font-weight:800;color:var(--blue2);margin-bottom:7px}
+.detail-loc{font-size:.72rem;color:var(--muted);margin-bottom:5px}
+.detail-views{font-size:.66rem;color:var(--green);margin-bottom:11px}
+.detail-desc{font-size:.79rem;color:var(--text2);line-height:1.78;margin-bottom:15px}
+.detail-seller{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:13px}
+.seller-row{display:flex;align-items:center;justify-content:space-between}
+.seller-name{font-size:.84rem;font-weight:700;color:var(--navy);margin-bottom:2px}
+.seller-badge{background:#2563EB;color:#fff;font-size:.5rem;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:5px}
+.seller-meta{font-size:.64rem;color:var(--muted)}
+.seller-stars{color:var(--gold);font-size:.88rem;margin-bottom:2px}
+.seller-trust{font-size:.55rem;color:var(--muted)}
+.contact-btns{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.btn-wa-lg{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;padding:13px;border-radius:10px;font-size:.79rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer}
+.btn-tel-lg{background:var(--navy);color:#fff;border:none;padding:13px;border-radius:10px;font-size:.79rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer}
+.btn-share-lg{width:100%;background:var(--bg2);color:var(--text2);border:1px solid var(--border);padding:10px;border-radius:8px;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;margin-bottom:11px}
+.detail-rencontre{background:linear-gradient(135deg,#FFF1F2,#FFF);border:1.5px solid #FECACA;border-radius:10px;padding:12px;margin-bottom:13px}
+.dr-title{font-size:.58rem;font-weight:700;color:#991B1B;margin-bottom:8px;text-transform:uppercase;letter-spacing:.09em}
+.dr-field{display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid rgba(254,202,202,.4);font-size:.72rem}
+.dr-label{color:#7F1D1D;font-weight:600;min-width:115px;font-size:.66rem}
 .dr-value{color:var(--text2)}
-.close-ad-btn{width:100%;padding:10px;background:rgba(220,38,38,.08);color:var(--red);border:1.5px solid var(--red);border-radius:8px;font-size:.74rem;font-weight:700;cursor:pointer;margin-bottom:8px}
+.close-ad-btn{width:100%;padding:10px;background:rgba(220,38,38,.08);color:var(--red);border:1.5px solid var(--red);border-radius:8px;font-size:.72rem;font-weight:700;cursor:pointer;margin-bottom:8px}
 
 /* PROFIL */
-.prof-hdr{background:linear-gradient(160deg,var(--navy),var(--blue2));padding:26px 16px;text-align:center;color:#fff}
-.prof-av{width:72px;height:72px;border-radius:50%;border:3px solid var(--gold);margin:0 auto 9px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(255,255,255,.15);overflow:hidden}
-.prof-av img{width:100%;height:100%;object-fit:cover}
-.prof-name{font-size:1.15rem;font-weight:800}
-.prof-meta{font-size:.68rem;opacity:.75;margin-top:3px}
-.prof-stats{display:flex;justify-content:center;gap:22px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15)}
-.ps-n{font-size:1.15rem;font-weight:800;color:var(--gold2)}
-.ps-l{font-size:.52rem;opacity:.6;letter-spacing:.1em;text-transform:uppercase}
+.prof-hdr{background:linear-gradient(160deg,var(--navy),var(--blue2));padding:24px 16px;text-align:center;color:#fff}
+.prof-av{width:70px;height:70px;border-radius:50%;border:3px solid var(--gold);margin:0 auto 9px;display:flex;align-items:center;justify-content:center;font-size:1.9rem;background:rgba(255,255,255,.15);overflow:hidden}
+.prof-name{font-size:1.1rem;font-weight:800}
+.prof-meta{font-size:.66rem;opacity:.75;margin-top:3px}
+.prof-stats{display:flex;justify-content:center;gap:20px;margin-top:13px;padding-top:13px;border-top:1px solid rgba(255,255,255,.15)}
+.ps-n{font-size:1.1rem;font-weight:800;color:var(--gold2)}
+.ps-l{font-size:.5rem;opacity:.6;letter-spacing:.09em;text-transform:uppercase}
 .pmi{display:flex;align-items:center;gap:11px;padding:13px 16px;background:var(--card);border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
 .pmi:active{background:var(--bg2)}
-.pmi-icon{font-size:1.1rem;width:26px;text-align:center;flex-shrink:0}
-.pmi-text{flex:1;font-size:.8rem;font-weight:500}
-.pmi-arrow{color:var(--muted);font-size:.76rem}
-.logout-btn{width:calc(100% - 32px);margin:14px 16px;padding:11px;background:rgba(220,38,38,.08);color:var(--red);border:1.5px solid var(--red);border-radius:9px;font-size:.76rem;font-weight:700;cursor:pointer}
+.pmi-icon{font-size:1.05rem;width:25px;text-align:center;flex-shrink:0}
+.pmi-text{flex:1;font-size:.79rem;font-weight:500}
+.pmi-arrow{color:var(--muted);font-size:.74rem}
+.logout-btn{width:calc(100% - 32px);margin:13px 16px;padding:11px;background:rgba(220,38,38,.08);color:var(--red);border:1.5px solid var(--red);border-radius:9px;font-size:.74rem;font-weight:700;cursor:pointer}
 
 /* AUTH */
 .modal-ov{display:none;position:fixed;inset:0;z-index:500;background:rgba(15,37,87,.65);backdrop-filter:blur(4px);align-items:flex-end;justify-content:center}
 .modal-ov.visible{display:flex}
-.modal-box{background:var(--card);width:100%;max-width:460px;padding:22px 18px 30px;border-radius:16px 16px 0 0;animation:sUp .3s ease;position:relative;max-height:90vh;overflow-y:auto}
+.modal-box{background:var(--card);width:100%;max-width:460px;padding:22px 18px 30px;border-radius:16px 16px 0 0;animation:sUp .3s ease;position:relative;max-height:92vh;overflow-y:auto}
 @keyframes sUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .modal-close{position:absolute;top:11px;right:13px;background:var(--bg2);border:none;width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.95rem;cursor:pointer}
 .auth-logo-mark{width:50px;height:50px;background:linear-gradient(135deg,var(--navy),var(--blue2));border-radius:13px;display:flex;align-items:center;justify-content:center;margin:0 auto 9px;font-size:1.6rem}
-.auth-tabs{display:flex;background:var(--bg2);border-radius:9px;padding:3px;margin-bottom:18px}
-.auth-tab{flex:1;padding:7px;font-size:.74rem;font-weight:600;border:none;background:transparent;color:var(--muted);border-radius:7px;transition:all .2s;cursor:pointer}
+.auth-tabs{display:flex;background:var(--bg2);border-radius:9px;padding:3px;margin-bottom:17px}
+.auth-tab{flex:1;padding:7px;font-size:.73rem;font-weight:600;border:none;background:transparent;color:var(--muted);border-radius:7px;transition:all .2s;cursor:pointer}
 .auth-tab.on{background:#fff;color:var(--navy);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+
+/* CATS SCREEN */
+.cats-screen-grid{padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.cat-screen-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:15px 11px;text-align:center;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s}
+.cat-screen-card:active{transform:scale(.97)}
 
 /* ADMIN */
 .admin-scr{display:none;position:fixed;inset:0;z-index:800;background:linear-gradient(160deg,#0A1628,#0F2557);overflow-y:auto}
 .admin-scr.visible{display:block}
 .a-hdr{background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.1);padding:12px 16px;display:flex;align-items:center;gap:9px}
 .a-tabs{display:flex;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.1);padding:0 10px}
-.a-tab{padding:10px 14px;font-size:.63rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;background:none;border:none;color:rgba(255,255,255,.45);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;cursor:pointer}
+.a-tab{padding:10px 14px;font-size:.62rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;background:none;border:none;color:rgba(255,255,255,.45);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;cursor:pointer}
 .a-tab.on{color:var(--gold2);border-bottom-color:var(--gold)}
 .a-content{padding:13px;display:none}
 .a-content.on{display:block}
 .a-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:13px}
 .a-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:13px;text-align:center}
 .a-stat-n{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold2)}
-.a-stat-l{font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:3px}
+.a-stat-l{font-size:.53rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:3px}
 .a-form-group{margin-bottom:10px}
-.a-form-group label{display:block;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:4px;font-weight:600}
-.a-form-group input,.a-form-group select{width:100%;padding:8px 11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:.78rem;outline:none;border-radius:7px}
+.a-form-group label{display:block;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:4px;font-weight:600}
+.a-form-group input,.a-form-group select{width:100%;padding:8px 11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:.77rem;outline:none;border-radius:7px}
 .a-form-group select option{background:#0F2557}
-.btn-add-pub{width:100%;padding:10px;background:linear-gradient(135deg,var(--gold),#D97706);color:var(--navy);border:none;font-size:.74rem;font-weight:800;border-radius:8px;cursor:pointer;margin-top:5px}
+.btn-add-pub{width:100%;padding:10px;background:linear-gradient(135deg,var(--gold),#D97706);color:var(--navy);border:none;font-size:.73rem;font-weight:800;border-radius:8px;cursor:pointer;margin-top:5px}
 .pub-item{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.04);border-radius:7px;padding:7px;margin-bottom:5px}
 .pub-item img{width:44px;height:28px;object-fit:contain;background:rgba(255,255,255,.08);border-radius:4px}
-.pub-item-name{flex:1;font-size:.7rem;color:#fff}
-.pub-del{background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);color:#FCA5A5;padding:2px 7px;border-radius:4px;font-size:.56rem;cursor:pointer}
-
-/* CATS SCREEN */
-.cats-screen-grid{padding:13px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.cat-screen-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 11px;text-align:center;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s}
-.cat-screen-card:active{transform:scale(.97)}
+.pub-item-name{flex:1;font-size:.69rem;color:#fff}
+.pub-del{background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);color:#FCA5A5;padding:2px 7px;border-radius:4px;font-size:.55rem;cursor:pointer}
 
 /* LEGAL */
 #legalModal{display:none;position:fixed;inset:0;z-index:600;background:rgba(15,37,87,.82);overflow-y:auto;padding:18px}
-.legal-box{background:var(--card);max-width:580px;margin:0 auto;padding:22px;border-radius:12px;position:relative}
+.legal-box{background:var(--card);max-width:560px;margin:0 auto;padding:22px;border-radius:12px;position:relative}
 .legal-close{position:absolute;top:11px;right:13px;background:var(--bg2);border:none;width:27px;height:27px;border-radius:50%;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center}
 
 /* TOAST */
-.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:8px 16px;font-size:.72rem;z-index:1000;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:92vw;text-align:center;border-radius:8px}
+.toast{position:fixed;bottom:68px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:8px 16px;font-size:.71rem;z-index:1000;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:92vw;text-align:center;border-radius:8px}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.error{background:var(--red)}
 .toast.success{background:var(--green)}
 .toast.info{background:var(--gold);color:var(--navy)}
 
+/* INSTALL PWA */
+.install-banner{display:none;position:fixed;bottom:57px;left:0;right:0;z-index:201;background:linear-gradient(135deg,#0F2557,#1E3A8A);padding:10px 14px;flex-direction:row;align-items:center;gap:10px}
+.install-banner-visible{display:flex}
+
+/* BACK TO TOP */
+#backToTop{display:none;position:fixed;bottom:68px;right:14px;width:38px;height:38px;background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;border:none;border-radius:50%;font-size:1rem;z-index:150;box-shadow:0 4px 14px rgba(15,37,87,.35);cursor:pointer}
+
 /* RESPONSIVE */
 @media(min-width:600px){
   .annonces-grid{grid-template-columns:repeat(3,1fr)}
   .cats-screen-grid{grid-template-columns:repeat(3,1fr)}
-  .modal-box{border-radius:12px;margin:20px auto;max-width:480px}
+  .modal-box{border-radius:12px;margin:20px auto;max-width:460px}
   .modal-ov{align-items:center}
   .car-slide{min-height:300px}
   .car-title{font-size:2rem}
+  .stats-inner{justify-content:center;gap:36px}
 }
 @media(min-width:768px){
   .annonces-grid{grid-template-columns:repeat(3,1fr)}
@@ -323,44 +341,34 @@ input,select,textarea{font-family:'Sora',sans-serif}
   .annonces-grid{grid-template-columns:repeat(4,1fr)}
   .bnav{display:none}
   .footer{padding-bottom:28px}
-  .nav-inner,.annonces-section,.cats-section .cats-inner,.sponsors-section .sponsors-inner{max-width:1200px}
-  .car-slide{min-height:400px}
+  .nav-inner{padding:0 40px}
+  .annonces-section{padding:20px 40px}
+  .car-slide{min-height:380px}
   .car-title{font-size:2.4rem}
-  .car-content{padding:40px 40px}
+  .car-content{padding:38px 40px}
 }
 @media(min-width:1280px){
   .annonces-grid{grid-template-columns:repeat(5,1fr)}
 }
 </style>
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0F2557">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="AJAPRO">
 </head>
 <body>
-
 <div class="toast" id="toast"></div>
 
-<!-- INSTALL PWA BANNER -->
-<div id="installBanner" style="display:none;position:fixed;bottom:57px;left:0;right:0;z-index:201;background:linear-gradient(135deg,#0F2557,#1E3A8A);padding:10px 14px;flex-direction:row;align-items:center;gap:10px">
-  <div style="font-size:1.5rem;flex-shrink:0">📱</div>
-  <div style="flex:1">
-    <div style="font-size:.76rem;font-weight:700;color:#fff;margin-bottom:1px">Installer AJAPRO</div>
-    <div style="font-size:.6rem;color:rgba(255,255,255,.75)">Ajoutez l'app sur votre écran</div>
-  </div>
-  <button onclick="installPWA()" style="background:var(--gold);color:var(--navy);border:none;padding:6px 13px;border-radius:7px;font-size:.68rem;font-weight:800;flex-shrink:0;cursor:pointer">Installer</button>
-  <button onclick="document.getElementById('installBanner').style.display='none'" style="background:transparent;border:none;color:rgba(255,255,255,.6);font-size:1rem;flex-shrink:0;cursor:pointer">✕</button>
+<!-- INSTALL PWA -->
+<div class="install-banner" id="installBanner">
+  <div style="font-size:1.4rem;flex-shrink:0">📱</div>
+  <div style="flex:1"><div style="font-size:.74rem;font-weight:700;color:#fff;margin-bottom:1px">Installer AJAPRO</div><div style="font-size:.58rem;color:rgba(255,255,255,.75)">Ajoutez l'app sur votre écran d'accueil</div></div>
+  <button onclick="installPWA()" style="background:var(--gold);color:var(--navy);border:none;padding:6px 12px;border-radius:7px;font-size:.66rem;font-weight:800;cursor:pointer">Installer</button>
+  <button onclick="document.getElementById('installBanner').style.display='none'" style="background:transparent;border:none;color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer">✕</button>
 </div>
 
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
     <div class="nav-logo" onclick="goHome()">
-      <div class="logo-sq">✋</div>
-      <div>
-        <div class="logo-text">AJA<span>PRO</span></div>
-        <div class="logo-sub" id="nav-tagline">Votre Marché, Votre Succès</div>
-      </div>
+      <div class="logo-mark">✋</div>
+      <div><div class="logo-text">AJA<span>PRO</span></div><div class="logo-sub" id="nav-tagline">Votre Marché, Votre Succès</div></div>
     </div>
     <div class="nav-weather" id="navWeather">📍 ...</div>
     <div class="nav-btns">
@@ -373,33 +381,33 @@ input,select,textarea{font-family:'Sora',sans-serif}
 </nav>
 
 <!-- METEO MOBILE -->
-<div id="weatherMobile" style="background:var(--navy);padding:6px 16px;display:flex;align-items:center;justify-content:space-between;font-size:.68rem">
-  <span id="weatherMobileText" style="color:rgba(255,255,255,.8)">📍 Chargement...</span>
-  <span style="color:var(--gold2);font-size:.6rem">Votre Marché, Votre Succès</span>
+<div class="weather-mobile">
+  <span class="weather-mobile-text" id="weatherMobileText">📍 Chargement...</span>
+  <span class="weather-mobile-slogan">Votre Marché, Votre Succès ✨</span>
 </div>
 
-<!-- SEARCH -->
+<!-- SEARCH BAR -->
 <div id="searchBar">
   <div class="search-inner">
     <span class="s-icon">🔍</span>
-    <input type="text" id="searchInput" placeholder="Rechercher une annonce, ville, catégorie..." oninput="searchAds(this.value)">
+    <input type="text" id="searchInput" placeholder="Rechercher annonce, ville, catégorie..." oninput="searchAds(this.value)">
     <button class="s-close" onclick="toggleSearchBar()">✕</button>
   </div>
 </div>
 
-<!-- CITATION -->
+<!-- CITATION DU JOUR -->
 <div class="citation-bar" onclick="rotateCitation()">
   <div class="citation-text" id="citText">Chargement...</div>
   <div class="citation-author" id="citAuthor"></div>
-  <div class="citation-tag">Cliquez pour changer · Citation du jour</div>
+  <div class="citation-hint">Appuyez pour changer · Citation du jour</div>
 </div>
 
-<!-- SECURITY BANNER -->
+<!-- BANNIERE SECURITE RENCONTRES -->
 <div class="security-banner" id="secBanner">
-  <div class="sec-banner-inner">
+  <div class="sec-inner">
     <div class="sec-icon">🛡️</div>
     <div class="sec-text">
-      <strong>AVERTISSEMENT AJAPRO :</strong> Ne payez jamais d'argent avant d'avoir rencontré la personne en face à face. Rencontrez-vous toujours dans un lieu public (café, restaurant, centre commercial). Ne partagez jamais vos informations bancaires. AJAPRO décline toute responsabilité pour les transactions entre utilisateurs. <strong>Signalez tout comportement suspect.</strong>
+      <strong>AVERTISSEMENT AJAPRO :</strong> Ne payez jamais d'argent avant d'avoir rencontré la personne en face à face. Rencontrez-vous toujours dans un <strong>lieu public</strong> (café, restaurant, centre commercial). AJAPRO décline toute responsabilité. <strong>Signalez tout suspect.</strong>
     </div>
     <button class="sec-close" onclick="document.getElementById('secBanner').style.display='none'">✕</button>
   </div>
@@ -408,73 +416,19 @@ input,select,textarea{font-family:'Sora',sans-serif}
 <!-- HERO CAROUSEL -->
 <div class="hero-carousel">
   <div class="car-slides" id="carSlides">
-    <div class="car-slide">
-      <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&fit=crop" alt="Immobilier">
-      <div class="car-overlay"></div>
-      <div class="car-content">
-        <div class="car-badge">🏠 IMMOBILIER</div>
-        <div class="car-title">Trouvez votre maison idéale</div>
-        <div class="car-desc">Des milliers d'annonces immobilières en Afrique. Vente, location, terrain.</div>
-        <button class="car-btn" onclick="filterCat('immobilier')">Voir les annonces →</button>
-      </div>
-    </div>
-    <div class="car-slide">
-      <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80&fit=crop" alt="Emploi">
-      <div class="car-overlay"></div>
-      <div class="car-content">
-        <div class="car-badge">💼 EMPLOI</div>
-        <div class="car-title">Décrochez votre emploi de rêve</div>
-        <div class="car-desc">Offres d'emploi exclusives. Postulez directement via WhatsApp.</div>
-        <button class="car-btn" onclick="filterCat('emploi')">Voir les offres →</button>
-      </div>
-    </div>
-    <div class="car-slide">
-      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1200&q=80&fit=crop&crop=faces" alt="Rencontres">
-      <div class="car-overlay"></div>
-      <div class="car-content">
-        <div class="car-badge">💕 RENCONTRES</div>
-        <div class="car-title">Trouvez votre âme sœur</div>
-        <div class="car-desc">Rencontres sérieuses en toute sécurité. Lieu public recommandé.</div>
-        <button class="car-btn" onclick="filterCat('rencontres')">Découvrir →</button>
-      </div>
-    </div>
-    <div class="car-slide">
-      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80&fit=crop" alt="Commerce">
-      <div class="car-overlay"></div>
-      <div class="car-content">
-        <div class="car-badge">🛍️ COMMERCE</div>
-        <div class="car-title">Achetez et vendez localement</div>
-        <div class="car-desc">Mode, électronique, meubles... Les meilleures offres près de chez vous.</div>
-        <button class="car-btn" onclick="filterCat('commerce')">Explorer →</button>
-      </div>
-    </div>
-    <div class="car-slide">
-      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80&fit=crop" alt="Beauté">
-      <div class="car-overlay"></div>
-      <div class="car-content">
-        <div class="car-badge">💇 BEAUTÉ</div>
-        <div class="car-title">Prenez soin de vous</div>
-        <div class="car-desc">Salons, esthétique, massages, fitness. Les meilleurs professionnels.</div>
-        <button class="car-btn" onclick="filterCat('beaute')">Réserver →</button>
-      </div>
-    </div>
-    <div class="car-slide">
-      <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&q=80&fit=crop" alt="Véhicules">
-      <div class="car-overlay"></div>
-      <div class="car-content">
-        <div class="car-badge">🚗 VÉHICULES</div>
-        <div class="car-title">Votre prochain véhicule vous attend</div>
-        <div class="car-desc">Voitures, motos, pièces. Achat, vente et location en confiance.</div>
-        <button class="car-btn" onclick="filterCat('vehicules')">Voir les véhicules →</button>
-      </div>
-    </div>
+    <div class="car-slide"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80&fit=crop" alt="Immobilier"><div class="car-overlay"></div><div class="car-content"><div class="car-badge">🏠 IMMOBILIER</div><div class="car-title">Trouvez votre maison idéale</div><div class="car-desc">Des milliers d'annonces immobilières. Vente, location, terrain partout en Afrique.</div><button class="car-btn" onclick="filterCat('immobilier')">Voir les annonces →</button></div></div>
+    <div class="car-slide"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80&fit=crop" alt="Emploi"><div class="car-overlay"></div><div class="car-content"><div class="car-badge">💼 EMPLOI</div><div class="car-title">Décrochez votre emploi de rêve</div><div class="car-desc">Offres d'emploi exclusives. Postulez directement via WhatsApp en 1 clic.</div><button class="car-btn" onclick="filterCat('emploi')">Voir les offres →</button></div></div>
+    <div class="car-slide"><img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1200&q=80&fit=crop" alt="Rencontres"><div class="car-overlay"></div><div class="car-content"><div class="car-badge">💕 RENCONTRES</div><div class="car-title">Trouvez votre âme sœur</div><div class="car-desc">Rencontres sérieuses et sécurisées. Rendez-vous toujours en lieu public.</div><button class="car-btn" onclick="filterCat('rencontres')">Découvrir →</button></div></div>
+    <div class="car-slide"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80&fit=crop" alt="Commerce"><div class="car-overlay"></div><div class="car-content"><div class="car-badge">🛍️ COMMERCE</div><div class="car-title">Achetez et vendez localement</div><div class="car-desc">Mode, électronique, meubles... Les meilleures offres près de chez vous.</div><button class="car-btn" onclick="filterCat('commerce')">Explorer →</button></div></div>
+    <div class="car-slide"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80&fit=crop" alt="Beauté"><div class="car-overlay"></div><div class="car-content"><div class="car-badge">💇 BEAUTÉ</div><div class="car-title">Prenez soin de vous</div><div class="car-desc">Salons, esthétique, massages, fitness. Les meilleurs professionnels de beauté.</div><button class="car-btn" onclick="filterCat('beaute')">Réserver →</button></div></div>
+    <div class="car-slide"><img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&q=80&fit=crop" alt="Véhicules"><div class="car-overlay"></div><div class="car-content"><div class="car-badge">🚗 VÉHICULES</div><div class="car-title">Votre prochain véhicule vous attend</div><div class="car-desc">Voitures, motos, pièces détachées. Achat, vente et location en toute confiance.</div><button class="car-btn" onclick="filterCat('vehicules')">Voir →</button></div></div>
   </div>
-  <button class="car-nav c-prev" onclick="carMove(-1)">‹</button>
-  <button class="car-nav c-next" onclick="carMove(1)">›</button>
+  <button class="car-nav c-prev" onclick="carMove(-1)">&#8249;</button>
+  <button class="car-nav c-next" onclick="carMove(1)">&#8250;</button>
   <div class="car-dots" id="carDots"></div>
 </div>
 
-<!-- STATS -->
+<!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-inner">
     <div class="stat-item"><div class="stat-n" id="stat-ads">0</div><div class="stat-l">Annonces</div></div>
@@ -485,18 +439,18 @@ input,select,textarea{font-family:'Sora',sans-serif}
 </div>
 
 <!-- PUB 1 -->
-<div class="pub-wrap" id="pub1"><div class="pub-label">📢 Partenaire AJAPRO</div><a id="pub1-link" href="#" target="_blank"><img id="pub1-img" src="" alt="Pub"></a><div class="pub-nom" id="pub1-nom"></div></div>
+<div class="pub-wrap" id="pub1"><div class="pub-label">Partenaire AJAPRO</div><a id="pub1-link" href="#" target="_blank"><img id="pub1-img" src="" alt=""></a><div class="pub-nom" id="pub1-nom"></div></div>
 
-<!-- FILTRES AVANCES -->
-<div class="filters-bar" id="filtersBar">
+<!-- FILTRES -->
+<div class="filters-bar">
   <div class="filters-inner">
-    <div style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;font-weight:600">Filtres de recherche</div>
+    <div class="filters-label">Filtrer les annonces</div>
     <div class="filters-row">
-      <select class="filter-select" id="f-pays" onchange="applyFilters()">
+      <select class="filter-select" id="f-pays" onchange="updateVilles();applyFilters()">
         <option value="">Tous les pays</option>
-        <option>Côte d'Ivoire</option><option>Sénégal</option><option>Cameroun</option>
+        <option>Cote d'Ivoire</option><option>Senegal</option><option>Cameroun</option>
         <option>Mali</option><option>Burkina Faso</option><option>Niger</option>
-        <option>Togo</option><option>Bénin</option><option>Guinée</option>
+        <option>Togo</option><option>Benin</option><option>Guinee</option>
         <option>Ghana</option><option>Nigeria</option><option>Congo</option>
         <option>France</option><option>Belgique</option><option>Canada</option>
       </select>
@@ -504,17 +458,17 @@ input,select,textarea{font-family:'Sora',sans-serif}
         <option value="">Toutes les villes</option>
       </select>
       <select class="filter-select" id="f-date" onchange="applyFilters()">
-        <option value="">Toutes les dates</option>
+        <option value="">Toutes dates</option>
         <option value="today">Aujourd'hui</option>
         <option value="week">Cette semaine</option>
         <option value="month">Ce mois</option>
       </select>
       <div class="price-inputs">
-        <input class="price-inp" type="number" id="f-min" placeholder="Min FCFA" oninput="applyFilters()">
-        <span style="font-size:.7rem;color:var(--muted)">→</span>
-        <input class="price-inp" type="number" id="f-max" placeholder="Max FCFA" oninput="applyFilters()">
+        <input class="price-inp" type="number" id="f-min" placeholder="Min F CFA" oninput="applyFilters()">
+        <span style="font-size:.7rem;color:var(--muted)">-</span>
+        <input class="price-inp" type="number" id="f-max" placeholder="Max F CFA" oninput="applyFilters()">
       </div>
-      <button class="filter-reset" onclick="resetFilters()">Réinitialiser</button>
+      <button class="filter-reset" onclick="resetFilters()">Reset</button>
     </div>
   </div>
 </div>
@@ -522,7 +476,7 @@ input,select,textarea{font-family:'Sora',sans-serif}
 <!-- CATEGORIES -->
 <div class="cats-section">
   <div class="cats-inner">
-    <div class="cats-label">Toutes les catégories</div>
+    <div class="cats-label" id="cats-label">Toutes les catégories</div>
     <div class="cats-grid" id="catsGrid"></div>
   </div>
 </div>
@@ -530,13 +484,13 @@ input,select,textarea{font-family:'Sora',sans-serif}
 <!-- SPONSORS -->
 <div class="sponsors-section">
   <div class="sponsors-inner">
-    <div class="sponsors-title">Nos partenaires & sponsors</div>
+    <div class="sponsors-title">Nos partenaires &amp; sponsors</div>
     <div class="sponsors-row" id="sponsorsRow"></div>
   </div>
 </div>
 
 <!-- PUB 2 -->
-<div class="pub-wrap" id="pub2"><div class="pub-label">📢 Partenaire AJAPRO</div><a id="pub2-link" href="#" target="_blank"><img id="pub2-img" src="" alt="Pub"></a><div class="pub-nom" id="pub2-nom"></div></div>
+<div class="pub-wrap" id="pub2"><div class="pub-label">Partenaire AJAPRO</div><a id="pub2-link" href="#" target="_blank"><img id="pub2-img" src="" alt=""></a><div class="pub-nom" id="pub2-nom"></div></div>
 
 <!-- ANNONCES -->
 <div class="annonces-section">
@@ -545,29 +499,27 @@ input,select,textarea{font-family:'Sora',sans-serif}
   </div>
   <div class="annonces-grid" id="annoncesGrid"></div>
   <div id="noResults" style="text-align:center;padding:36px 20px;display:none">
-    <div style="font-size:3rem;margin-bottom:12px">🔍</div>
-    <div style="font-size:.82rem;color:var(--muted);margin-bottom:14px" id="noResultsText">Aucune annonce trouvée</div>
+    <div style="font-size:3rem;margin-bottom:12px">📋</div>
+    <div style="font-size:.8rem;color:var(--muted);margin-bottom:14px">Aucune annonce trouvée</div>
     <button class="nb nb-in" onclick="goScreen('publishScreen')" style="padding:10px 20px">+ Publier la première annonce</button>
   </div>
 </div>
 
 <!-- PUB 3 -->
-<div class="pub-wrap" id="pub3"><div class="pub-label">📢 Partenaire AJAPRO</div><a id="pub3-link" href="#" target="_blank"><img id="pub3-img" src="" alt="Pub"></a><div class="pub-nom" id="pub3-nom"></div></div>
+<div class="pub-wrap" id="pub3"><div class="pub-label">Partenaire AJAPRO</div><a id="pub3-link" href="#" target="_blank"><img id="pub3-img" src="" alt=""></a><div class="pub-nom" id="pub3-nom"></div></div>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-logo-row">
-      <div style="font-size:1.5rem">✋</div>
-      <div><div class="footer-logo-text">AJA<span>PRO</span></div><div style="font-size:.5rem;color:var(--gold2);letter-spacing:.1em">Votre Marché, Votre Succès</div></div>
+      <div style="font-size:1.4rem">✋</div>
+      <div><div class="footer-logo-text">AJA<span>PRO</span></div><div style="font-size:.49rem;color:var(--gold2);letter-spacing:.09em">Votre Marché, Votre Succès</div></div>
       <span class="free-badge">100% GRATUIT</span>
     </div>
-    <p class="footer-desc">La plateforme de petites annonces 100% gratuite pour l'Afrique. Immobilier, emploi, commerce, rencontres et bien plus.</p>
+    <p class="footer-desc">La plateforme de petites annonces 100% gratuite pour l'Afrique. Immobilier, emploi, commerce, rencontres et bien plus dans 47 pays.</p>
     <div class="footer-disclaimer">
-      <div class="footer-disclaimer-title">⚠️ Avertissement & Responsabilité</div>
-      <div class="footer-disclaimer-text">
-        AJAPRO est une plateforme de mise en relation uniquement. Ne payez jamais d'argent avant d'avoir rencontré la personne physiquement dans un lieu public. AJAPRO ne garantit pas l'identité des utilisateurs et décline toute responsabilité pour les transactions, rencontres ou accords entre membres. Signalez tout abus à contact@ajapro.ci.
-      </div>
+      <div class="footer-disclaimer-title">Avertissement et Responsabilité</div>
+      <div class="footer-disclaimer-text">AJAPRO est une plateforme de mise en relation uniquement. Ne payez jamais d'argent avant d'avoir rencontré la personne dans un lieu public. AJAPRO ne garantit pas l'identité des utilisateurs et décline toute responsabilité pour les transactions entre membres. Signalez tout abus à contact@ajapro.ci.</div>
     </div>
     <div class="footer-contact">
       📍 Abidjan, Côte d'Ivoire<br>
@@ -585,8 +537,8 @@ input,select,textarea{font-family:'Sora',sans-serif}
   </div>
 </footer>
 
-<!-- BOUTON RETOUR EN HAUT -->
-<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:70px;right:14px;width:40px;height:40px;background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;border:none;border-radius:50%;font-size:1.1rem;z-index:150;box-shadow:0 4px 14px rgba(15,37,87,.35);cursor:pointer">↑</button>
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- BNAV -->
 <nav class="bnav">
@@ -608,52 +560,51 @@ input,select,textarea{font-family:'Sora',sans-serif}
   <div class="scr-hdr"><button class="back-btn" onclick="hideScreen('publishScreen')">←</button><div class="scr-title">➕ Publier une annonce</div></div>
   <div class="form-body">
     <div class="form-title">Nouvelle annonce</div>
-    <div class="form-sub">100% gratuit · Visible par tous immédiatement</div>
+    <div class="form-sub">100% gratuit · Visible immédiatement</div>
     <div class="fgrp"><label>Titre *</label><input type="text" id="pub-title" placeholder="Ex: Villa 4 chambres à Cocody"></div>
     <div class="fgrp"><label>Catégorie *</label>
       <select id="pub-cat" onchange="checkRencontresCat()">
-        <option value="">Sélectionner...</option>
+        <option value="">Choisir...</option>
         <option value="immobilier">🏠 Immobilier</option>
         <option value="emploi">💼 Emploi & Formation</option>
-        <option value="services">🛠️ Services Professionnels</option>
+        <option value="services">🛠️ Services</option>
         <option value="beaute">💇 Beauté & Bien-être</option>
         <option value="commerce">🛍️ Commerce & Vente</option>
         <option value="vehicules">🚗 Véhicules</option>
         <option value="restauration">🍽️ Restauration</option>
         <option value="agriculture">🌾 Agriculture</option>
-        <option value="rencontres">💕 Rencontres & Événements</option>
-        <option value="numerique">📱 Services Numériques</option>
+        <option value="rencontres">💕 Rencontres</option>
+        <option value="numerique">📱 Numérique</option>
         <option value="education">🎓 Éducation</option>
         <option value="evenements">💍 Événements</option>
         <option value="sante">🏥 Santé</option>
       </select>
     </div>
-    <!-- RENCONTRES FIELDS (affichés si cat=rencontres) -->
     <div id="rencontresFields" style="display:none">
       <div class="rencontre-banner">
-        <div class="rb-title">⚠️ Conseils de sécurité AJAPRO</div>
+        <div class="rb-title">⚠️ Sécurité AJAPRO — Rencontres</div>
         <ul class="rb-list">
           <li>Rencontrez-vous toujours dans un lieu public</li>
           <li>Ne payez jamais d'argent avant une rencontre réelle</li>
           <li>Ne partagez jamais vos informations bancaires</li>
-          <li>AJAPRO n'est pas responsable des rencontres</li>
+          <li>AJAPRO n'est pas responsable des rencontres entre membres</li>
         </ul>
       </div>
       <div class="fgrp-row">
         <div class="fgrp"><label>Type de rencontre</label>
           <select id="pub-orientation">
-            <option value="">Sélectionner...</option>
+            <option value="">Choisir...</option>
             <option>Hétérosexuel(le)</option>
             <option>Gay / Homme cherche Homme</option>
             <option>Lesbienne / Femme cherche Femme</option>
             <option>Bisexuel(le)</option>
             <option>Amitié uniquement</option>
-            <option>Rencontre professionnelle</option>
+            <option>Réseau professionnel</option>
           </select>
         </div>
         <div class="fgrp"><label>Je cherche</label>
           <select id="pub-cherche">
-            <option value="">Sélectionner...</option>
+            <option value="">Choisir...</option>
             <option>Relation sérieuse / Mariage</option>
             <option>Relation amoureuse</option>
             <option>Amitié</option>
@@ -665,7 +616,7 @@ input,select,textarea{font-family:'Sora',sans-serif}
         <div class="fgrp"><label>Âge</label><input type="number" id="pub-age" placeholder="Ex: 28" min="18" max="80"></div>
         <div class="fgrp"><label>Situation</label>
           <select id="pub-situation">
-            <option value="">Sélectionner...</option>
+            <option value="">Choisir...</option>
             <option>Célibataire</option>
             <option>Divorcé(e)</option>
             <option>Veuf(ve)</option>
@@ -673,28 +624,28 @@ input,select,textarea{font-family:'Sora',sans-serif}
         </div>
       </div>
     </div>
-    <div class="fgrp"><label>Description *</label><textarea id="pub-desc" placeholder="Décrivez votre annonce en détail..."></textarea></div>
+    <div class="fgrp"><label>Description *</label><textarea id="pub-desc" placeholder="Décrivez en détail votre annonce..."></textarea></div>
     <div class="fgrp-row">
-      <div class="fgrp"><label>Prix (FCFA)</label><input type="text" id="pub-price" placeholder="Ex: 150 000"></div>
+      <div class="fgrp"><label>Prix (F CFA)</label><input type="text" id="pub-price" placeholder="Ex: 150 000"></div>
       <div class="fgrp"><label>Localisation *</label><input type="text" id="pub-loc" placeholder="Ex: Cocody, Abidjan"></div>
     </div>
-    <div class="fgrp"><label>Statut de l'annonce</label>
+    <div class="fgrp"><label>Statut</label>
       <select id="pub-statut">
         <option value="active">Active — visible par tous</option>
-        <option value="urgent">URGENT — priorité en haut</option>
+        <option value="urgent">URGENT — priorité</option>
         <option value="closed">Clôturée — plus de contacts</option>
       </select>
     </div>
     <div class="fgrp">
       <label>Photos (jusqu'à 6)</label>
       <div class="photo-gallery-grid" id="photoGallery"></div>
-      <div class="upload-progress" id="uploadProgress">⏳ Traitement...</div>
+      <div class="upload-progress" id="uploadProgress">Traitement...</div>
     </div>
     <div class="wa-section">
       <div class="wa-title">💬 Contacts (obligatoires)</div>
-      <div class="fgrp"><label>Numéro WhatsApp *</label><input type="tel" id="pub-wa" placeholder="+225 07 XX XX XX XX"></div>
-      <div class="fgrp"><label>Numéro téléphone</label><input type="tel" id="pub-tel" placeholder="+225 07 XX XX XX XX"></div>
-      <div class="fgrp"><label>Nom du vendeur</label><input type="text" id="pub-seller" placeholder="Votre nom"></div>
+      <div class="fgrp"><label>WhatsApp *</label><input type="tel" id="pub-wa" placeholder="+225 07 XX XX XX XX"></div>
+      <div class="fgrp"><label>Téléphone</label><input type="tel" id="pub-tel" placeholder="+225 07 XX XX XX XX"></div>
+      <div class="fgrp"><label>Votre nom</label><input type="text" id="pub-seller" placeholder="Nom affiché"></div>
     </div>
     <button class="btn-submit" onclick="publishAd()">✅ Publier gratuitement</button>
   </div>
@@ -722,8 +673,8 @@ input,select,textarea{font-family:'Sora',sans-serif}
     <button class="modal-close" onclick="closeAuth()">✕</button>
     <div style="text-align:center;margin-bottom:14px">
       <div class="auth-logo-mark">✋</div>
-      <div style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--navy)">Bienvenue sur AJAPRO</div>
-      <div style="font-size:.72rem;color:var(--muted);margin-top:3px">Votre Marché, Votre Succès</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy)">Bienvenue sur AJAPRO</div>
+      <div style="font-size:.7rem;color:var(--muted);margin-top:3px">Votre Marché, Votre Succès</div>
     </div>
     <div class="auth-tabs">
       <button class="auth-tab on" id="tab-login" onclick="switchAuth('login')">Connexion</button>
@@ -733,15 +684,15 @@ input,select,textarea{font-family:'Sora',sans-serif}
       <div class="fgrp"><label>Email</label><input type="email" id="lg-email" placeholder="votre@email.com"></div>
       <div class="fgrp"><label>Mot de passe</label><input type="password" id="lg-pwd" placeholder="••••••••"></div>
       <button class="btn-submit" onclick="login()">Se connecter</button>
-      <div style="text-align:center;margin-top:10px;font-size:.72rem;color:var(--muted)">Pas de compte ? <a onclick="switchAuth('register')" style="color:var(--blue);font-weight:600;cursor:pointer">S'inscrire</a></div>
+      <div style="text-align:center;margin-top:10px;font-size:.71rem;color:var(--muted)">Pas de compte ? <span onclick="switchAuth('register')" style="color:var(--blue);font-weight:600;cursor:pointer">S'inscrire</span></div>
     </div>
     <div id="registerForm" style="display:none">
-      <div class="fgrp"><label>Prénom & Nom *</label><input type="text" id="rg-name" placeholder="Votre nom complet"></div>
+      <div class="fgrp"><label>Prénom &amp; Nom *</label><input type="text" id="rg-name" placeholder="Votre nom complet"></div>
       <div class="fgrp"><label>Email *</label><input type="email" id="rg-email" placeholder="votre@email.com"></div>
       <div class="fgrp"><label>Téléphone *</label><input type="tel" id="rg-tel" placeholder="+225 07 XX XX XX XX"></div>
       <div class="fgrp"><label>Mot de passe *</label><input type="password" id="rg-pwd" placeholder="Minimum 6 caractères"></div>
       <button class="btn-submit" onclick="register()">Créer mon compte gratuit</button>
-      <div style="text-align:center;margin-top:10px;font-size:.72rem;color:var(--muted)">Déjà membre ? <a onclick="switchAuth('login')" style="color:var(--blue);font-weight:600;cursor:pointer">Se connecter</a></div>
+      <div style="text-align:center;margin-top:10px;font-size:.71rem;color:var(--muted)">Déjà membre ? <span onclick="switchAuth('login')" style="color:var(--blue);font-weight:600;cursor:pointer">Se connecter</span></div>
     </div>
   </div>
 </div>
@@ -753,14 +704,14 @@ input,select,textarea{font-family:'Sora',sans-serif}
 <div class="admin-scr" id="adminScr">
   <div class="a-hdr">
     <button onclick="closeAdmin()" style="background:none;border:none;font-size:1.1rem;color:rgba(255,255,255,.6);cursor:pointer">←</button>
-    <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff;flex:1">⚙️ Admin AJAPRO</div>
-    <button onclick="closeAdmin()" style="background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);color:#FCA5A5;padding:4px 10px;border-radius:6px;font-size:.66rem;font-weight:600;cursor:pointer">Quitter</button>
+    <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;flex:1">⚙️ Admin AJAPRO</div>
+    <button onclick="closeAdmin()" style="background:rgba(220,38,38,.2);border:1px solid rgba(220,38,38,.4);color:#FCA5A5;padding:4px 10px;border-radius:6px;font-size:.64rem;font-weight:600;cursor:pointer">Quitter</button>
   </div>
   <div id="adminLoginWrap" style="padding:22px 16px">
-    <div style="color:rgba(255,255,255,.6);font-size:.78rem;margin-bottom:14px;text-align:center">Panneau réservé à l'administrateur</div>
+    <div style="color:rgba(255,255,255,.6);font-size:.77rem;margin-bottom:14px;text-align:center">Panneau réservé à l'administrateur</div>
     <div class="a-form-group"><label>Email admin</label><input type="email" id="adm-email" placeholder="admin@ajapro.ci"></div>
     <div class="a-form-group"><label>Mot de passe</label><input type="password" id="adm-pwd" placeholder="••••••••"></div>
-    <button class="btn-add-pub" style="margin-top:9px" onclick="adminLogin()">Accéder</button>
+    <button class="btn-add-pub" style="margin-top:9px" onclick="adminLogin()">Accéder au panneau</button>
   </div>
   <div id="adminPanel" style="display:none">
     <div class="a-tabs">
@@ -774,200 +725,196 @@ input,select,textarea{font-family:'Sora',sans-serif}
         <div class="a-stat"><div class="a-stat-n" id="adm-tot-ads">0</div><div class="a-stat-l">Annonces</div></div>
         <div class="a-stat"><div class="a-stat-n" id="adm-tot-mbr">0</div><div class="a-stat-l">Membres</div></div>
         <div class="a-stat"><div class="a-stat-n">1 247</div><div class="a-stat-l">Visites/jour</div></div>
-        <div class="a-stat"><div class="a-stat-n" id="adm-pubs-n">0</div><div class="a-stat-l">Pubs</div></div>
+        <div class="a-stat"><div class="a-stat-n" id="adm-pubs-n">0</div><div class="a-stat-l">Pubs actives</div></div>
       </div>
     </div>
-    <div class="a-content" id="atab-annonces"><div id="admAdsList" style="font-size:.76rem;color:rgba(255,255,255,.5)">Chargement...</div></div>
-    <div class="a-content" id="atab-membres"><div id="admMbrList" style="font-size:.76rem;color:rgba(255,255,255,.5)">Chargement...</div></div>
+    <div class="a-content" id="atab-annonces"><div id="admAdsList" style="font-size:.75rem;color:rgba(255,255,255,.5)">Chargement...</div></div>
+    <div class="a-content" id="atab-membres"><div id="admMbrList" style="font-size:.75rem;color:rgba(255,255,255,.5)">Chargement...</div></div>
     <div class="a-content" id="atab-pubs">
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:12px;margin-bottom:11px">
-        <div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;font-weight:700">💰 Tarifs</div>
-        <div style="font-size:.72rem;color:rgba(255,255,255,.55);line-height:2">1 semaine → <strong style="color:#fff">25 000 F CFA</strong><br>1 mois → <strong style="color:#fff">75 000 F CFA</strong><br>Exclusif → <strong style="color:#fff">350 000 F CFA/mois</strong></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:12px;margin-bottom:10px">
+        <div style="font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;font-weight:700">💰 Tarifs pub</div>
+        <div style="font-size:.71rem;color:rgba(255,255,255,.55);line-height:2">1 semaine → <strong style="color:#fff">25 000 F CFA</strong><br>1 mois → <strong style="color:#fff">75 000 F CFA</strong><br>Exclusif → <strong style="color:#fff">350 000 F CFA/mois</strong></div>
       </div>
       <div id="pubBannersAdmin"></div>
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:13px;margin-top:11px">
-        <div style="font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:9px;font-weight:700">➕ Ajouter une bannière</div>
-        <div class="a-form-group"><label>Emplacement</label><select id="pub-emp"><option value="1">Bannière 1 — Après carousel</option><option value="2">Bannière 2 — Entre sections</option><option value="3">Bannière 3 — Avant footer</option></select></div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:12px;margin-top:10px">
+        <div style="font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;font-weight:700">➕ Ajouter une bannière</div>
+        <div class="a-form-group"><label>Emplacement</label><select id="pub-emp"><option value="1">Bannière 1 — Après carousel</option><option value="2">Bannière 2 — Milieu</option><option value="3">Bannière 3 — Avant footer</option></select></div>
         <div class="a-form-group"><label>Nom de la marque</label><input type="text" id="pub-nom" placeholder="Ex: Orange CI"></div>
         <div class="a-form-group"><label>URL Image (imgbb.com)</label><input type="text" id="pub-img" placeholder="https://i.ibb.co/..."></div>
         <div class="a-form-group"><label>Lien du site</label><input type="text" id="pub-lien" placeholder="https://marque.com"></div>
-        <button class="btn-add-pub" onclick="activerPub()">✅ Activer</button>
+        <button class="btn-add-pub" onclick="activerPub()">✅ Activer la bannière</button>
       </div>
     </div>
   </div>
 </div>
 <script>
+// CONFIG
 var SUPA='https://bfejsinnxibxcmlynliu.supabase.co';
 var KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmZWpzaW5ueGlieGNtbHlubGl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc5MjY2NzQsImV4cCI6MjA2MzUwMjY3NH0.rAYi3FaCDMbSBMpEfNSGFbIxHAJaFILJLqgcpT7YjS4';
 var W3F='da6e84db-b946-4696-80c1-057a579ea4bf';
-var AE='admin@ajapro.ci',AP='ajapro2026';
+var AE='admin@ajapro.ci', AP='ajapro2026';
 function H(){return{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json'};}
 
-var lang='fr',user=null,ads=[],members=[],favs=[],pubData={pub1:[],pub2:[],pub3:[]};
-var pubIdx={pub1:0,pub2:0,pub3:0},carIdx=0,curAdId=null,photoUrls=[],pendingAction=null;
+// ETAT
+var lang='fr', user=null, ads=[], members=[], favs=[];
+var pubData={pub1:[],pub2:[],pub3:[]}, pubIdx={pub1:0,pub2:0,pub3:0};
+var carIdx=0, curAdId=null, photoUrls=[], pendingAction=null, activeCat=null;
 
-// CITATIONS HUMOUR + SERIEUX
+// CITATIONS
 var citations=[
-  {text:"Le succès n'est pas final, l'échec n'est pas fatal. C'est le courage de continuer qui compte.",author:"Winston Churchill",tag:"Sagesse"},
-  {text:"Un arbre qui grandit seul ne produit pas de fruits. Ensemble, nous prospérons.",author:"Proverbe africain",tag:"Afrique"},
-  {text:"L'avenir appartient à ceux qui croient en la beauté de leurs rêves.",author:"Eleanor Roosevelt",tag:"Inspiration"},
-  {text:"Si tu veux aller vite, marche seul. Si tu veux aller loin, marche ensemble.",author:"Proverbe africain",tag:"Sagesse"},
-  {text:"Votre marché, c'est votre futur. Bâtissez-le avec confiance et persévérance.",author:"AJAPRO",tag:"Motivation"},
-  {text:"En Afrique, chaque jour est une opportunité de créer quelque chose de grand.",author:"AJAPRO",tag:"Afrique"},
-  {text:"J'ai essayé d'être patient, mais ma connexion internet est revenue avant moi.",author:"Humour africain",tag:"Humour"},
-  {text:"Le bonheur, c'est comme un bon attiéké : ça se prépare lentement mais ça vaut le détour !",author:"Sagesse ivoirienne",tag:"Humour"},
-  {text:"Un entrepreneur africain ne cherche pas d'excuses, il cherche des solutions.",author:"AJAPRO",tag:"Business"},
-  {text:"La richesse d'un pays, c'est ses hommes. En Afrique, nous sommes riches.",author:"Proverbe africain",tag:"Afrique"},
-  {text:"Mon patron m'a dit que je ne valais rien. J'ai créé ma boîte. Maintenant j'engage des patrons.",author:"Humour entrepreneur",tag:"Humour"},
-  {text:"Ne remets pas à demain ce que tu peux publier sur AJAPRO aujourd'hui !",author:"AJAPRO",tag:"Humour"},
-  {text:"L'unique façon de faire du bon travail est d'aimer ce que vous faites.",author:"Steve Jobs",tag:"Travail"},
-  {text:"La connaissance est le meilleur investissement que vous puissiez faire.",author:"Benjamin Franklin",tag:"Sagesse"},
-  {text:"Un bon vendeur ne vend pas un produit. Il crée une relation.",author:"Proverbe commerce",tag:"Business"},
-  {text:"Vendre sur AJAPRO, c'est comme planter un manguier : les fruits viendront !",author:"AJAPRO",tag:"Humour"},
-  {text:"Ce n'est pas parce que les choses sont difficiles que nous n'osons pas. C'est parce que nous n'osons pas qu'elles sont difficiles.",author:"Sénèque",tag:"Courage"},
-  {text:"En Côte d'Ivoire, on dit : même la tortue arrive si elle ne s'arrête pas.",author:"Sagesse ivoirienne",tag:"Afrique"},
-  {text:"Celui qui ne risque rien n'a rien. Mais celui qui poste sur AJAPRO a tout à gagner !",author:"AJAPRO",tag:"Humour"},
-  {text:"L'argent ne fait pas le bonheur... mais une bonne annonce sur AJAPRO, ça aide !",author:"AJAPRO",tag:"Humour"},
+  {t:"Le succes n'est pas final. C'est le courage de continuer qui compte.",a:"Winston Churchill"},
+  {t:"Un arbre qui grandit seul ne produit pas de fruits. Ensemble nous prosperons.",a:"Proverbe africain"},
+  {t:"L'avenir appartient a ceux qui croient en la beaute de leurs reves.",a:"Eleanor Roosevelt"},
+  {t:"Si tu veux aller vite marche seul. Si tu veux aller loin marche ensemble.",a:"Proverbe africain"},
+  {t:"Votre marche c'est votre futur. Batissez-le avec confiance et perseverance.",a:"AJAPRO"},
+  {t:"En Afrique chaque jour est une opportunite de creer quelque chose de grand.",a:"AJAPRO"},
+  {t:"J'ai essaye d'etre patient mais ma connexion internet est revenue avant moi.",a:"Humour africain"},
+  {t:"Le bonheur c'est comme un bon attieke : ca se prepare lentement mais ca vaut le detour !",a:"Sagesse ivoirienne"},
+  {t:"Un entrepreneur africain ne cherche pas d'excuses, il cherche des solutions.",a:"AJAPRO"},
+  {t:"La richesse d'un pays c'est ses hommes. En Afrique nous sommes riches.",a:"Proverbe africain"},
+  {t:"Mon patron m'a dit que je ne valais rien. J'ai cree ma boite. Maintenant j'engage des patrons.",a:"Humour entrepreneur"},
+  {t:"Ne remets pas a demain ce que tu peux publier sur AJAPRO aujourd'hui !",a:"AJAPRO"},
+  {t:"L'unique facon de faire du bon travail est d'aimer ce que vous faites.",a:"Steve Jobs"},
+  {t:"La connaissance est le meilleur investissement que vous puissiez faire.",a:"Benjamin Franklin"},
+  {t:"Un bon vendeur ne vend pas un produit. Il cree une relation.",a:"Proverbe commerce"},
+  {t:"Vendre sur AJAPRO c'est comme planter un manguier : les fruits viendront !",a:"AJAPRO"},
+  {t:"En Cote d'Ivoire on dit : meme la tortue arrive si elle ne s'arrete pas.",a:"Sagesse ivoirienne"},
+  {t:"Celui qui ne risque rien n'a rien. Mais celui qui poste sur AJAPRO a tout a gagner !",a:"AJAPRO"},
+  {t:"L'argent ne fait pas le bonheur... mais une bonne annonce sur AJAPRO ca aide !",a:"AJAPRO"},
+  {t:"Ce n'est pas parce que les choses sont difficiles que nous n'osons pas.",a:"Seneque"},
 ];
 var citIdx=0;
-function rotateCitation(){
-  citIdx=(citIdx+1)%citations.length;
-  showCitation();
-}
 function showCitation(){
   var c=citations[citIdx];
-  var el=document.getElementById('citText');
-  var ea=document.getElementById('citAuthor');
-  if(el)el.textContent='"'+c.text+'"';
-  if(ea)ea.textContent='— '+c.author+' · '+c.tag;
+  var e1=document.getElementById('citText');
+  var e2=document.getElementById('citAuthor');
+  if(e1)e1.textContent='"'+c.t+'"';
+  if(e2)e2.textContent='— '+c.a;
 }
+function rotateCitation(){citIdx=(citIdx+1)%citations.length;showCitation();}
 setInterval(rotateCitation,8000);
 
-// METEO + GEOLOCALISATION
+// METEO
 function loadWeather(){
   var el=document.getElementById('navWeather');
-  var elM=document.getElementById('weatherMobileText');
-  if(!el)return;
-  if('geolocation' in navigator){
-    navigator.geolocation.getCurrentPosition(function(pos){
-      var lat=pos.coords.latitude,lon=pos.coords.longitude;
-      fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current_weather=true')
-        .then(function(r){return r.json();})
-        .then(function(d){
-          var temp=Math.round(d.current_weather.temperature);
-          var wc=d.current_weather.weathercode;
-          var icon=wc<=3?'☀️':wc<=48?'⛅':wc<=67?'🌧️':'⛈️';
-          // Reverse geocoding léger
-          fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json&accept-language=fr')
-            .then(function(r2){return r2.json();})
-            .then(function(geo){
-              var city=geo.address.city||geo.address.town||geo.address.village||'Votre ville';
-              if(el)el.innerHTML='📍 '+city+' · '+temp+'°C '+icon;
-              if(elM)elM.textContent='📍 '+city+' · '+temp+'°C '+icon;
-            }).catch(function(){
-              if(el)el.innerHTML='📍 Ma position · '+temp+'°C '+icon;
-            if(elM)elM.textContent='📍 Ma position · '+temp+'°C '+icon;
-            });
-        }).catch(function(){
-          if(el)el.innerHTML='📍 Ma position';
-        });
-    },function(){
-      if(el)el.innerHTML='📍 Abidjan · 28°C ☀️';
-      if(elM)elM.textContent='📍 Abidjan · 28°C ☀️';
-    },{timeout:8000});
-  } else {
-    if(el)el.innerHTML='📍 Abidjan · 28°C ☀️';
-      if(elM)elM.textContent='📍 Abidjan · 28°C ☀️';
+  var em=document.getElementById('weatherMobileText');
+  if(!navigator.geolocation){
+    if(el)el.innerHTML='Abidjan 28C';
+    if(em)em.textContent='Abidjan · 28°C';
+    return;
   }
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var lat=pos.coords.latitude,lon=pos.coords.longitude;
+    fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current_weather=true')
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var t=Math.round(d.current_weather.temperature);
+      var wc=d.current_weather.weathercode;
+      var ic=wc<=3?'☀️':wc<=48?'⛅':wc<=67?'🌧️':'⛈️';
+      fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json&accept-language=fr')
+      .then(function(r2){return r2.json();})
+      .then(function(geo){
+        var city=geo.address.city||geo.address.town||geo.address.village||'Ma ville';
+        if(el)el.innerHTML='📍 '+city+' '+t+'°C '+ic;
+        if(em)em.textContent='📍 '+city+' · '+t+'°C '+ic;
+      }).catch(function(){
+        if(el)el.innerHTML='📍 '+t+'°C '+ic;
+        if(em)em.textContent='📍 '+t+'°C '+ic;
+      });
+    }).catch(function(){
+      if(el)el.innerHTML='📍 ...';
+    });
+  },function(){
+    if(el)el.innerHTML='📍 Abidjan 28°C';
+    if(em)em.textContent='📍 Abidjan · 28°C ☀️';
+  },{timeout:8000});
 }
 
-// VILLES PAR PAYS
-var villesParPays={
-  'Côte d'Ivoire':['Abidjan','Bouaké','Daloa','San-Pédro','Yamoussoukro','Korhogo','Man','Divo','Gagnoa','Aboisso'],
-  'Sénégal':['Dakar','Thiès','Saint-Louis','Ziguinchor','Kaolack','Mbour','Touba'],
-  'Cameroun':['Yaoundé','Douala','Bafoussam','Garoua','Maroua','Ngaoundéré'],
-  'Mali':['Bamako','Sikasso','Ségou','Mopti','Kayes','Tombouctou'],
-  'Burkina Faso':['Ouagadougou','Bobo-Dioulasso','Koudougou','Ouahigouya','Banfora'],
-  'Niger':['Niamey','Zinder','Maradi','Tahoua','Agadez'],
-  'Togo':['Lomé','Sokodé','Kpalimé','Atakpamé','Kara'],
-  'Bénin':['Cotonou','Porto-Novo','Parakou','Abomey','Natitingou'],
-  'Guinée':['Conakry','Nzérékoré','Kindia','Labé','Kankan'],
-  'Ghana':['Accra','Kumasi','Tamale','Sekondi-Takoradi'],
-  'Nigeria':['Lagos','Abuja','Kano','Ibadan','Port Harcourt'],
-  'Congo':['Brazzaville','Pointe-Noire','Dolisie'],
-  'France':['Paris','Lyon','Marseille','Bordeaux','Toulouse','Nantes'],
-  'Belgique':['Bruxelles','Liège','Gand','Anvers'],
-  'Canada':['Montréal','Toronto','Ottawa','Vancouver'],
+// VILLES
+var VP={
+  'Cote d'Ivoire':['Abidjan','Bouake','Daloa','San-Pedro','Yamoussoukro','Korhogo','Man','Divo','Gagnoa'],
+  'Senegal':['Dakar','Thies','Saint-Louis','Ziguinchor','Kaolack','Mbour','Touba'],
+  'Cameroun':['Yaounde','Douala','Bafoussam','Garoua','Maroua'],
+  'Mali':['Bamako','Sikasso','Segou','Mopti','Kayes'],
+  'Burkina Faso':['Ouagadougou','Bobo-Dioulasso','Koudougou','Ouahigouya'],
+  'Niger':['Niamey','Zinder','Maradi','Tahoua'],
+  'Togo':['Lome','Sokode','Kpalime','Atakpame'],
+  'Benin':['Cotonou','Porto-Novo','Parakou','Abomey'],
+  'Guinee':['Conakry','Nzerekore','Kindia','Labe'],
+  'Ghana':['Accra','Kumasi','Tamale'],
+  'Nigeria':['Lagos','Abuja','Kano','Ibadan'],
+  'Congo':['Brazzaville','Pointe-Noire'],
+  'France':['Paris','Lyon','Marseille','Bordeaux','Toulouse'],
+  'Belgique':['Bruxelles','Liege','Gand'],
+  'Canada':['Montreal','Toronto','Ottawa'],
 };
-
 function updateVilles(){
   var pays=document.getElementById('f-pays').value;
-  var villeSelect=document.getElementById('f-ville');
-  if(!villeSelect)return;
-  villeSelect.innerHTML='<option value="">Toutes les villes</option>';
-  if(pays&&villesParPays[pays]){
-    villesParPays[pays].forEach(function(v){
-      var opt=document.createElement('option');opt.value=v;opt.textContent=v;villeSelect.appendChild(opt);
+  var vs=document.getElementById('f-ville');
+  if(!vs)return;
+  vs.innerHTML='<option value="">Toutes les villes</option>';
+  if(pays&&VP[pays]){
+    VP[pays].forEach(function(v){
+      var o=document.createElement('option');o.value=v;o.textContent=v;vs.appendChild(o);
     });
   }
 }
 
-document.addEventListener('DOMContentLoaded',function(){
-  var fp=document.getElementById('f-pays');
-  if(fp)fp.addEventListener('change',function(){updateVilles();applyFilters();});
-});
-
-// LANGUES
+// LANGUE
 var T={
-  fr:{tagline:'Votre Marché, Votre Succès',cats:'Toutes les catégories',adsTitle:'Annonces récentes',adsSub:'Toutes catégories',
-    categories:{immobilier:'🏠 Immobilier',emploi:'💼 Emploi',services:'🛠️ Services',beaute:'💇 Beauté',commerce:'🛍️ Commerce',vehicules:'🚗 Véhicules',restauration:'🍽️ Restauration',agriculture:'🌾 Agriculture',rencontres:'💕 Rencontres',numerique:'📱 Numérique',education:'🎓 Éducation',evenements:'💍 Événements',sante:'🏥 Santé'}},
-  en:{tagline:'Your Market, Your Success',cats:'All categories',adsTitle:'Recent listings',adsSub:'All categories',
-    categories:{immobilier:'🏠 Real Estate',emploi:'💼 Jobs',services:'🛠️ Services',beaute:'💇 Beauty',commerce:'🛍️ Commerce',vehicules:'🚗 Vehicles',restauration:'🍽️ Restaurants',agriculture:'🌾 Agriculture',rencontres:'💕 Meetings',numerique:'📱 Digital',education:'🎓 Education',evenements:'💍 Events',sante:'🏥 Health'}}
+  fr:{tagline:'Votre Marche, Votre Succes',adsTitle:'Annonces recentes',adsSub:'Toutes categories',
+    cats:{immobilier:'Immobilier',emploi:'Emploi',services:'Services',beaute:'Beaute',commerce:'Commerce',vehicules:'Vehicules',restauration:'Restauration',agriculture:'Agriculture',rencontres:'Rencontres',numerique:'Numerique',education:'Education',evenements:'Evenements',sante:'Sante'},
+    icons:{immobilier:'🏠',emploi:'💼',services:'🛠️',beaute:'💇',commerce:'🛍️',vehicules:'🚗',restauration:'🍽️',agriculture:'🌾',rencontres:'💕',numerique:'📱',education:'🎓',evenements:'💍',sante:'🏥'}},
+  en:{tagline:'Your Market, Your Success',adsTitle:'Recent listings',adsSub:'All categories',
+    cats:{immobilier:'Real Estate',emploi:'Jobs',services:'Services',beaute:'Beauty',commerce:'Commerce',vehicules:'Vehicles',restauration:'Restaurants',agriculture:'Agriculture',rencontres:'Meetings',numerique:'Digital',education:'Education',evenements:'Events',sante:'Health'},
+    icons:{immobilier:'🏠',emploi:'💼',services:'🛠️',beaute:'💇',commerce:'🛍️',vehicules:'🚗',restauration:'🍽️',agriculture:'🌾',rencontres:'💕',numerique:'📱',education:'🎓',evenements:'💍',sante:'🏥'}}
 };
+
+function getCatLabel(cat){return (T[lang].icons[cat]||'')+(T[lang].cats[cat]||cat);}
+function getCatIcon(cat){return T[lang].icons[cat]||'📋';}
+
 function toggleLang(){
   lang=lang==='fr'?'en':'fr';
   document.getElementById('langBtn').textContent=lang==='fr'?'EN':'FR';
   document.getElementById('nav-tagline').textContent=T[lang].tagline;
   renderCats();renderAds();
-  toast(lang==='fr'?'Français activé':'English activated','success');
+  toast(lang==='fr'?'Francais active':'English activated','success');
 }
 
 // TOAST
 function toast(msg,type){
   var t=document.getElementById('toast');
-  t.textContent=msg;t.className='toast show'+(type?' '+type:'');
+  t.textContent=msg;
+  t.className='toast show'+(type?' '+type:'');
   setTimeout(function(){t.classList.remove('show');},3000);
 }
 
-// AUTH REQUIRE
-function requireAuth(action){
-  if(action==='publish') goScreen('publishScreen');
-  else if(action==='profile') goScreen('profileScreen');
-  else if(action==='detail'){
-    if(curAdId) openDetailById(curAdId);
-  }
-}
-
-// NAV
+// NAVIGATION
 function goScreen(id){
   document.getElementById(id).classList.add('visible');
   updateBnav(id);
   if(id==='profileScreen')renderProfileScreen();
-  if(id==='publishScreen'){initPhotoGallery();}
+  if(id==='publishScreen')initPhotoGallery();
 }
-function hideScreen(id){document.getElementById(id).classList.remove('visible');updateBnav('home');}
+function hideScreen(id){
+  document.getElementById(id).classList.remove('visible');
+  updateBnav('home');
+}
 function goHome(){
   ['publishScreen','detailScreen','profileScreen','catsScreen'].forEach(function(id){
     var e=document.getElementById(id);if(e)e.classList.remove('visible');
   });
-  document.getElementById('searchBar').style.display='none';
-  document.getElementById('searchInput').value='';
+  var sb=document.getElementById('searchBar');if(sb)sb.style.display='none';
+  var si=document.getElementById('searchInput');if(si)si.value='';
   activeCat=null;renderAds();updateBnav('home');
 }
 function updateBnav(a){
-  var m={publishScreen:'bn-pub',profileScreen:'bn-prof',catsScreen:'bn-cats',home:'bn-home',cats:'bn-cats',favs:'bn-favs'};
-  ['bn-home','bn-cats','bn-pub','bn-favs','bn-prof'].forEach(function(id){var e=document.getElementById(id);if(e)e.classList.remove('on');});
-  var e=document.getElementById(m[a]||'bn-home');if(e)e.classList.add('on');
+  var map={publishScreen:'bn-pub',profileScreen:'bn-prof',catsScreen:'bn-cats',home:'bn-home',favs:'bn-favs'};
+  ['bn-home','bn-cats','bn-pub','bn-favs','bn-prof'].forEach(function(id){
+    var e=document.getElementById(id);if(e)e.classList.remove('on');
+  });
+  var k=map[a]||'bn-home';
+  var e=document.getElementById(k);if(e)e.classList.add('on');
 }
 
 // SEARCH
@@ -975,21 +922,26 @@ function toggleSearchBar(){
   var bar=document.getElementById('searchBar');
   var inp=document.getElementById('searchInput');
   if(!bar.style.display||bar.style.display==='none'){
-    bar.style.display='block';setTimeout(function(){if(inp)inp.focus();},100);
+    bar.style.display='block';
+    if(inp)setTimeout(function(){inp.focus();},80);
   } else {
-    bar.style.display='none';if(inp)inp.value='';renderAds();
+    bar.style.display='none';
+    if(inp)inp.value='';
+    renderAds();
   }
 }
 function searchAds(q){
   if(!q||q.length<2){renderAds();return;}
   var q2=q.toLowerCase();
   renderAds(ads.filter(function(a){
-    return a.title.toLowerCase().includes(q2)||(a.description||a.desc||'').toLowerCase().includes(q2)||(a.location||a.loc||'').toLowerCase().includes(q2)||(T[lang].categories[a.cat]||'').toLowerCase().includes(q2);
+    return (a.title||'').toLowerCase().includes(q2)||
+      (a.description||a.desc||'').toLowerCase().includes(q2)||
+      (a.location||a.loc||'').toLowerCase().includes(q2)||
+      (T[lang].cats[a.cat]||'').toLowerCase().includes(q2);
   }));
 }
 
 // FILTERS
-var activeCat=null;
 function applyFilters(){
   var pays=document.getElementById('f-pays').value;
   var ville=document.getElementById('f-ville').value;
@@ -999,13 +951,16 @@ function applyFilters(){
   var now=new Date();
   var filtered=ads.filter(function(a){
     if(activeCat&&a.cat!==activeCat)return false;
-    if(pays&&!(a.location||a.loc||'').toLowerCase().includes(pays.toLowerCase())&&!pays.toLowerCase().includes('tout'))return false;
-    if(ville&&!(a.location||a.loc||'').toLowerCase().includes(ville.toLowerCase()))return false;
+    if(a.status==='deleted')return false;
+    var loc=(a.location||a.loc||'').toLowerCase();
+    if(pays&&!loc.includes(pays.toLowerCase().replace("'","'")))return false;
+    if(ville&&!loc.includes(ville.toLowerCase()))return false;
     if(date){
       var d=new Date(a.created_at||a.date||now);
+      var diff=(now-d)/86400000;
       if(date==='today'&&d.toDateString()!==now.toDateString())return false;
-      if(date==='week'){var diff=(now-d)/86400000;if(diff>7)return false;}
-      if(date==='month'){var diff2=(now-d)/86400000;if(diff2>30)return false;}
+      if(date==='week'&&diff>7)return false;
+      if(date==='month'&&diff>30)return false;
     }
     var p=parseInt((a.price||'0').replace(/\s/g,''));
     if(p>0&&(p<min||p>max))return false;
@@ -1016,7 +971,7 @@ function applyFilters(){
 function resetFilters(){
   ['f-pays','f-ville','f-date'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
   ['f-min','f-max'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
-  renderAds();toast('Filtres réinitialisés','info');
+  renderAds();toast('Filtres reinitialises','info');
 }
 
 // INIT
@@ -1043,81 +998,106 @@ function loadLocal(){
   }catch(e){}
 }
 
-// LOAD ADS
+// DEMO ADS
+var demoAds=[
+  {id:1,title:'Villa 4 chambres a Cocody',cat:'immobilier',description:'Belle villa de standing avec jardin, piscine et securite 24h. Quartier residentiel calme proche des commerces.',price:'450000000',location:'Cocody, Abidjan',seller_name:'Kouassi Immobilier',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80&fit=crop',status:'active',verified:true},
+  {id:2,title:'Developpeur Full Stack CDI urgent',cat:'emploi',description:'Startup tech cherche developpeur React/Node.js experimente. Teletravail possible, salaire attractif.',price:'Negociable',location:'Plateau, Abidjan',seller_name:'TechStart CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80&fit=crop',status:'urgent',verified:true},
+  {id:3,title:'iPhone 15 Pro Max Neuf scelle',cat:'commerce',description:'iPhone 15 Pro Max 256GB Titane. Jamais ouvert, boite scellee. Facture Apple disponible.',price:'650000',location:'Yopougon, Abidjan',seller_name:'TechShop CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&q=80&fit=crop',status:'active'},
+  {id:4,title:'Salon Beaute Royale Coiffure',cat:'beaute',description:'Salon professionnel. Tresses africaines, locks, defrisage et soins capillaires. Sur RDV ou sans attente.',price:'5000',location:'Marcory, Abidjan',seller_name:'Beaute Royale',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&fit=crop',status:'active'},
+  {id:5,title:'Toyota Corolla 2020 Premiere main',cat:'vehicules',description:'Toyota Corolla 2020, 45000 km, climatisee, boite automatique. Carnet entretien complet. Excellent etat.',price:'8500000',location:'Adjame, Abidjan',seller_name:'AutoPlus CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=80&fit=crop',status:'active',verified:true},
+  {id:6,title:'Restaurant Le Festin Specialites africaines',cat:'restauration',description:'Cuisine africaine authentique. Attieke poisson, sauce graine, thieboudienne. Maquis moderne avec terrasse.',price:'3500',location:'Treichville, Abidjan',seller_name:'Restaurant Le Festin',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80&fit=crop',status:'active'},
+  {id:7,title:'Rencontre serieuse Femme 28 ans',cat:'rencontres',description:'Jeune femme serieuse et dynamique cherche relation stable. Prefere rencontrer en lieu public. Serieux uniquement.',price:'0',location:'Cocody, Abidjan',seller_name:'Aminata K.',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80&fit=crop',status:'active',orientation:'Heterosexuel(le)',cherche:'Relation serieuse / Mariage'},
+  {id:8,title:'Terrain 500m2 viabilise Bingerville',cat:'immobilier',description:'Terrain viabilise avec titre foncier. Eau et electricite sur place. Ideal villa ou immeuble.',price:'22000000',location:'Bingerville',seller_name:'Foncier Invest CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80&fit=crop',status:'active'},
+  {id:9,title:'Appartement F3 meuble Centre Abidjan',cat:'immobilier',description:'Appartement 3 pieces entierement meuble, climatise. Gardiennage 24h. Disponible immediatement.',price:'150000',location:'Plateau, Abidjan',seller_name:'Immo Prestige CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80&fit=crop',status:'active',verified:true},
+  {id:10,title:'Cours soutien Maths Physique',cat:'education',description:'Professeur certifie, 10 ans experience. Cours particuliers domicile ou en ligne. Tous niveaux college lycee.',price:'10000',location:'Tout Abidjan',seller_name:'Prof. Kone',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80&fit=crop',status:'active'},
+];
+
 async function loadAds(){
-  var demoAds=[
-    {id:1,title:'Villa 4 chambres à Cocody',cat:'immobilier',description:'Belle villa de standing avec jardin, piscine et sécurité 24h. Quartier résidentiel calme.',price:'450000000',location:'Cocody, Abidjan',seller_name:'Kouassi Immobilier',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80&fit=crop',status:'active',verified:true},
-    {id:2,title:'Développeur Full Stack — CDI urgent',cat:'emploi',description:'Startup tech cherche développeur React/Node.js. Télétravail possible, salaire attractif.',price:'Négociable',location:'Plateau, Abidjan',seller_name:'TechStart CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80&fit=crop',status:'urgent',verified:true},
-    {id:3,title:'iPhone 15 Pro Max — Neuf scellé',cat:'commerce',description:'iPhone 15 Pro Max 256GB Titane. Jamais ouvert, boîte scellée. Facture Apple disponible.',price:'650000',location:'Yopougon, Abidjan',seller_name:'TechShop CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&q=80&fit=crop',status:'active'},
-    {id:4,title:'Salon Beauté Royale — Coiffure pro',cat:'beaute',description:'Salon professionnel. Tresses africaines, locks, défrisage et soins capillaires. Sur RDV ou sans attente.',price:'5000',location:'Marcory, Abidjan',seller_name:'Beauté Royale',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&fit=crop',status:'active'},
-    {id:5,title:'Toyota Corolla 2020 — Première main',cat:'vehicules',description:'Toyota Corolla 2020, 45 000 km, climatisée, boîte automatique. Carnet d'entretien complet.',price:'8500000',location:'Adjamé, Abidjan',seller_name:'AutoPlus CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=80&fit=crop',status:'active',verified:true},
-    {id:6,title:'Restaurant Le Festin — Spécialités africaines',cat:'restauration',description:'Cuisine africaine authentique. Attiéké poisson, sauce graine, thiéboudienne. Maquis moderne avec terrasse.',price:'3500',location:'Treichville, Abidjan',seller_name:'Restaurant Le Festin',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80&fit=crop',status:'active'},
-    {id:7,title:'Rencontre sérieuse — Femme 28 ans',cat:'rencontres',description:'Jeune femme sérieuse et dynamique cherche relation stable. Préfère rencontrer en lieu public. Sérieux uniquement.',price:'0',location:'Cocody, Abidjan',seller_name:'Aminata K.',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80&fit=crop&crop=faces',status:'active',orientation:'Hétérosexuel(le)',cherche:'Relation sérieuse / Mariage'},
-    {id:8,title:'Terrain 500m² viabilisé — Bingerville',cat:'immobilier',description:'Terrain viabilisé avec titre foncier disponible. Eau et électricité sur place. Idéal villa.',price:'22000000',location:'Bingerville',seller_name:'Foncier Invest CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80&fit=crop',status:'active'},
-    {id:9,title:'Appartement F3 meublé — Centre Abidjan',cat:'immobilier',description:'Appartement 3 pièces entièrement meublé, climatisé. Gardiennage 24h. Disponible immédiatement.',price:'150000',location:'Plateau, Abidjan',seller_name:'Immo Prestige CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80&fit=crop',status:'active',verified:true},
-    {id:10,title:'Cours de soutien — Maths et Physique',cat:'education',description:'Professeur certifié, 10 ans d'expérience. Cours particuliers à domicile ou en ligne. Tous niveaux.',price:'10000',location:'Tout Abidjan',seller_name:'Prof. Koné',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80&fit=crop',status:'active'},
-  ];
   try{
     var r=await fetch(SUPA+'/rest/v1/ajapro_annonces?select=*&status=neq.deleted&order=created_at.desc&limit=60',{headers:H()});
-    if(r.ok){var d=await r.json();ads=d&&d.length>0?d:demoAds;}
-    else ads=demoAds;
+    if(r.ok){
+      var d=await r.json();
+      ads=d&&d.length>0?d:demoAds;
+    } else ads=demoAds;
   }catch(e){ads=demoAds;}
   renderAds();
-  document.getElementById('stat-ads').textContent=ads.length;
+  var e=document.getElementById('stat-ads');
+  if(e)e.textContent=ads.length;
 }
 
 // CAROUSEL
 function initCarousel(){
-  var slides=document.getElementById('carSlides').children;
-  var dots=document.getElementById('carDots');if(!dots)return;
+  var slides=document.getElementById('carSlides');
+  if(!slides)return;
+  var kids=slides.children;
+  var dots=document.getElementById('carDots');
+  if(!dots)return;
   dots.innerHTML='';
-  for(var i=0;i<slides.length;i++){
-    var d=document.createElement('button');d.className='c-dot'+(i===0?' on':'');
-    (function(idx){d.onclick=function(){carGoTo(idx);};})(i);dots.appendChild(d);
+  for(var i=0;i<kids.length;i++){
+    var d=document.createElement('button');
+    d.className='c-dot'+(i===0?' on':'');
+    (function(idx){d.onclick=function(){carGoTo(idx);};})(i);
+    dots.appendChild(d);
   }
   setInterval(function(){carMove(1);},5500);
 }
 function carMove(dir){
-  var slides=document.getElementById('carSlides').children;
-  carIdx=(carIdx+dir+slides.length)%slides.length;
-  document.getElementById('carSlides').style.transform='translateX(-'+carIdx+'00%)';
+  var slides=document.getElementById('carSlides');
+  if(!slides)return;
+  var total=slides.children.length;
+  carIdx=(carIdx+dir+total)%total;
+  slides.style.transform='translateX(-'+carIdx+'00%)';
   document.querySelectorAll('.c-dot').forEach(function(d,i){d.classList.toggle('on',i===carIdx);});
 }
 function carGoTo(idx){carIdx=idx-1;carMove(1);}
 
 // CATS
-var cats=[
-  {key:'immobilier',icon:'🏠'},{key:'emploi',icon:'💼'},{key:'services',icon:'🛠️'},
-  {key:'beaute',icon:'💇'},{key:'commerce',icon:'🛍️'},{key:'vehicules',icon:'🚗'},
-  {key:'restauration',icon:'🍽️'},{key:'agriculture',icon:'🌾'},
-  {key:'rencontres',icon:'💕'},{key:'numerique',icon:'📱'},
-  {key:'education',icon:'🎓'},{key:'evenements',icon:'💍'},{key:'sante',icon:'🏥'}
+var catsList=[
+  {k:'immobilier'},{k:'emploi'},{k:'services'},{k:'beaute'},{k:'commerce'},
+  {k:'vehicules'},{k:'restauration'},{k:'agriculture'},{k:'rencontres'},
+  {k:'numerique'},{k:'education'},{k:'evenements'},{k:'sante'}
 ];
+
 function renderCats(){
   var g=document.getElementById('catsGrid');if(!g)return;
-  var t=T[lang];
-  g.innerHTML='<button class="cat-btn'+(activeCat===null?' on':'')+'" onclick="filterCat(null)"><span class="cat-icon">🌍</span><span class="cat-name">'+(lang==='fr'?'Tout':'All')+'</span></button>';
-  cats.forEach(function(c){
-    var btn=document.createElement('button');btn.className='cat-btn'+(activeCat===c.key?' on':'');btn.onclick=function(){filterCat(c.key);};
-    btn.innerHTML='<span class="cat-icon">'+c.icon+'</span><span class="cat-name">'+(t.categories[c.key]||c.key).replace(/^\S+\s/,'')+'</span>';
+  g.innerHTML='';
+  var allBtn=document.createElement('button');
+  allBtn.className='cat-btn'+(activeCat===null?' on':'');
+  allBtn.onclick=function(){filterCat(null);};
+  allBtn.innerHTML='<span class="cat-icon">🌍</span><span class="cat-name">'+(lang==='fr'?'Tout':'All')+'</span>';
+  g.appendChild(allBtn);
+  catsList.forEach(function(c){
+    var btn=document.createElement('button');
+    btn.className='cat-btn'+(activeCat===c.k?' on':'');
+    btn.onclick=function(){filterCat(c.k);};
+    btn.innerHTML='<span class="cat-icon">'+getCatIcon(c.k)+'</span><span class="cat-name">'+(T[lang].cats[c.k]||c.k)+'</span>';
     g.appendChild(btn);
   });
 }
+
 function filterCat(key){
-  activeCat=key;renderCats();
-  if(key==='rencontres'){document.getElementById('secBanner').style.display='block';}
-  else{document.getElementById('secBanner').style.display='none';}
+  activeCat=key;
+  renderCats();
+  var sb=document.getElementById('secBanner');
+  if(sb)sb.style.display=(key==='rencontres'?'block':'none');
   applyFilters();
-  if(key){document.getElementById('ads-title').textContent=T[lang].adsTitle;document.getElementById('ads-sub').textContent=T[lang].categories[key]||key;}
+  if(key){
+    var at=document.getElementById('ads-title');if(at)at.textContent=T[lang].adsTitle;
+    var as=document.getElementById('ads-sub');if(as)as.textContent=getCatLabel(key);
+  }
 }
+
 function showCatsScreen(){
   var g=document.getElementById('catsScreenGrid');if(!g)return;
-  var t=T[lang];g.innerHTML='';
-  cats.forEach(function(c){
-    var count=ads.filter(function(a){return a.cat===c.key;}).length;
-    var card=document.createElement('div');card.className='cat-screen-card';
-    card.innerHTML='<div style="font-size:2.2rem;margin-bottom:8px">'+c.icon+'</div><div style="font-size:.8rem;font-weight:700;color:var(--navy);margin-bottom:4px">'+(t.categories[c.key]||c.key).replace(/^\S+\s/,'')+'</div><div style="font-size:.63rem;color:var(--muted)">'+count+' annonce'+(count>1?'s':'')+'</div>';
-    card.onclick=function(){hideScreen('catsScreen');filterCat(c.key);};
+  g.innerHTML='';
+  catsList.forEach(function(c){
+    var count=ads.filter(function(a){return a.cat===c.k;}).length;
+    var card=document.createElement('div');
+    card.className='cat-screen-card';
+    card.innerHTML='<div style="font-size:2rem;margin-bottom:8px">'+getCatIcon(c.k)+'</div>'+
+      '<div style="font-size:.78rem;font-weight:700;color:var(--navy);margin-bottom:3px">'+(T[lang].cats[c.k]||c.k)+'</div>'+
+      '<div style="font-size:.62rem;color:var(--muted)">'+count+' annonce'+(count>1?'s':'')+'</div>';
+    card.onclick=function(){hideScreen('catsScreen');filterCat(c.k);};
     g.appendChild(card);
   });
   goScreen('catsScreen');
@@ -1125,204 +1105,233 @@ function showCatsScreen(){
 
 // SPONSORS
 var sponsors=[
-  {name:'Orange CI',emoji:'🟠',color:'#FF6600',type:'Telecom'},
-  {name:'MTN CI',emoji:'🟡',color:'#FFCC00',type:'Telecom'},
-  {name:'Wave',emoji:'💙',color:'#1A73E8',type:'Fintech'},
-  {name:'Jumia',emoji:'🛒',color:'#F68B1E',type:'E-commerce'},
-  {name:'Moov Africa',emoji:'📡',color:'#00A651',type:'Telecom'},
-  {name:'SGB-CI',emoji:'🏦',color:'#E30613',type:'Finance'},
+  {n:'Orange CI',e:'🟠',c:'#FF6600',t:'Telecom'},
+  {n:'MTN CI',e:'🟡',c:'#FFCC00',t:'Telecom'},
+  {n:'Wave',e:'💙',c:'#1A73E8',t:'Fintech'},
+  {n:'Jumia',e:'🛒',c:'#F68B1E',t:'E-commerce'},
+  {n:'Moov Africa',e:'📡',c:'#00A651',t:'Telecom'},
+  {n:'SGB-CI',e:'🏦',c:'#E30613',t:'Finance'},
 ];
 function renderSponsors(){
   var row=document.getElementById('sponsorsRow');if(!row)return;
   row.innerHTML='';
   sponsors.forEach(function(s){
-    var c=document.createElement('div');c.className='sponsor-card';
-    c.style.borderTop='3px solid '+(s.color||'var(--blue)');
-    c.innerHTML='<div class="sponsor-logo"><span style="font-size:1.6rem">'+s.emoji+'</span></div><div class="sponsor-name">'+s.name+'</div><div class="sponsor-type">'+s.type+'</div>';
+    var c=document.createElement('div');
+    c.className='sponsor-card';
+    c.style.borderTop='3px solid '+s.c;
+    c.innerHTML='<div class="sponsor-emoji">'+s.e+'</div>'+
+      '<div class="sponsor-name">'+s.n+'</div>'+
+      '<div class="sponsor-type">'+s.t+'</div>';
     row.appendChild(c);
   });
 }
 
-// RENDER ADS
-function getCatIcon(cat){
-  var icons={immobilier:'🏠',emploi:'💼',services:'🛠️',beaute:'💇',commerce:'🛍️',vehicules:'🚗',restauration:'🍽️',agriculture:'🌾',rencontres:'💕',numerique:'📱',education:'🎓',evenements:'💍',sante:'🏥'};
-  return icons[cat]||'📋';
-}
+// FORMAT PRIX
 function formatPrice(p){
-  if(!p||p==='Négociable'||p==='0'||p===0)return p==='0'||p===0?'':p;
+  if(!p||p==='Negociable'||p==='Négociable'||p==='0'||p===0)return (p==='0'||p===0)?'':p;
   var n=parseInt((p+'').replace(/\s/g,''));
   return isNaN(n)?p:n.toLocaleString('fr-FR');
 }
+
+// RENDER ADS
 function renderAds(list){
   var g=document.getElementById('annoncesGrid');if(!g)return;
-  var toShow=list||(activeCat?ads.filter(function(a){return a.cat===activeCat&&a.status!=='deleted';}):ads.filter(function(a){return a.status!=='deleted';}));
+  var show=list||(activeCat?
+    ads.filter(function(a){return a.cat===activeCat&&a.status!=='deleted';}):
+    ads.filter(function(a){return a.status!=='deleted';}));
   g.innerHTML='';
   var nr=document.getElementById('noResults');
-  if(!toShow.length){nr.style.display='block';return;}
-  nr.style.display='none';
-  toShow.forEach(function(ad){
+  if(!show.length){if(nr)nr.style.display='block';return;}
+  if(nr)nr.style.display='none';
+  show.forEach(function(ad){
     var isFav=favs.includes(ad.id);
-    var price=ad.price;
     var photo=ad.photo_url||null;
     var isClosed=ad.status==='closed';
     var isUrgent=ad.status==='urgent';
-    var card=document.createElement('div');card.className='ann-card';
+    var price=ad.price;
+    var card=document.createElement('div');
+    card.className='ann-card';
+    var photoHtml=photo?
+      '<img src="'+photo+'" alt="" loading="lazy" onerror="this.style.display='none'">':
+      '<span style="font-size:2.8rem">'+getCatIcon(ad.cat)+'</span>';
     card.innerHTML=
-      '<div class="ann-photo" style="position:relative">'+(photo?'<img src="'+photo+'" alt="" onerror="this.style.display='none'">':'<span style="font-size:2.8rem">'+getCatIcon(ad.cat)+'</span>')+
-      '<span class="ann-cat-badge">'+(T[lang].categories[ad.cat]||ad.cat||'').substring(0,14)+'</span>'+
+      '<div class="ann-photo" style="position:relative">'+photoHtml+
+      '<span class="ann-cat-badge">'+(getCatLabel(ad.cat)).substring(0,16)+'</span>'+
       (isUrgent?'<span class="ann-urgent">URGENT</span>':'')+
       '<button class="ann-fav" onclick="toggleFavById('+ad.id+',event)">'+(isFav?'❤️':'🤍')+'</button>'+
-      (isClosed?'<div class="ann-closed"><span class="ann-closed-tag">CLÔTURÉE</span></div>':'')+
+      (isClosed?'<div class="ann-closed"><span class="ann-closed-tag">CLOTUREE</span></div>':'')+
       '</div>'+
-      '<div class="ann-body"><div class="ann-title">'+ad.title+'</div>'+
+      '<div class="ann-body">'+
+      '<div class="ann-title">'+ad.title+'</div>'+
       '<div class="ann-loc">📍 '+(ad.location||ad.loc||'')+'</div>'+
       (price&&price!=='0'&&price!==0?'<div class="ann-price">'+formatPrice(price)+' <span>F CFA</span></div>':'')+
       '<div class="ann-footer">'+
-      '<button class="btn-wa" onclick="contactWA(''+(ad.whatsapp||ad.wa||'')+'',''+ad.title.replace(/'/g,'').replace(/"/g,'')+'',event)">💬 WhatsApp</button>'+
-      '<button class="btn-tel" onclick="callTel(''+(ad.telephone||ad.tel||ad.whatsapp||ad.wa||'')+'',event)">📞</button>'+
-      '<button class="btn-share" onclick="shareAd('+ad.id+',event)">📤</button>'+
+      '<button class="btn-wa" onclick="contactWA(event,''+escape(ad.whatsapp||ad.wa||'')+'',''+escape(ad.title)+'')">💬 WhatsApp</button>'+
+      '<button class="btn-tel" onclick="callTel(event,''+escape(ad.telephone||ad.tel||ad.whatsapp||ad.wa||'')+'')">📞</button>'+
+      '<button class="btn-share" onclick="shareAd(event,'+ad.id+')">📤</button>'+
       '</div></div>';
-    card.querySelector('.ann-body').onclick=function(e){if(e.target.tagName!=='BUTTON'){curAdId=ad.id;openDetailById(ad.id);}};
+    card.querySelector('.ann-body').addEventListener('click',function(e){
+      if(e.target.tagName!=='BUTTON'){openDetailById(ad.id);}
+    });
     g.appendChild(card);
   });
 }
 
-function contactWA(num,title,e){
+function contactWA(e,num,title){
   if(e)e.stopPropagation();
-  if(!user){pendingAction='detail';showAuth();return;}
-  var clean=(num||'').replace(/[\s\-]/g,'');
-  var msg=encodeURIComponent('Bonjour, je vous contacte pour votre annonce AJAPRO : '+title);
-  window.open('https://wa.me/'+clean.replace('+','')+'?text='+msg,'_blank');
+  if(!user){pendingAction='wa_'+num+'_'+title;showAuth();return;}
+  var clean=unescape(num).replace(/[\s\-]/g,'').replace('+','');
+  var msg=encodeURIComponent('Bonjour, je vous contacte pour votre annonce AJAPRO : '+unescape(title));
+  window.open('https://wa.me/'+clean+'?text='+msg,'_blank');
 }
-function callTel(num,e){
+function callTel(e,num){
   if(e)e.stopPropagation();
-  if(!user){pendingAction='detail';showAuth();return;}
-  window.location.href='tel:'+(num||'').replace(/\s/g,'');
+  if(!user){pendingAction='tel';showAuth();return;}
+  window.location.href='tel:'+unescape(num).replace(/\s/g,'');
 }
-function shareAd(id,e){
+function shareAd(e,id){
   if(e)e.stopPropagation();
   var ad=ads.find(function(a){return a.id==id;});if(!ad)return;
-  var txt='Annonce AJAPRO : '+ad.title+' — '+(ad.location||ad.loc||'')+' — ajapro.vercel.app';
+  var txt='Annonce AJAPRO : '+ad.title+' | '+(ad.location||ad.loc||'')+' | ajapro.vercel.app';
   if(navigator.share){
-    navigator.share({title:'AJAPRO — '+ad.title,text:txt,url:'https://ajapro.vercel.app'});
+    navigator.share({title:'AJAPRO - '+ad.title,text:txt,url:'https://ajapro.vercel.app'}).catch(function(){});
   } else {
-    var wa='https://wa.me/?text='+encodeURIComponent(txt);
-    window.open(wa,'_blank');
+    window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
   }
-  toast('Annonce partagée !','success');
+  toast('Annonce partagee !','success');
 }
 
 // DETAIL
 function openDetailById(id){
   var ad=ads.find(function(a){return a.id==id;});if(!ad)return;
   curAdId=id;
-  var isFav=favs.includes(id);
-  document.getElementById('favBtn').textContent=isFav?'❤️':'🤍';
-  document.getElementById('detail-scr-title').textContent=T[lang].categories[ad.cat]||ad.cat;
+  var fb=document.getElementById('favBtn');
+  if(fb)fb.textContent=favs.includes(id)?'❤️':'🤍';
+  var dst=document.getElementById('detail-scr-title');
+  if(dst)dst.textContent=getCatLabel(ad.cat);
   var photo=ad.photo_url||ad.photo||null;
   var price=ad.price;
   var isOwner=user&&(ad.seller_name===user.name||ad.seller===user.name);
-  var c=document.getElementById('detailContent');
+  var viewCount=Math.floor(Math.random()*12)+2;
   var rencontreBlock='';
   if(ad.cat==='rencontres'){
-    rencontreBlock='<div class="detail-rencontre"><div class="dr-title">💕 Profil de rencontre</div>'+
-      (ad.orientation?'<div class="dr-field"><span class="dr-label">Type de rencontre</span><span class="dr-value">'+ad.orientation+'</span></div>':'')+
-      (ad.cherche?'<div class="dr-field"><span class="dr-label">Je recherche</span><span class="dr-value">'+ad.cherche+'</span></div>':'')+
-      (ad.age?'<div class="dr-field"><span class="dr-label">Âge</span><span class="dr-value">'+ad.age+' ans</span></div>':'')+
+    rencontreBlock='<div class="detail-rencontre"><div class="dr-title">Profil de rencontre</div>'+
+      (ad.orientation?'<div class="dr-field"><span class="dr-label">Type</span><span class="dr-value">'+ad.orientation+'</span></div>':'')+
+      (ad.cherche?'<div class="dr-field"><span class="dr-label">Je cherche</span><span class="dr-value">'+ad.cherche+'</span></div>':'')+
+      (ad.age?'<div class="dr-field"><span class="dr-label">Age</span><span class="dr-value">'+ad.age+' ans</span></div>':'')+
       (ad.situation?'<div class="dr-field"><span class="dr-label">Situation</span><span class="dr-value">'+ad.situation+'</span></div>':'')+
-      '<div class="dr-field" style="border:none"><span class="dr-label">Lieu de rencontre</span><span class="dr-value" style="color:var(--green);font-weight:600">Lieu public obligatoire</span></div>'+
+      '<div class="dr-field" style="border:none"><span class="dr-label">Lieu</span><span class="dr-value" style="color:var(--green);font-weight:600">Lieu public requis</span></div>'+
       '</div>'+
-      '<div class="rencontre-banner"><div class="rb-title">⚠️ Sécurité AJAPRO</div><ul class="rb-list"><li>Rencontrez-vous dans un lieu public</li><li>Ne payez jamais avant de voir la personne</li><li>AJAPRO n'est pas responsable des rencontres</li></ul></div>';
+      '<div class="rencontre-banner"><div class="rb-title">⚠️ Securite</div><ul class="rb-list"><li>Rencontrez-vous en lieu public</li><li>Ne payez jamais avant de voir</li><li>AJAPRO non responsable</li></ul></div>';
   }
-  c.innerHTML=
+  var dc=document.getElementById('detailContent');
+  if(!dc)return;
+  dc.innerHTML=
     '<div class="detail-gallery">'+(photo?'<img src="'+photo+'" alt="">':'<div class="detail-gallery-placeholder">'+getCatIcon(ad.cat)+'</div>')+'</div>'+
     '<div class="detail-body">'+
-    '<span class="detail-cat">'+(T[lang].categories[ad.cat]||ad.cat)+'</span>'+
-    (ad.status==='urgent'?'<span style="background:var(--red);color:#fff;font-size:.58rem;font-weight:700;padding:3px 8px;border-radius:4px;margin-left:6px">URGENT</span>':'')+
-    (ad.status==='closed'?'<span style="background:var(--muted);color:#fff;font-size:.58rem;font-weight:700;padding:3px 8px;border-radius:4px;margin-left:6px">CLÔTURÉE</span>':'')+
+    '<span class="detail-cat">'+getCatLabel(ad.cat)+'</span>'+
+    (isUrgent(ad)?'<span style="background:var(--red);color:#fff;font-size:.56rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:5px">URGENT</span>':'')+
+    (ad.status==='closed'?'<span style="background:var(--muted);color:#fff;font-size:.56rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:5px">CLOTUREE</span>':'')+
     '<div class="detail-title">'+ad.title+'</div>'+
     (price&&price!=='0'&&price!==0?'<div class="detail-price">'+formatPrice(price)+' F CFA</div>':'')+
-    '<div class="detail-loc">📍 '+(ad.location||ad.loc||'')+'</div><div style="font-size:.68rem;color:var(--green);margin-bottom:10px">👁️ '+showViewCount(ad.id)+'</div>'+
+    '<div class="detail-loc">📍 '+(ad.location||ad.loc||'')+'</div>'+
+    '<div class="detail-views">👁️ '+viewCount+' personne'+(viewCount>1?'s':'')+' regardent cette annonce</div>'+
     '<div class="detail-desc">'+(ad.description||ad.desc||'')+'</div>'+
     rencontreBlock+
-    '<div class="detail-seller"><div style="display:flex;align-items:center;justify-content:space-between"><div><div class="seller-name">'+(ad.seller_name||ad.seller||'Annonceur')+(ad.verified?'<span style="background:#2563EB;color:#fff;font-size:.52rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px">&#10003; Verifie</span>':'')+'</div><div class="seller-meta">Membre AJAPRO</div></div><div style="text-align:right"><div style="color:#F59E0B;font-size:.9rem">★★★★★</div><div style="font-size:.58rem;color:var(--muted)">Vendeur de confiance</div></div></div></div>'+
-    '<button class="btn-share-lg" onclick="shareAd('+id+',event)">📤 Partager cette annonce sur WhatsApp</button>'+
+    '<div class="detail-seller"><div class="seller-row"><div><div class="seller-name">'+(ad.seller_name||ad.seller||'Annonceur')+(ad.verified?'<span class="seller-badge">Verifie</span>':'')+'</div><div class="seller-meta">Membre AJAPRO</div></div><div style="text-align:right"><div class="seller-stars">★★★★★</div><div class="seller-trust">Vendeur de confiance</div></div></div></div>'+
+    '<button class="btn-share-lg" onclick="shareAd(event,'+id+')">📤 Partager sur WhatsApp</button>'+
     '<div class="contact-btns">'+
-    '<button class="btn-wa-lg" onclick="contactWA(''+(ad.whatsapp||ad.wa||'')+'',''+ad.title.replace(/'/g,'').replace(/"/g,'')+'',event)">💬 WhatsApp</button>'+
-    '<button class="btn-tel-lg" onclick="callTel(''+(ad.telephone||ad.tel||ad.whatsapp||ad.wa||'')+'',event)">📞 Appeler</button>'+
+    '<button class="btn-wa-lg" onclick="contactWA(event,''+escape(ad.whatsapp||ad.wa||'')+'',''+escape(ad.title)+'')">💬 Contacter sur WhatsApp</button>'+
+    '<button class="btn-tel-lg" onclick="callTel(event,''+escape(ad.telephone||ad.tel||ad.whatsapp||ad.wa||'')+'')">📞 Appeler</button>'+
     '</div>'+
-    (isOwner?'<button class="close-ad-btn" onclick="closeMyAd('+id+')">🔒 Clôturer mon annonce</button>':'')+
+    (isOwner?'<button class="close-ad-btn" onclick="closeMyAd('+id+')">🔒 Cloturer mon annonce</button>':'')+
     '</div>';
   goScreen('detailScreen');
 }
+function isUrgent(ad){return ad&&ad.status==='urgent';}
 
 function closeMyAd(id){
   var ad=ads.find(function(a){return a.id==id;});
   if(ad){ad.status='closed';renderAds();}
-  toast('Annonce clôturée. Vous ne serez plus contacté.','success');
+  toast('Annonce cloturee. Plus de contacts.','success');
   hideScreen('detailScreen');
 }
 
-function toggleFav(){if(!curAdId)return;toggleFavById(curAdId,null);document.getElementById('favBtn').textContent=favs.includes(curAdId)?'❤️':'🤍';}
+function toggleFav(){if(!curAdId)return;toggleFavById(curAdId,null);var fb=document.getElementById('favBtn');if(fb)fb.textContent=favs.includes(curAdId)?'❤️':'🤍';}
 function toggleFavById(id,e){
   if(e)e.stopPropagation();
   var idx=favs.indexOf(id);
   if(idx>-1)favs.splice(idx,1);else favs.push(id);
   localStorage.setItem('ajapro_favs',JSON.stringify(favs));
   updateFavBadge();renderAds();
-  toast(favs.includes(id)?'❤️ Ajouté aux favoris':'Retiré des favoris');
+  toast(favs.includes(id)?'Ajoute aux favoris':'Retire des favoris');
 }
-function updateFavBadge(){var b=document.getElementById('favBadge');if(b){b.textContent=favs.length;b.style.display=favs.length>0?'':'none';}}
-function showFavs(){renderAds(ads.filter(function(a){return favs.includes(a.id);}));document.getElementById('ads-title').textContent='❤️ Mes favoris';}
+function updateFavBadge(){
+  var b=document.getElementById('favBadge');
+  if(b){b.textContent=favs.length;b.style.display=favs.length>0?'':'none';}
+}
+function showFavs(){
+  renderAds(ads.filter(function(a){return favs.includes(a.id);}));
+  var at=document.getElementById('ads-title');if(at)at.textContent='Mes favoris';
+  updateBnav('favs');
+}
 
-// RENCONTRES FIELDS
+// RENCONTRES
 function checkRencontresCat(){
   var cat=document.getElementById('pub-cat').value;
   var rf=document.getElementById('rencontresFields');
   if(rf)rf.style.display=cat==='rencontres'?'block':'none';
 }
 
-// PHOTO GALLERY
+// PHOTOS
 function initPhotoGallery(){
   photoUrls=[];
   var g=document.getElementById('photoGallery');if(!g)return;
   g.innerHTML='';
   for(var i=0;i<6;i++){
-    var slot=document.createElement('div');slot.className='photo-slot';slot.id='pslot-'+i;
+    var slot=document.createElement('div');
+    slot.className='photo-slot';
+    slot.id='pslot'+i;
     var idx=i;
-    slot.innerHTML='<span class="slot-icon">📸</span><span class="slot-text">'+(i===0?'Principale':'Photo '+(i+1))+'</span>';
-    slot.onclick=function(){triggerUpload(idx);};
+    slot.innerHTML='<span class="slot-icon">📸</span><span class="slot-text">'+(i===0?'Photo principale':'Photo '+(i+1))+'</span>';
+    slot.addEventListener('click',function(){triggerUpload(idx);});
     g.appendChild(slot);
   }
 }
 function triggerUpload(si){
-  var inp=document.createElement('input');inp.type='file';inp.accept='image/*';
-  inp.onchange=function(e){
-    var file=e.target.files[0];if(!file)return;
+  var inp=document.createElement('input');
+  inp.type='file';inp.accept='image/*';
+  inp.onchange=function(ev){
+    var file=ev.target.files[0];if(!file)return;
     if(file.size>10*1024*1024){toast('Max 10MB','error');return;}
-    var prog=document.getElementById('uploadProgress');if(prog)prog.style.display='block';
-    var canvas=document.createElement('canvas');var ctx=canvas.getContext('2d');
-    var img=new Image();var url=URL.createObjectURL(file);
+    var prog=document.getElementById('uploadProgress');
+    if(prog)prog.style.display='block';
+    var canvas=document.createElement('canvas');
+    var ctx=canvas.getContext('2d');
+    var img=new Image();
+    var url=URL.createObjectURL(file);
     img.onload=function(){
       var mW=1200,mH=900,w=img.width,h=img.height;
-      if(w>mW){h=h*(mW/w);w=mW;}if(h>mH){w=w*(mH/h);h=mH;}
-      canvas.width=w;canvas.height=h;ctx.drawImage(img,0,0,w,h);
+      if(w>mW){h=h*(mW/w);w=mW;}
+      if(h>mH){w=w*(mH/h);h=mH;}
+      canvas.width=w;canvas.height=h;
+      ctx.drawImage(img,0,0,w,h);
       var data=canvas.toDataURL('image/jpeg',0.85);
       photoUrls[si]=data;
-      var slot=document.getElementById('pslot-'+si);
-      if(slot)slot.innerHTML='<img src="'+data+'"><button class="slot-del" onclick="removePhoto('+si+',event)">✕</button>';
+      var slot=document.getElementById('pslot'+si);
+      if(slot)slot.innerHTML='<img src="'+data+'"><button class="slot-del" onclick="removePhoto('+si+',event)">X</button>';
       if(prog)prog.style.display='none';
       URL.revokeObjectURL(url);
-      toast('Photo '+(si+1)+' ajoutée !','success');
+      toast('Photo '+(si+1)+' ajoutee !','success');
     };
     img.onerror=function(){
       var reader=new FileReader();
-      reader.onload=function(ev){
-        photoUrls[si]=ev.target.result;
-        var slot=document.getElementById('pslot-'+si);
-        if(slot)slot.innerHTML='<img src="'+ev.target.result+'"><button class="slot-del" onclick="removePhoto('+si+',event)">✕</button>';
+      reader.onload=function(rev){
+        photoUrls[si]=rev.target.result;
+        var slot=document.getElementById('pslot'+si);
+        if(slot)slot.innerHTML='<img src="'+rev.target.result+'"><button class="slot-del" onclick="removePhoto('+si+',event)">X</button>';
         if(prog)prog.style.display='none';
-        toast('Photo ajoutée !','success');
+        toast('Photo ajoutee !','success');
       };
       reader.readAsDataURL(file);
     };
@@ -1333,55 +1342,58 @@ function triggerUpload(si){
 function removePhoto(idx,e){
   if(e)e.stopPropagation();
   photoUrls[idx]=null;
-  var slot=document.getElementById('pslot-'+idx);
-  if(slot)slot.innerHTML='<span class="slot-icon">📸</span><span class="slot-text">'+(idx===0?'Principale':'Photo '+(idx+1))+'</span>';
+  var slot=document.getElementById('pslot'+idx);
+  if(slot)slot.innerHTML='<span class="slot-icon">📸</span><span class="slot-text">'+(idx===0?'Photo principale':'Photo '+(idx+1))+'</span>';
 }
 
 // PUBLIER
 async function publishAd(){
-  var title=document.getElementById('pub-title').value.trim();
-  var cat=document.getElementById('pub-cat').value;
-  var desc=document.getElementById('pub-desc').value.trim();
-  var price=document.getElementById('pub-price').value.trim();
-  var loc=document.getElementById('pub-loc').value.trim();
-  var wa=document.getElementById('pub-wa').value.trim();
-  var tel=document.getElementById('pub-tel').value.trim();
-  var seller=document.getElementById('pub-seller').value.trim()||(user?user.name:'Anonyme');
+  var title=(document.getElementById('pub-title').value||'').trim();
+  var cat=(document.getElementById('pub-cat').value||'').trim();
+  var desc=(document.getElementById('pub-desc').value||'').trim();
+  var price=(document.getElementById('pub-price').value||'').trim();
+  var loc=(document.getElementById('pub-loc').value||'').trim();
+  var wa=(document.getElementById('pub-wa').value||'').trim();
+  var tel=(document.getElementById('pub-tel').value||'').trim();
+  var seller=(document.getElementById('pub-seller').value||'').trim()||(user?user.name:'Anonyme');
   var statut=document.getElementById('pub-statut').value;
-  var orient=document.getElementById('pub-orientation');
-  var cherche=document.getElementById('pub-cherche');
-  var age=document.getElementById('pub-age');
-  var situation=document.getElementById('pub-situation');
-  if(!title||!cat||!desc||!loc||!wa){toast('Remplissez les champs *','error');return;}
-  var mainPhoto=photoUrls.find(function(p){return p;})||null;
-  var adData={
-    title:title,cat:cat,description:desc,price:price||'0',location:loc,
-    seller_name:seller,whatsapp:wa,telephone:tel||wa,
-    photo_url:mainPhoto,status:statut||'active'
-  };
+  if(!title||!cat||!desc||!loc||!wa){toast('Remplissez les champs obligatoires *','error');return;}
+  var mainPhoto=null;
+  for(var i=0;i<photoUrls.length;i++){if(photoUrls[i]){mainPhoto=photoUrls[i];break;}}
+  var adData={title:title,cat:cat,description:desc,price:price||'0',location:loc,seller_name:seller,whatsapp:wa,telephone:tel||wa,photo_url:mainPhoto,status:statut||'active'};
+  var oe=document.getElementById('pub-orientation');
+  var ce=document.getElementById('pub-cherche');
+  var ae=document.getElementById('pub-age');
+  var se=document.getElementById('pub-situation');
   if(cat==='rencontres'){
-    if(orient&&orient.value)adData.orientation=orient.value;
-    if(cherche&&cherche.value)adData.cherche=cherche.value;
-    if(age&&age.value)adData.age=parseInt(age.value);
-    if(situation&&situation.value)adData.situation=situation.value;
+    if(oe&&oe.value)adData.orientation=oe.value;
+    if(ce&&ce.value)adData.cherche=ce.value;
+    if(ae&&ae.value)adData.age=parseInt(ae.value);
+    if(se&&se.value)adData.situation=se.value;
   }
   try{
     var r=await fetch(SUPA+'/rest/v1/ajapro_annonces',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=representation'}),body:JSON.stringify(adData)});
     if(r.ok){
       var saved=await r.json();
-      var newAd=saved[0]||Object.assign({id:Date.now()},adData);
+      var newAd=saved&&saved[0]?saved[0]:Object.assign({id:Date.now()},adData);
       ads.unshift(newAd);
-      toast('Annonce publiée ! Visible par tous !','success');
-      hideScreen('publishScreen');renderAds();
-      document.getElementById('stat-ads').textContent=ads.length;
-      ['pub-title','pub-cat','pub-desc','pub-price','pub-loc','pub-wa','pub-tel','pub-seller'].forEach(function(id){document.getElementById(id).value='';});
+      toast('Annonce publiee ! Visible par tous !','success');
+      hideScreen('publishScreen');
+      renderAds();
+      var se2=document.getElementById('stat-ads');if(se2)se2.textContent=ads.length;
+      ['pub-title','pub-cat','pub-desc','pub-price','pub-loc','pub-wa','pub-tel','pub-seller'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
       initPhotoGallery();
-      setTimeout(function(){curAdId=newAd.id;openDetailById(newAd.id);},600);
-    } else toast('Erreur. Réessayez.','error');
+      setTimeout(function(){openDetailById(newAd.id);},700);
+    } else {
+      toast('Erreur. Reessayez.','error');
+    }
   }catch(ex){
     var newAd2=Object.assign({id:Date.now()},adData);
-    ads.unshift(newAd2);toast('Annonce publiée !','success');
-    hideScreen('publishScreen');renderAds();initPhotoGallery();
+    ads.unshift(newAd2);
+    toast('Annonce publiee !','success');
+    hideScreen('publishScreen');
+    renderAds();
+    initPhotoGallery();
   }
 }
 
@@ -1389,46 +1401,66 @@ async function publishAd(){
 function showAuth(){document.getElementById('authModal').classList.add('visible');}
 function closeAuth(){document.getElementById('authModal').classList.remove('visible');pendingAction=null;}
 function switchAuth(tab){
-  document.getElementById('loginForm').style.display=tab==='login'?'':'none';
-  document.getElementById('registerForm').style.display=tab==='register'?'':'none';
+  document.getElementById('loginForm').style.display=tab==='login'?'block':'none';
+  document.getElementById('registerForm').style.display=tab==='register'?'block':'none';
   document.getElementById('tab-login').classList.toggle('on',tab==='login');
   document.getElementById('tab-register').classList.toggle('on',tab==='register');
 }
 function login(){
-  var e=document.getElementById('lg-email').value.trim().toLowerCase();
-  var p=document.getElementById('lg-pwd').value.trim();
+  var e=(document.getElementById('lg-email').value||'').trim().toLowerCase();
+  var p=(document.getElementById('lg-pwd').value||'').trim();
   if(!e||!p){toast('Remplissez email et mot de passe','error');return;}
   var m=members.find(function(x){return x.email===e&&x.pwd===p;});
   if(m){
-    user=m;localStorage.setItem('ajapro_user',JSON.stringify(user));
-    closeAuth();updateNavUser();toast('Bienvenue '+user.name+' !','success');
-    if(pendingAction){var a=pendingAction;if(pendingAction==='publish')goScreen('publishScreen');else if(pendingAction==='profile')goScreen('profileScreen');pendingAction=null;}
+    user=m;
+    localStorage.setItem('ajapro_user',JSON.stringify(user));
+    closeAuth();
+    updateNavUser();
+    toast('Bienvenue '+user.name+' !','success');
+    if(pendingAction){
+      if(pendingAction==='publish')goScreen('publishScreen');
+      else if(pendingAction==='profile')goScreen('profileScreen');
+      pendingAction=null;
+    }
   } else toast('Email ou mot de passe incorrect','error');
 }
 async function register(){
-  var name=document.getElementById('rg-name').value.trim();
-  var e=document.getElementById('rg-email').value.trim().toLowerCase();
-  var tel=document.getElementById('rg-tel').value.trim();
-  var p=document.getElementById('rg-pwd').value.trim();
+  var name=(document.getElementById('rg-name').value||'').trim();
+  var e=(document.getElementById('rg-email').value||'').trim().toLowerCase();
+  var tel=(document.getElementById('rg-tel').value||'').trim();
+  var p=(document.getElementById('rg-pwd').value||'').trim();
   if(!name||!e||!tel||!p){toast('Remplissez tous les champs *','error');return;}
-  if(p.length<6){toast('Mot de passe min. 6 caractères','error');return;}
-  if(members.find(function(x){return x.email===e;})){toast('Email déjà utilisé','error');return;}
+  if(p.length<6){toast('Mot de passe min 6 caracteres','error');return;}
+  if(members.find(function(x){return x.email===e;})){toast('Email deja utilise','error');return;}
   var m={id:Date.now(),name:name,email:e,tel:tel,pwd:p,date:new Date().toISOString().split('T')[0]};
-  members.push(m);localStorage.setItem('ajapro_members',JSON.stringify(members));
-  user=m;localStorage.setItem('ajapro_user',JSON.stringify(user));
-  closeAuth();updateNavUser();toast('Bienvenue '+name+' !','success');
+  members.push(m);
+  localStorage.setItem('ajapro_members',JSON.stringify(members));
+  user=m;
+  localStorage.setItem('ajapro_user',JSON.stringify(user));
+  closeAuth();
+  updateNavUser();
+  toast('Bienvenue '+name+' !','success');
   sendEmail(name,e,tel);
-  if(pendingAction){var a=pendingAction;if(pendingAction==='publish')goScreen('publishScreen');else if(pendingAction==='profile')goScreen('profileScreen');pendingAction=null;}
+  if(pendingAction){
+    if(pendingAction==='publish')goScreen('publishScreen');
+    else if(pendingAction==='profile')goScreen('profileScreen');
+    pendingAction=null;
+  }
 }
 function updateNavUser(){
   var lb=document.getElementById('loginBtn');
-  if(lb&&user){lb.textContent=user.name.split(' ')[0];lb.onclick=function(){goScreen('profileScreen');};}
+  if(lb&&user){
+    lb.textContent=user.name.split(' ')[0];
+    lb.onclick=function(){goScreen('profileScreen');};
+  }
 }
 function logout(){
-  user=null;localStorage.removeItem('ajapro_user');
+  user=null;
+  localStorage.removeItem('ajapro_user');
   var lb=document.getElementById('loginBtn');
   if(lb){lb.textContent='Connexion';lb.onclick=showAuth;}
-  toast('À bientôt !');hideScreen('profileScreen');
+  toast('A bientot !');
+  hideScreen('profileScreen');
 }
 async function sendEmail(name,email,tel){
   try{
@@ -1438,14 +1470,26 @@ async function sendEmail(name,email,tel){
     fd.append('from_name','AJAPRO');
     fd.append('email',email);
     fd.append('name',name);
-    fd.append('message','Bonjour '+name+',\n\nBienvenue sur AJAPRO !\nVotre compte a été créé avec succès.\n\nPubliez vos annonces sur : ajapro.vercel.app\n\nCordialement,\nAJAPRO\ncontact@ajapro.ci');
+    fd.append('message','Bonjour '+name+',
+
+Bienvenue sur AJAPRO !
+Votre compte a ete cree avec succes.
+
+Publiez vos annonces : ajapro.vercel.app
+
+AJAPRO
+contact@ajapro.ci
++225 05 96 69 70 54');
     await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
-    setTimeout(function(){toast('Email de confirmation envoyé !','success');},1500);
+    setTimeout(function(){toast('Email de confirmation envoye !','success');},1500);
     var fd2=new FormData();
-    fd2.append('access_key',W3F);fd2.append('subject','Nouveau membre AJAPRO : '+name);
+    fd2.append('access_key',W3F);fd2.append('subject','Nouveau membre : '+name);
     fd2.append('from_name','AJAPRO');fd2.append('email','ajaproci@gmail.com');
-    fd2.append('name','AJAPRO System');
-    fd2.append('message','Nouveau membre :\nNom : '+name+'\nEmail : '+email+'\nTél : '+tel);
+    fd2.append('name','Systeme');
+    fd2.append('message','Nouveau membre AJAPRO :
+Nom : '+name+'
+Email : '+email+'
+Tel : '+tel);
     await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd2});
   }catch(ex){}
 }
@@ -1454,48 +1498,71 @@ async function sendEmail(name,email,tel){
 function renderProfileScreen(){
   var c=document.getElementById('profileContent');if(!c)return;
   if(!user){
-    c.innerHTML='<div style="text-align:center;padding:50px 20px"><div style="font-size:3rem;margin-bottom:16px">👤</div><p style="color:var(--muted);font-size:.82rem;margin-bottom:18px">Connectez-vous pour accéder à votre profil</p><button class="nb nb-in" onclick="showAuth()" style="padding:11px 26px">Se connecter</button><div style="margin-top:12px"><button class="nb nb-out" onclick="switchAuth('register');showAuth()" style="padding:11px 26px">Créer un compte</button></div></div>';
+    c.innerHTML='<div style="text-align:center;padding:50px 20px">'+
+      '<div style="font-size:3rem;margin-bottom:16px">👤</div>'+
+      '<p style="color:var(--muted);font-size:.8rem;margin-bottom:18px">Connectez-vous pour acceder a votre profil</p>'+
+      '<button class="nb nb-in" onclick="showAuth()" style="padding:11px 24px;font-size:.78rem">Se connecter</button>'+
+      '<div style="margin-top:12px">'+
+      '<button class="nb nb-out" onclick="switchAuth('register');showAuth()" style="padding:11px 24px;font-size:.78rem">Creer un compte</button>'+
+      '</div></div>';
     return;
   }
   var myAds=ads.filter(function(a){return a.seller_name===user.name||a.seller===user.name;});
-  c.innerHTML='<div class="prof-hdr"><div class="prof-av">'+user.name[0].toUpperCase()+'</div><div class="prof-name">'+user.name+'</div><div class="prof-meta">'+user.email+' · '+user.tel+'</div><div class="prof-stats"><div class="stat-item"><div class="ps-n">'+myAds.length+'</div><div class="ps-l">Annonces</div></div><div class="stat-item"><div class="ps-n">'+favs.length+'</div><div class="ps-l">Favoris</div></div></div></div>'+
+  c.innerHTML=
+    '<div class="prof-hdr">'+
+    '<div class="prof-av">'+user.name[0].toUpperCase()+'</div>'+
+    '<div class="prof-name">'+user.name+'</div>'+
+    '<div class="prof-meta">'+user.email+' · '+user.tel+'</div>'+
+    '<div class="prof-stats">'+
+    '<div class="stat-item"><div class="ps-n">'+myAds.length+'</div><div class="ps-l">Annonces</div></div>'+
+    '<div class="stat-item"><div class="ps-n">'+favs.length+'</div><div class="ps-l">Favoris</div></div>'+
+    '</div></div>'+
     '<div class="pmi" onclick="goScreen('publishScreen')"><span class="pmi-icon">➕</span><span class="pmi-text">Publier une annonce</span><span class="pmi-arrow">›</span></div>'+
     '<div class="pmi" onclick="showFavs();hideScreen('profileScreen')"><span class="pmi-icon">❤️</span><span class="pmi-text">Mes favoris ('+favs.length+')</span><span class="pmi-arrow">›</span></div>'+
     '<div class="pmi" onclick="showMyAds()"><span class="pmi-icon">📋</span><span class="pmi-text">Mes annonces ('+myAds.length+')</span><span class="pmi-arrow">›</span></div>'+
-    '<button class="logout-btn" onclick="logout()">🚪 Se déconnecter</button>';
+    '<button class="logout-btn" onclick="logout()">🚪 Se deconnecter</button>';
 }
 function showMyAds(){
   var my=user?ads.filter(function(a){return a.seller_name===user.name||a.seller===user.name;}):[];
-  renderAds(my);document.getElementById('ads-title').textContent='📋 Mes annonces';hideScreen('profileScreen');
+  renderAds(my);
+  var at=document.getElementById('ads-title');if(at)at.textContent='Mes annonces';
+  hideScreen('profileScreen');
 }
 
 // PUBS
 function loadPubs(){
   try{var s=localStorage.getItem('ajapro_pubs');if(s)pubData=JSON.parse(s);}catch(e){}
-  showPubs();setInterval(function(){pubIdx.pub1++;pubIdx.pub2++;pubIdx.pub3++;showPubs();},10000);
+  showPubs();
+  setInterval(function(){pubIdx.pub1++;pubIdx.pub2++;pubIdx.pub3++;showPubs();},10000);
 }
 function showPubs(){
   ['pub1','pub2','pub3'].forEach(function(k,i){
-    var m=pubData[k];var w=document.getElementById(k);if(!w)return;
+    var m=pubData[k];
+    var w=document.getElementById(k);if(!w)return;
     if(!m||!m.length){w.style.display='none';return;}
-    var item=m[pubIdx[k]%m.length];w.style.display='block';
-    var img=document.getElementById(k+'-img');var link=document.getElementById(k+'-link');var nom=document.getElementById(k+'-nom');
-    if(img)img.src=item.img;if(link)link.href=item.lien||'#';if(nom)nom.textContent=item.nom;
+    var item=m[pubIdx[k]%m.length];
+    w.style.display='block';
+    var img=document.getElementById(k+'-img');
+    var link=document.getElementById(k+'-link');
+    var nom=document.getElementById(k+'-nom');
+    if(img)img.src=item.img;
+    if(link)link.href=item.lien||'#';
+    if(nom)nom.textContent=item.nom;
   });
 }
 function activerPub(){
   var emp='pub'+document.getElementById('pub-emp').value;
-  var nom=document.getElementById('pub-nom').value.trim();
-  var img=document.getElementById('pub-img').value.trim();
-  var lien=document.getElementById('pub-lien').value.trim();
+  var nom=(document.getElementById('pub-nom').value||'').trim();
+  var img=(document.getElementById('pub-img').value||'').trim();
+  var lien=(document.getElementById('pub-lien').value||'').trim();
   if(!nom||!img){toast('Remplissez nom et image','error');return;}
   if(!pubData[emp])pubData[emp]=[];
   if(pubData[emp].length>=4){toast('Max 4 marques/emplacement','error');return;}
   pubData[emp].push({nom:nom,img:img,lien:lien});
   localStorage.setItem('ajapro_pubs',JSON.stringify(pubData));
   showPubs();renderPubsAdmin();
-  toast('Bannière activée !','success');
-  ['pub-nom','pub-img','pub-lien'].forEach(function(id){document.getElementById(id).value='';});
+  toast('Banniere activee !','success');
+  ['pub-nom','pub-img','pub-lien'].forEach(function(id){var e=document.getElementById(id);if(e)e.value='';});
 }
 function renderPubsAdmin(){
   var el=document.getElementById('pubBannersAdmin');if(!el)return;
@@ -1503,33 +1570,38 @@ function renderPubsAdmin(){
   ['pub1','pub2','pub3'].forEach(function(k,i){
     var m=pubData[k];
     if(m&&m.length){
-      html+='<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:11px;margin-bottom:9px"><div style="font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px">Bannière '+(i+1)+' ('+m.length+'/4)</div>';
+      html+='<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px;margin-bottom:8px">';
+      html+='<div style="font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px">Banniere '+(i+1)+' ('+m.length+'/4)</div>';
       m.forEach(function(item,idx){
-        html+='<div class="pub-item"><img src="'+item.img+'" alt="" onerror="this.style.display='none'"><span class="pub-item-name">'+item.nom+'</span><button class="pub-del" onclick="suppPub(''+k+'','+idx+')">✕</button></div>';
+        html+='<div class="pub-item"><span style="font-size:.7rem;color:#fff;flex:1">'+item.nom+'</span><button class="pub-del" onclick="suppPub(''+k+'','+idx+')">X</button></div>';
       });
       html+='</div>';
     }
   });
-  if(!html)html='<div style="color:rgba(255,255,255,.4);font-size:.74rem;padding:8px">Aucune pub active.</div>';
+  if(!html)html='<div style="color:rgba(255,255,255,.4);font-size:.73rem;padding:8px">Aucune pub active.</div>';
   el.innerHTML=html;
 }
-function suppPub(k,idx){pubData[k].splice(idx,1);localStorage.setItem('ajapro_pubs',JSON.stringify(pubData));showPubs();renderPubsAdmin();toast('Supprimé');}
+function suppPub(k,idx){
+  pubData[k].splice(idx,1);
+  localStorage.setItem('ajapro_pubs',JSON.stringify(pubData));
+  showPubs();renderPubsAdmin();toast('Supprime');
+}
 
 // ADMIN
 function openAdminPanel(){document.getElementById('adminScr').classList.add('visible');}
 function closeAdmin(){document.getElementById('adminScr').classList.remove('visible');}
 function adminLogin(){
-  var e=document.getElementById('adm-email').value.trim();
-  var p=document.getElementById('adm-pwd').value.trim();
+  var e=(document.getElementById('adm-email').value||'').trim();
+  var p=(document.getElementById('adm-pwd').value||'').trim();
   if(e===AE&&p===AP){
     document.getElementById('adminLoginWrap').style.display='none';
     document.getElementById('adminPanel').style.display='block';
-    document.getElementById('adm-tot-ads').textContent=ads.length;
-    document.getElementById('adm-tot-mbr').textContent=members.length;
+    var ta=document.getElementById('adm-tot-ads');if(ta)ta.textContent=ads.length;
+    var tm=document.getElementById('adm-tot-mbr');if(tm)tm.textContent=members.length;
     var np=Object.values(pubData).reduce(function(a,b){return a+b.length;},0);
-    document.getElementById('adm-pubs-n').textContent=np;
+    var tp=document.getElementById('adm-pubs-n');if(tp)tp.textContent=np;
     renderPubsAdmin();renderAdminAds();renderAdminMembers();
-    toast('Accès admin','success');
+    toast('Acces admin OK','success');
   } else toast('Identifiants incorrects','error');
 }
 function switchAdminTab(name,btn){
@@ -1545,11 +1617,32 @@ function renderAdminAds(){
   var el=document.getElementById('admAdsList');if(!el)return;
   if(!ads.length){el.innerHTML='<div style="color:rgba(255,255,255,.4)">Aucune annonce.</div>';return;}
   el.innerHTML=ads.slice(0,20).map(function(a){
-    return'<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;margin-bottom:7px;display:flex;align-items:center;gap:9px"><div style="font-size:1.3rem">'+getCatIcon(a.cat)+'</div><div style="flex:1"><div style="font-size:.76rem;font-weight:600;color:#fff;margin-bottom:2px">'+a.title+'</div><div style="font-size:.6rem;color:rgba(255,255,255,.4)">'+(a.location||a.loc||'')+'</div></div><button onclick="deleteAd('+(a.id||0)+')" style="background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);color:#FCA5A5;padding:3px 8px;border-radius:5px;font-size:.58rem;cursor:pointer">🗑️</button></div>';
+    return '<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px;margin-bottom:6px;display:flex;align-items:center;gap:8px">'+
+      '<div style="font-size:1.2rem">'+getCatIcon(a.cat)+'</div>'+
+      '<div style="flex:1"><div style="font-size:.74rem;font-weight:600;color:#fff;margin-bottom:1px">'+a.title+'</div>'+
+      '<div style="font-size:.6rem;color:rgba(255,255,255,.4)">'+(a.location||a.loc||'')+'</div></div>'+
+      '<button onclick="deleteAd('+a.id+')" style="background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);color:#FCA5A5;padding:3px 7px;border-radius:5px;font-size:.57rem;cursor:pointer">Sup</button></div>';
   }).join('');
 }
-function deleteAd(id){ads=ads.filter(function(a){return a.id!=id;});renderAds();renderAdminAds();toast('Supprimé');}
+function deleteAd(id){
+  ads=ads.filter(function(a){return a.id!=id;});
+  renderAds();renderAdminAds();
+  var ta=document.getElementById('adm-tot-ads');if(ta)ta.textContent=ads.length;
+  toast('Annonce supprimee');
+}
 function renderAdminMembers(){
   var el=document.getElementById('admMbrList');if(!el)return;
   if(!members.length){el.innerHTML='<div style="color:rgba(255,255,255,.4)">Aucun membre.</div>';return;}
-  el.innerHTML=members.map(function(m){return'<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;margin-bottom:6px"><div style=
+  el.innerHTML=members.map(function(m){
+    return '<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px;margin-bottom:6px">'+
+      '<div style="font-size:.77rem;font-weight:600;color:#fff;margin-bottom:1px">'+m.name+'</div>'+
+      '<div style="font-size:.62rem;color:rgba(255,255,255,.45)">'+m.email+' · '+m.tel+'</div></div>';
+  }).join('');
+}
+
+// LEGAL
+var legalTexts={
+  cgu:'<h2 style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:11px">Conditions Generales</h2><p style="font-size:.79rem;color:var(--text2);line-height:1.8;margin-bottom:9px">AJAPRO est 100% gratuit. Inscription obligatoire pour publier ou contacter un annonceur. Tout contenu frauduleux sera supprime immediatemement.</p><p style="font-size:.79rem;color:var(--text2);line-height:1.8">Contact : contact@ajapro.ci</p>',
+  privacy:'<h2 style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:11px">Confidentialite</h2><p style="font-size:.79rem;color:var(--text2);line-height:1.8">Vos donnees sont protegees et ne sont jamais vendues a des tiers. Vos coordonnees ne sont visibles que des membres inscrits.</p>',
+  mentions:'<h2 style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:11px">Mentions Legales</h2><p style="font-size:.79rem;color:var(--text2);line-height:1.8">AJAPRO<br>Abidjan, Cote d'Ivoire<br>contact@ajapro.ci<br>+225 05 96 69 70 54</p>',
+ 
