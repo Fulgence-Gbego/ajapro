@@ -30,7 +30,7 @@ input,select,textarea{font-family:'Sora',sans-serif}
 .logo-text{font-size:1.3rem;font-weight:800;color:var(--navy);letter-spacing:-.02em}
 .logo-text span{color:var(--gold)}
 .logo-sub{font-size:.46rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);line-height:1;margin-top:1px}
-.nav-weather{display:flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--border);padding:5px 10px;border-radius:20px;font-size:.65rem;color:var(--text2);flex-shrink:0}
+.nav-weather{display:none;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--border);padding:5px 10px;border-radius:20px;font-size:.65rem;color:var(--text2);flex-shrink:0}
 .nav-btns{display:flex;gap:5px;align-items:center;flex-shrink:0}
 .nb{padding:6px 12px;font-size:.68rem;font-weight:600;border:none;border-radius:8px;white-space:nowrap}
 .nb-out{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
@@ -315,6 +315,7 @@ input,select,textarea{font-family:'Sora',sans-serif}
 }
 @media(min-width:768px){
   .annonces-grid{grid-template-columns:repeat(3,1fr)}
+  .nav-weather{display:flex}
   .nav-inner{padding:0 24px}
   .car-slide{min-height:340px}
 }
@@ -331,10 +332,25 @@ input,select,textarea{font-family:'Sora',sans-serif}
   .annonces-grid{grid-template-columns:repeat(5,1fr)}
 }
 </style>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0F2557">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AJAPRO">
 </head>
 <body>
 
 <div class="toast" id="toast"></div>
+
+<!-- INSTALL PWA BANNER -->
+<div id="installBanner" style="display:none;position:fixed;bottom:57px;left:0;right:0;z-index:201;background:linear-gradient(135deg,#0F2557,#1E3A8A);padding:10px 14px;flex-direction:row;align-items:center;gap:10px">
+  <div style="font-size:1.5rem;flex-shrink:0">📱</div>
+  <div style="flex:1">
+    <div style="font-size:.76rem;font-weight:700;color:#fff;margin-bottom:1px">Installer AJAPRO</div>
+    <div style="font-size:.6rem;color:rgba(255,255,255,.75)">Ajoutez l'app sur votre écran</div>
+  </div>
+  <button onclick="installPWA()" style="background:var(--gold);color:var(--navy);border:none;padding:6px 13px;border-radius:7px;font-size:.68rem;font-weight:800;flex-shrink:0;cursor:pointer">Installer</button>
+  <button onclick="document.getElementById('installBanner').style.display='none'" style="background:transparent;border:none;color:rgba(255,255,255,.6);font-size:1rem;flex-shrink:0;cursor:pointer">✕</button>
+</div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -355,6 +371,12 @@ input,select,textarea{font-family:'Sora',sans-serif}
     </div>
   </div>
 </nav>
+
+<!-- METEO MOBILE -->
+<div id="weatherMobile" style="background:var(--navy);padding:6px 16px;display:flex;align-items:center;justify-content:space-between;font-size:.68rem">
+  <span id="weatherMobileText" style="color:rgba(255,255,255,.8)">📍 Chargement...</span>
+  <span style="color:var(--gold2);font-size:.6rem">Votre Marché, Votre Succès</span>
+</div>
 
 <!-- SEARCH -->
 <div id="searchBar">
@@ -562,6 +584,9 @@ input,select,textarea{font-family:'Sora',sans-serif}
     <div class="footer-copy">© 2025 AJAPRO · 100% gratuit pour l'Afrique 🌍</div>
   </div>
 </footer>
+
+<!-- BOUTON RETOUR EN HAUT -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:none;position:fixed;bottom:70px;right:14px;width:40px;height:40px;background:linear-gradient(135deg,var(--navy),var(--blue2));color:#fff;border:none;border-radius:50%;font-size:1.1rem;z-index:150;box-shadow:0 4px 14px rgba(15,37,87,.35);cursor:pointer">↑</button>
 
 <!-- BNAV -->
 <nav class="bnav">
@@ -821,6 +846,7 @@ setInterval(rotateCitation,8000);
 // METEO + GEOLOCALISATION
 function loadWeather(){
   var el=document.getElementById('navWeather');
+  var elM=document.getElementById('weatherMobileText');
   if(!el)return;
   if('geolocation' in navigator){
     navigator.geolocation.getCurrentPosition(function(pos){
@@ -837,17 +863,21 @@ function loadWeather(){
             .then(function(geo){
               var city=geo.address.city||geo.address.town||geo.address.village||'Votre ville';
               if(el)el.innerHTML='📍 '+city+' · '+temp+'°C '+icon;
+              if(elM)elM.textContent='📍 '+city+' · '+temp+'°C '+icon;
             }).catch(function(){
               if(el)el.innerHTML='📍 Ma position · '+temp+'°C '+icon;
+            if(elM)elM.textContent='📍 Ma position · '+temp+'°C '+icon;
             });
         }).catch(function(){
           if(el)el.innerHTML='📍 Ma position';
         });
     },function(){
       if(el)el.innerHTML='📍 Abidjan · 28°C ☀️';
+      if(elM)elM.textContent='📍 Abidjan · 28°C ☀️';
     },{timeout:8000});
   } else {
     if(el)el.innerHTML='📍 Abidjan · 28°C ☀️';
+      if(elM)elM.textContent='📍 Abidjan · 28°C ☀️';
   }
 }
 
@@ -1018,14 +1048,16 @@ function loadLocal(){
 // LOAD ADS
 async function loadAds(){
   var demoAds=[
-    {id:1,title:'Villa 4 chambres à Cocody',cat:'immobilier',description:'Belle villa de standing avec jardin, piscine et sécurité 24h. Quartier résidentiel calme.',price:'450000000',location:'Cocody, Abidjan',seller_name:'Kouassi Immobilier',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80&fit=crop',status:'active'},
-    {id:2,title:'Développeur Full Stack — CDI urgent',cat:'emploi',description:'Startup tech cherche développeur React/Node.js. Télétravail possible, salaire attractif.',price:'Négociable',location:'Plateau, Abidjan',seller_name:'TechStart CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80&fit=crop',status:'urgent'},
-    {id:3,title:'iPhone 15 Pro Max — Neuf scellé',cat:'commerce',description:'iPhone 15 Pro Max 256GB. Jamais ouvert, boîte scellée. Facture originale.',price:'650000',location:'Yopougon, Abidjan',seller_name:'TechShop CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&q=80&fit=crop',status:'active'},
-    {id:4,title:'Salon de coiffure Beauté Royale',cat:'beaute',description:'Salon professionnel. Tresses, locks, défrisage et soins capillaires. Ouvert 7j/7.',price:'5000',location:'Marcory, Abidjan',seller_name:'Beauté Royale',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&fit=crop',status:'active'},
-    {id:5,title:'Toyota Corolla 2020 — Première main',cat:'vehicules',description:'Toyota Corolla 2020, 45 000 km, climatisée, automatique. Très bon état.',price:'8500000',location:'Adjamé, Abidjan',seller_name:'AutoPlus CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=80&fit=crop',status:'active'},
-    {id:6,title:'Restaurant Le Festin — Cuisine africaine',cat:'restauration',description:'Cuisine africaine authentique. Maquis moderne avec terrasse. Livraison disponible.',price:'3500',location:'Treichville, Abidjan',seller_name:'Le Festin',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80&fit=crop',status:'active'},
-    {id:7,title:'Rencontre sérieuse — Femme 28 ans',cat:'rencontres',description:'Bonjour, je suis une jeune femme dynamique, sérieuse, cherchant une relation stable. Je souhaite rencontrer en lieu public d'abord.',price:'0',location:'Cocody, Abidjan',seller_name:'Aminata',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80&fit=crop&crop=faces',status:'active',orientation:'Hétérosexuel(le)',cherche:'Relation sérieuse / Mariage'},
-    {id:8,title:'Terrain 500m² viabilisé — Bingerville',cat:'immobilier',description:'Terrain viabilisé avec titre foncier. Eau et électricité sur place.',price:'22000000',location:'Bingerville',seller_name:'Foncier Invest CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80&fit=crop',status:'active'},
+    {id:1,title:'Villa 4 chambres à Cocody',cat:'immobilier',description:'Belle villa de standing avec jardin, piscine et sécurité 24h. Quartier résidentiel calme.',price:'450000000',location:'Cocody, Abidjan',seller_name:'Kouassi Immobilier',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80&fit=crop',status:'active',verified:true},
+    {id:2,title:'Développeur Full Stack — CDI urgent',cat:'emploi',description:'Startup tech cherche développeur React/Node.js. Télétravail possible, salaire attractif.',price:'Négociable',location:'Plateau, Abidjan',seller_name:'TechStart CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80&fit=crop',status:'urgent',verified:true},
+    {id:3,title:'iPhone 15 Pro Max — Neuf scellé',cat:'commerce',description:'iPhone 15 Pro Max 256GB Titane. Jamais ouvert, boîte scellée. Facture Apple disponible.',price:'650000',location:'Yopougon, Abidjan',seller_name:'TechShop CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&q=80&fit=crop',status:'active'},
+    {id:4,title:'Salon Beauté Royale — Coiffure pro',cat:'beaute',description:'Salon professionnel. Tresses africaines, locks, défrisage et soins capillaires. Sur RDV ou sans attente.',price:'5000',location:'Marcory, Abidjan',seller_name:'Beauté Royale',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80&fit=crop',status:'active'},
+    {id:5,title:'Toyota Corolla 2020 — Première main',cat:'vehicules',description:'Toyota Corolla 2020, 45 000 km, climatisée, boîte automatique. Carnet d'entretien complet.',price:'8500000',location:'Adjamé, Abidjan',seller_name:'AutoPlus CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=80&fit=crop',status:'active',verified:true},
+    {id:6,title:'Restaurant Le Festin — Spécialités africaines',cat:'restauration',description:'Cuisine africaine authentique. Attiéké poisson, sauce graine, thiéboudienne. Maquis moderne avec terrasse.',price:'3500',location:'Treichville, Abidjan',seller_name:'Restaurant Le Festin',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80&fit=crop',status:'active'},
+    {id:7,title:'Rencontre sérieuse — Femme 28 ans',cat:'rencontres',description:'Jeune femme sérieuse et dynamique cherche relation stable. Préfère rencontrer en lieu public. Sérieux uniquement.',price:'0',location:'Cocody, Abidjan',seller_name:'Aminata K.',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80&fit=crop&crop=faces',status:'active',orientation:'Hétérosexuel(le)',cherche:'Relation sérieuse / Mariage'},
+    {id:8,title:'Terrain 500m² viabilisé — Bingerville',cat:'immobilier',description:'Terrain viabilisé avec titre foncier disponible. Eau et électricité sur place. Idéal villa.',price:'22000000',location:'Bingerville',seller_name:'Foncier Invest CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80&fit=crop',status:'active'},
+    {id:9,title:'Appartement F3 meublé — Centre Abidjan',cat:'immobilier',description:'Appartement 3 pièces entièrement meublé, climatisé. Gardiennage 24h. Disponible immédiatement.',price:'150000',location:'Plateau, Abidjan',seller_name:'Immo Prestige CI',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80&fit=crop',status:'active',verified:true},
+    {id:10,title:'Cours de soutien — Maths et Physique',cat:'education',description:'Professeur certifié, 10 ans d'expérience. Cours particuliers à domicile ou en ligne. Tous niveaux.',price:'10000',location:'Tout Abidjan',seller_name:'Prof. Koné',whatsapp:'+2250596697054',telephone:'+2250596697054',photo_url:'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80&fit=crop',status:'active'},
   ];
   try{
     var r=await fetch(SUPA+'/rest/v1/ajapro_annonces?select=*&status=neq.deleted&order=created_at.desc&limit=60',{headers:H()});
@@ -1095,19 +1127,20 @@ function showCatsScreen(){
 
 // SPONSORS
 var sponsors=[
-  {name:'Orange CI',logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/200px-Orange_logo.svg.png',type:'Telecom'},
-  {name:'MTN CI',logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MTN_Logo.png/200px-MTN_Logo.png',type:'Telecom'},
-  {name:'Wave',logo:'https://wave.com/img/logo.png',type:'Fintech'},
-  {name:'Jumia',logo:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Jumia-logo.svg/200px-Jumia-logo.svg.png',type:'E-com'},
-  {name:'Moov Africa',logo:'',type:'Telecom'},
-  {name:'Société Générale',logo:'',type:'Finance'},
+  {name:'Orange CI',emoji:'🟠',color:'#FF6600',type:'Telecom'},
+  {name:'MTN CI',emoji:'🟡',color:'#FFCC00',type:'Telecom'},
+  {name:'Wave',emoji:'💙',color:'#1A73E8',type:'Fintech'},
+  {name:'Jumia',emoji:'🛒',color:'#F68B1E',type:'E-commerce'},
+  {name:'Moov Africa',emoji:'📡',color:'#00A651',type:'Telecom'},
+  {name:'SGB-CI',emoji:'🏦',color:'#E30613',type:'Finance'},
 ];
 function renderSponsors(){
   var row=document.getElementById('sponsorsRow');if(!row)return;
   row.innerHTML='';
   sponsors.forEach(function(s){
     var c=document.createElement('div');c.className='sponsor-card';
-    c.innerHTML='<div class="sponsor-logo">'+(s.logo?'<img src="'+s.logo+'" alt="'+s.name+'" onerror="this.parentElement.innerHTML='<span style=font-size:1.4rem>🏢</span>'">':'<span style="font-size:1.4rem">🏢</span>')+'</div><div class="sponsor-name">'+s.name+'</div><div class="sponsor-type">'+s.type+'</div>';
+    c.style.borderTop='3px solid '+(s.color||'var(--blue)');
+    c.innerHTML='<div class="sponsor-logo"><span style="font-size:1.6rem">'+s.emoji+'</span></div><div class="sponsor-name">'+s.name+'</div><div class="sponsor-type">'+s.type+'</div>';
     row.appendChild(c);
   });
 }
@@ -1211,10 +1244,10 @@ function openDetailById(id){
     (ad.status==='closed'?'<span style="background:var(--muted);color:#fff;font-size:.58rem;font-weight:700;padding:3px 8px;border-radius:4px;margin-left:6px">CLÔTURÉE</span>':'')+
     '<div class="detail-title">'+ad.title+'</div>'+
     (price&&price!=='0'&&price!==0?'<div class="detail-price">'+formatPrice(price)+' F CFA</div>':'')+
-    '<div class="detail-loc">📍 '+(ad.location||ad.loc||'')+'</div>'+
+    '<div class="detail-loc">📍 '+(ad.location||ad.loc||'')+'</div><div style="font-size:.68rem;color:var(--green);margin-bottom:10px">👁️ '+showViewCount(ad.id)+'</div>'+
     '<div class="detail-desc">'+(ad.description||ad.desc||'')+'</div>'+
     rencontreBlock+
-    '<div class="detail-seller"><div class="seller-name">'+(ad.seller_name||ad.seller||'Annonceur')+'</div><div class="seller-meta">Membre AJAPRO vérifié</div></div>'+
+    '<div class="detail-seller"><div style="display:flex;align-items:center;justify-content:space-between"><div><div class="seller-name">'+(ad.seller_name||ad.seller||'Annonceur')+(ad.verified?'<span style="background:#2563EB;color:#fff;font-size:.52rem;font-weight:700;padding:2px 7px;border-radius:4px;margin-left:6px">✓ Vérifié</span>':'')+'</div><div class="seller-meta">Membre AJAPRO</div></div><div style="text-align:right"><div style="color:#F59E0B;font-size:.9rem">★★★★★</div><div style="font-size:.58rem;color:var(--muted)">Vendeur de confiance</div></div></div></div>'+
     '<button class="btn-share-lg" onclick="shareAd('+id+',event)">📤 Partager cette annonce sur WhatsApp</button>'+
     '<div class="contact-btns">'+
     '<button class="btn-wa-lg" onclick="contactWA(''+(ad.whatsapp||ad.wa||'')+'',''+ad.title.replace(/'/g,'').replace(/"/g,'')+'',event)">💬 WhatsApp</button>'+
@@ -1521,19 +1554,4 @@ function deleteAd(id){ads=ads.filter(function(a){return a.id!=id;});renderAds();
 function renderAdminMembers(){
   var el=document.getElementById('admMbrList');if(!el)return;
   if(!members.length){el.innerHTML='<div style="color:rgba(255,255,255,.4)">Aucun membre.</div>';return;}
-  el.innerHTML=members.map(function(m){return'<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;margin-bottom:6px"><div style="font-size:.78rem;font-weight:600;color:#fff;margin-bottom:2px">'+m.name+'</div><div style="font-size:.63rem;color:rgba(255,255,255,.45)">'+m.email+' · '+m.tel+'</div></div>';}).join('');
-}
-
-// LEGAL
-var legalT={
-  cgu:'<h2 style="font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:11px">Conditions Générales</h2><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:9px">AJAPRO est 100% gratuit. Inscription obligatoire pour publier ou contacter un annonceur.</p><p style="font-size:.8rem;color:var(--text2);line-height:1.8">Contact : contact@ajapro.ci · +225 05 96 69 70 54</p>',
-  privacy:'<h2 style="font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:11px">Confidentialité</h2><p style="font-size:.8rem;color:var(--text2);line-height:1.8">Vos données sont protégées. Vos contacts ne sont visibles que des membres inscrits. Nous ne vendons jamais vos informations.</p>',
-  mentions:'<h2 style="font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:11px">Mentions Légales</h2><p style="font-size:.8rem;color:var(--text2);line-height:1.8">AJAPRO — Abidjan, Côte d'Ivoire<br>contact@ajapro.ci · +225 05 96 69 70 54</p>',
-  securite:'<h2 style="font-size:1.15rem;font-weight:700;color:var(--red);margin-bottom:11px">⚠️ Conseils de Sécurité</h2><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:9px"><strong>Ne payez jamais</strong> d'argent avant d'avoir rencontré la personne en face à face dans un lieu public.</p><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:9px"><strong>Rencontrez-vous toujours</strong> dans un café, restaurant ou centre commercial.</p><p style="font-size:.8rem;color:var(--text2);line-height:1.8;margin-bottom:9px"><strong>Ne partagez jamais</strong> vos informations bancaires ou codes secrets.</p><p style="font-size:.8rem;color:var(--text2);line-height:1.8"><strong>Signalez tout abus</strong> à contact@ajapro.ci. AJAPRO ne sera jamais responsable des transactions entre utilisateurs.</p>'
-};
-function showLegal(type){document.getElementById('legalContent').innerHTML=legalT[type]||'';document.getElementById('legalModal').style.display='block';}
-
-updateFavBadge();
-</script>
-</body>
-      </html>
+  el.innerHTML=members.map(function(m){return'<div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;margin-bottom:6px"><div style="font-size:.78rem;font-weight:600;color:#fff;margin-bottom:2px">'+m.name+'</div><div style="font-size:.63rem;color:rgba(255,255,255,.45)">'+m.email+' · '+m.tel+'</div></div>';}
